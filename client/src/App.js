@@ -3,14 +3,7 @@ import { io } from "socket.io-client";
 import audioFile from "./music.mp3";
 
 
-// let myUrl = "http://localhost:3000"; //development
 
-// if (process.env.NODE_ENV === "production") {
-//   myUrl = "api";
-// }
-// export default axios.create({
-//   baseURL: myUrl,
-// });
 
 const socket = io.connect("http://localhost:3001");
 
