@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import audioFile from "./music.mp3";
 
-
-
-
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect(
+  process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
+);
 
 const audio = new Audio();
 

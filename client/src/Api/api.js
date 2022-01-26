@@ -1,10 +1,12 @@
 import axios from "axios";
 
-let myUrl = "http://localhost:3001"; //development
+let myUrl = "http://localhost:3001/"; //development
 
 if (process.env.NODE_ENV === "production") {
-  myUrl = "api";
+  myUrl = "/";
 }
 export default axios.create({
   baseURL: myUrl,
 });
+
+
