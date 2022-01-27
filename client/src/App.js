@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
-import audioFile from "./music.mp3";
+import audioFile from "./sounds/music.mp3";
+import audioFile2 from "./sounds/funky-dan-mk2.mp3";
+import audioFile3 from "./sounds/blues.wav";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Launchpad from "./pages/Launchpad/Launchpad";
@@ -22,10 +24,8 @@ function App() {
   useEffect(() => {
     const recieveMessage = (m) => {
       console.log(m);
-      // if (role === "ying") {
-        audio.src = m.path;
-        audio.play();
-      // }
+      audio.src = m.path;
+      audio.play();
       setPlaying(m.name);
     };
 
@@ -54,6 +54,12 @@ function App() {
   const handlePlaySound = () => {
     socket.emit("play", { name: "Test sound 1", path: audioFile });
   };
+  const handlePlaySound2 = () => {
+    socket.emit("play", { name: "Test sound 2", path: audioFile2 });
+  };
+  const handlePlaySound3 = () => {
+    socket.emit("play", { name: "Test sound 3", path: audioFile3 });
+  };
 
   return (
     <div className="App">
@@ -66,19 +72,21 @@ function App() {
       <div>
         <h4>Choose sound</h4>
         <button onClick={handlePlaySound}>Play Sound!</button>
+        <button onClick={handlePlaySound2}>Play Sound2!</button>
+        <button onClick={handlePlaySound3}>Play Sound3!</button>
       </div>
       <div>
         <h4>Playing {playing}</h4>
       </div>
       <BrowserRouter>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<SignIn/>}/>
-        <Route path="/sequencer" element={<Sequencer/>}/>
-        <Route path="/synth" element={<Synth/>}/>
-        <Route path="/launchpad" element={<Launchpad/>}/>
-        <Route path="/savedProjects" element={<SavedProjects/>}/>
-      </Routes>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/sequencer" element={<Sequencer />} />
+          <Route path="/synth" element={<Synth />} />
+          <Route path="/launchpad" element={<Launchpad />} />
+          <Route path="/savedProjects" element={<SavedProjects />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
