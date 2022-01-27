@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
-import audioFile from "./music.mp3";
+// import audioFile from "./sounds/funky-dan-mk2.mp3";
+import audioFile from "./sounds/drum.wav";
+import audioFile2 from "./sounds/drum.wav";
+import audioFile3 from "./sounds/blues.wav";
 
 const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
@@ -15,10 +18,8 @@ function App() {
   useEffect(() => {
     const recieveMessage = (m) => {
       console.log(m);
-      // if (role === "ying") {
-        audio.src = m.path;
-        audio.play();
-      // }
+      audio.src = m.path;
+      audio.play();
       setPlaying(m.name);
     };
 
