@@ -9,16 +9,16 @@ const socket = io.connect(
 const audio = new Audio();
 
 function App() {
-  const [role, setRole] = useState("");
+  // const [role, setRole] = useState("");
   const [playing, setPlaying] = useState("");
 
   useEffect(() => {
     const recieveMessage = (m) => {
       console.log(m);
-      if (role === "ying") {
+      // if (role === "ying") {
         audio.src = m.path;
         audio.play();
-      }
+      // }
       setPlaying(m.name);
     };
 
@@ -53,8 +53,8 @@ function App() {
       <h1>Soundbutt</h1>
       <div>
         <h4>Role</h4>
-        <button onClick={() => setRole("yang")}>Yang</button>
-        <button onClick={() => setRole("ying")}>Ying</button>
+        {/* <button onClick={() => setRole("yang")}>Yang</button> */}
+        {/* <button onClick={() => setRole("ying")}>Ying</button> */}
       </div>
       <div>
         <h4>Choose sound</h4>
