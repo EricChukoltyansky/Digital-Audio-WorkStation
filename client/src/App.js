@@ -32,7 +32,7 @@ function App() {
     return () => {
       socket.off("play", { name: "Test sound 1", path: audioFile });
     };
-  }, [role]);
+  }, []);
 
   useEffect(() => {
     const handleAudioStop = () => {
