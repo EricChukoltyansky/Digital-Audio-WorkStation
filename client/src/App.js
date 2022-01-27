@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
-import audioFile from "./music.mp3";
+import audioFile1 from "./music.mp3";
+import audioFile2 from "./blues.wav";
+import audioFile3 from "./drum.wav";
 
 const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
@@ -9,16 +11,16 @@ const socket = io.connect(
 const audio = new Audio();
 
 function App() {
-  const [role, setRole] = useState("");
+  // const [role, setRole] = useState("");
   const [playing, setPlaying] = useState("");
 
   useEffect(() => {
     const recieveMessage = (m) => {
       console.log(m);
-      if (role === "ying") {
-        audio.src = m.path;
-        audio.play();
-      }
+
+      audio.src = m.path;
+      audio.play();
+
       setPlaying(m.name);
     };
 
@@ -30,9 +32,9 @@ function App() {
     socket.on("stop", stopAudio);
 
     return () => {
-      socket.off("play", { name: "Test sound 1", path: audioFile });
+      socket.off("play", { name: "Test sound 1", path: audioFile1 });
     };
-  }, [role]);
+  }, []);
 
   useEffect(() => {
     const handleAudioStop = () => {
@@ -45,7 +47,7 @@ function App() {
   }, []);
 
   const handlePlaySound = () => {
-    socket.emit("play", { name: "Test sound 1", path: audioFile });
+    socket.emit("play", { name: "Test sound 1", path: audioFile1 });
   };
 
   return (
@@ -53,8 +55,8 @@ function App() {
       <h1>Soundbutt</h1>
       <div>
         <h4>Role</h4>
-        <button onClick={() => setRole("yang")}>Yang</button>
-        <button onClick={() => setRole("ying")}>Ying</button>
+        {/* <button onClick={() => setRole("yang")}>Yang</button> */}
+        {/* <button onClick={() => setRole("ying")}>Ying</button> */}
       </div>
       <div>
         <h4>Choose sound</h4>
