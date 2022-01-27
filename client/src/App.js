@@ -71,9 +71,9 @@ function App() {
       </div>
       <div>
         <h4>Choose sound</h4>
-        <button onClick={handlePlaySound}>Play Sound!</button>
+        {/* <button onClick={handlePlaySound}>Play Sound!</button>
         <button onClick={handlePlaySound2}>Play Sound2!</button>
-        <button onClick={handlePlaySound3}>Play Sound3!</button>
+        <button onClick={handlePlaySound3}>Play Sound3!</button> */}
       </div>
       <div>
         <h4>Playing {playing}</h4>
@@ -82,9 +82,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<SignIn />} />
-          <Route path="/sequencer" element={<Sequencer />} />
-          <Route path="/synth" element={<Synth />} />
-          <Route path="/launchpad" element={<Launchpad />} />
+          <Route path="/sequencer" element={<Sequencer play={handlePlaySound} />} />
+          <Route path="/synth" element={<Synth play={handlePlaySound2}/>} />
+          <Route path="/launchpad" element={<Launchpad play={handlePlaySound3}/>} />
           <Route path="/savedProjects" element={<SavedProjects />} />
         </Routes>
       </BrowserRouter>
