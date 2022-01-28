@@ -15,8 +15,11 @@ export default function SignIn() {
         password,
         email,
       });
-    } catch {
+      console.log(data);
+      // localStorage.setItem('token', data.user)
+    } catch (e) {
       const error = e.response.data;
+      console.log(e.response.data);
       if (error.includes("password")) {
         setWrongInput("Weak password, minimum 7 digits");
       } else if (error.includes("Email is invalid")) {
