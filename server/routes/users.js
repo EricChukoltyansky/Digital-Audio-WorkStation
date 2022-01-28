@@ -12,7 +12,10 @@ rootRouter.get("/me", auth, async (req, res) => {
   res.send(req.user);
 });
 
+
 rootRouter.post("/users", addUser);
+
+
 
 rootRouter.post("/login", userLogin);
 
