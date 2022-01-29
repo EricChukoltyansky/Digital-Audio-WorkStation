@@ -5,6 +5,7 @@ export default function Synth({ play }) {
     <div>
       <h1>Sequencer</h1>
       <button onClick={play}>Play Sound 2</button>
+      {/* <audio src={info.url} id={info.keyCode} /> */}
     </div>
   );
 }
