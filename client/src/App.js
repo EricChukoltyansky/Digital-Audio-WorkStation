@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Launchpad from "./pages/Launchpad/Launchpad";
 import SavedProjects from "./pages/SavedProjects/SavedProjects";
-import Sequencer from "./pages/Sequencer/Sequencer";
+import Sequencer from "./pages/Sequencer/Cell";
 import SignIn from "./pages/SignIn/SignIn";
 import Synth from "./pages/Synth/Synth";
 
@@ -18,7 +18,7 @@ const socket = io.connect(
 const audio = new Audio();
 
 function App() {
-  // const [role, setRole] = useState("");
+  
   const [playing, setPlaying] = useState("");
 
   useEffect(() => {
