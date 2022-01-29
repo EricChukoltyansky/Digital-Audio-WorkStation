@@ -6,16 +6,16 @@ const PlayerProvider = ({ children }) => {
   useEffect(() => {
     const player = new Tone.Players(
       {
-        BD: "../../sounds/kick",
-        CP: "../../sounds/snare",
-        OH: "../../sounds/snap",
-        CH: "../../sounds/hi-hat"
+        BD: "/kick",
+        CP: "/snare",
+        OH: "/snap",
+        CH: "/hi-hat"
       },
       () => {
         console.log("buffers loaded");
         setPlayer(player);
       }
-    ).toMaster();
+    ).toDestination();
   }, []);
 
   return children({ player });

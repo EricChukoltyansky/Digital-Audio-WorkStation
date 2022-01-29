@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Grid from "./Grid";
-// import Tone from "tone";
+import Tone from "tone";
 // import PlayerProvider from "./player-provider";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
