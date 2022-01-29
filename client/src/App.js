@@ -10,27 +10,46 @@ import SavedProjects from "./pages/SavedProjects/SavedProjects";
 import Sequencer from "./pages/Sequencer/Sequencer";
 import SignIn from "./pages/SignIn/SignIn";
 import Synth from "./pages/Synth/Synth";
+import PlayerProvider from "./pages/Sequencer/PlayerProvider";
 
 const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
 );
 
-const audio = new Audio();
+const audio1 = new Audio();
+const audio2 = new Audio();
+const audio3 = new Audio();
 
 function App() {
   // const [role, setRole] = useState("");
-  const [playing, setPlaying] = useState("");
+  const [playing1, setPlaying1] = useState("");
+  const [playing2, setPlaying2] = useState("");
+  const [playing3, setPlaying3] = useState("");
 
   useEffect(() => {
     const recieveMessage = (m) => {
       console.log(m);
-      audio.src = m.path;
-      audio.play();
-      setPlaying(m.name);
+      if (m.path === audioFile) {
+      audio1.src = m.path;
+      audio1.play();
+      setPlaying1(m.name);
+      }
+      if (m.path === audioFile2) {
+      audio2.src = m.path;
+      audio2.play();
+      setPlaying2(m.name);
+      }
+      if (m.path === audioFile3) {
+      audio3.src = m.path;
+      audio3.play();
+      setPlaying3(m.name);
+      }
     };
 
     const stopAudio = () => {
-      setPlaying("");
+      setPlaying1("");
+      setPlaying2("");
+      setPlaying3("");
     };
 
     socket.on("play", recieveMessage);
@@ -45,9 +64,13 @@ function App() {
     const handleAudioStop = () => {
       socket.emit("stop");
     };
-    audio.addEventListener("pause", handleAudioStop);
+    audio1.addEventListener("pause", handleAudioStop);
+    audio2.addEventListener("pause", handleAudioStop);
+    audio3.addEventListener("pause", handleAudioStop);
     return () => {
-      audio.removeEventListener("pause", handleAudioStop);
+      audio1.removeEventListener("pause", handleAudioStop);
+      audio2.removeEventListener("pause", handleAudioStop);
+      audio3.removeEventListener("pause", handleAudioStop);
     };
   }, []);
 
@@ -60,6 +83,16 @@ function App() {
   const handlePlaySound3 = () => {
     socket.emit("play", { name: "Test sound 3", path: audioFile3 });
   };
+
+  // const play = (keyCode, sound) => {
+  //   if (!keyCode || !sound || !power || volume === "0") return;
+  //   setSoundName(sound);
+  //   const audio = document.getElementById(keyCode);
+  //   audio.currentTime = 0;
+  //   audio.play();
+  //   pressed(audio);
+  // };
+
 
   return (
     <div className="App">
@@ -76,7 +109,9 @@ function App() {
         <button onClick={handlePlaySound3}>Play Sound3!</button> */}
       </div>
       <div>
-        <h4>Playing {playing}</h4>
+        <h4>Playing {playing1}</h4>
+        <h4>Playing {playing2}</h4>
+        <h4>Playing {playing3}</h4>
       </div>
       <BrowserRouter>
         <Navbar />
@@ -88,6 +123,14 @@ function App() {
           <Route path="/savedProjects" element={<SavedProjects />} />
         </Routes>
       </BrowserRouter>
+      <PlayerProvider>
+      {({ player }) => {
+        if (!player) {
+          return <p>loading....</p>;
+        }
+        return <Sequencer player={player} />;
+      }}
+    </PlayerProvider>
     </div>
   );
 }
