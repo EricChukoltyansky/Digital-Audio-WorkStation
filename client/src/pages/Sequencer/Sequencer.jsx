@@ -60,11 +60,19 @@ export default function Sequencer({ play }) {
     const recieveMessage = (m) => {
       toggleStep(m.x, m.z);
     }
+    const switchMessage = (m) => {
+      setPlaying(m.tog)
+    }
     socket.on("arm", recieveMessage);
+    socket.on("switch", switchMessage)
   }, [])
 
   const handleToggleStep = (i, j) => {
     socket.emit("arm", {x: i, z: j});
+  };
+
+  const handleSetPlaying = (switcher) => {
+    socket.emit("switch", {tog: switcher});
   };
 
   useEffect(() => {
@@ -117,7 +125,7 @@ export default function Sequencer({ play }) {
       <button onClick={play}>Play Sound 1</button>
       <br />
       <Bar>
-        <PlayButton playing={playing} onClick={() => setPlaying(!playing)} />
+        <PlayButton playing={playing} onClick={() => handleSetPlaying(!playing)} />
       </Bar>
       <Grid sequence={sequence} handleToggleStep={handleToggleStep} />
     </div>
