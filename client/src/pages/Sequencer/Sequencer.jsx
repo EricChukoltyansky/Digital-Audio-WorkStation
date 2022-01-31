@@ -23,7 +23,6 @@ const initialState = [
 
 export default function Sequencer({ play }) {
   const [sequence, setSequence] = useState(initialState);
-  // const [player, setPlayer] = useState(null);
   const [playing, setPlaying] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -33,24 +32,27 @@ export default function Sequencer({ play }) {
   const player4 = new Tone.Player().toDestination();
   const player5 = new Tone.Player().toDestination();
 
-  const toggleStep = (line, step) => {
-    const sequenceCopy = [...sequence];
-    const { triggered, activated } = sequenceCopy[line][step];
-    sequenceCopy[line][step] = { triggered, activated: !activated };
-    console.log("toggled");
-    setSequence(sequenceCopy);
-  };
-
+  
   useEffect(() => {
+    const toggleStep = (line, step) => {
+      const sequenceCopy = [...sequence];
+      const { triggered, activated } = sequenceCopy[line][step];
+      sequenceCopy[line][step] = { triggered, activated: !activated };
+      console.log("toggled");
+      setSequence(sequenceCopy);
+    };
+
     const recieveMessage = (m) => {
       toggleStep(m.x, m.z);
     };
+
     const switchMessage = (m) => {
       setPlaying(m.tog);
     };
+
     socket.on("arm", recieveMessage);
     socket.on("switch", switchMessage);
-  }, []);
+  }, [sequence]);
 
   const handleToggleStep = (i, j) => {
     socket.emit("arm", { x: i, z: j });
