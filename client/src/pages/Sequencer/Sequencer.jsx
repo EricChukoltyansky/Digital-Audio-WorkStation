@@ -32,34 +32,31 @@ export default function Sequencer({ play }) {
   const player4 = new Tone.Player().toDestination();
   const player5 = new Tone.Player().toDestination();
 
-  
-  useEffect(() => {
-    const toggleStep = (line, step) => {
-      const sequenceCopy = [...sequence];
-      const { triggered, activated } = sequenceCopy[line][step];
-      sequenceCopy[line][step] = { triggered, activated: !activated };
-      console.log("toggled");
-      setSequence(sequenceCopy);
-    };
+  const toggleStep = (line, step) => {
+    const sequenceCopy = [...sequence];
+    const { triggered, activated } = sequenceCopy[line][step];
+    sequenceCopy[line][step] = { triggered, activated: !activated };
+    console.log("toggled");
+    setSequence(sequenceCopy);
+  };
 
+  useEffect(() => {
     const recieveMessage = (m) => {
       toggleStep(m.x, m.z);
-    };
-
+    }
     const switchMessage = (m) => {
-      setPlaying(m.tog);
-    };
-
+      setPlaying(m.tog)
+    }
     socket.on("arm", recieveMessage);
-    socket.on("switch", switchMessage);
-  }, [sequence]);
+    socket.on("switch", switchMessage)
+  }, [])
 
   const handleToggleStep = (i, j) => {
-    socket.emit("arm", { x: i, z: j });
+    socket.emit("arm", {x: i, z: j});
   };
 
   const handleSetPlaying = (switcher) => {
-    socket.emit("switch", { tog: switcher });
+    socket.emit("switch", {tog: switcher});
   };
 
   useEffect(() => {
@@ -114,16 +111,7 @@ export default function Sequencer({ play }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [
-    currentStep,
-    playing,
-    sequence,
-    player1,
-    player2,
-    player3,
-    player4,
-    player5,
-  ]);
+  }, [currentStep, playing, sequence, player1, player2, player3, player4, player5]);
 
   return (
     <div>
@@ -131,10 +119,7 @@ export default function Sequencer({ play }) {
       <button onClick={play}>Play Sound 1</button>
       <br />
       <Bar>
-        <PlayButton
-          playing={playing}
-          onClick={() => handleSetPlaying(!playing)}
-        />
+        <PlayButton playing={playing} onClick={() => handleSetPlaying(!playing)} />
       </Bar>
       <Grid sequence={sequence} handleToggleStep={handleToggleStep} />
     </div>
