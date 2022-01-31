@@ -41,6 +41,10 @@ io.on("connection", (socket) => {
     io.emit("stop");
   });
 
+  socket.on("arm", (armMsg) => {
+    io.emit("arm", armMsg);
+  });
+
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
   });

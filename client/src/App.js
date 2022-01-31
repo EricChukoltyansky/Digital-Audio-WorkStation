@@ -10,7 +10,7 @@ import SavedProjects from "./pages/SavedProjects/SavedProjects";
 import Sequencer from "./pages/Sequencer/Sequencer";
 import SignIn from "./pages/SignIn/SignIn";
 import Synth from "./pages/Synth/Synth";
-import PlayerProvider from "./pages/Sequencer/PlayerProvider";
+// import PlayerProvider from "./pages/Sequencer/PlayerProvider";
 
 const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
@@ -123,14 +123,14 @@ function App() {
           <Route path="/savedProjects" element={<SavedProjects />} />
         </Routes>
       </BrowserRouter>
-      <PlayerProvider>
+      {/* <PlayerProvider>
       {({ player }) => {
         if (!player) {
           return <p>loading....</p>;
         }
         return <Sequencer player={player} />;
       }}
-    </PlayerProvider>
+    </PlayerProvider> */}
     </div>
   );
 }
