@@ -27,21 +27,6 @@ export default function Sequencer({ play }) {
   const [playing, setPlaying] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
 
-  const samples = new Tone.ToneAudioBuffers({
-    urls: {
-      BD: "/kick.mp3",
-      CP: "/snare.mp3",
-      OH: "/snap.mp3",
-      CH: "/hi-hat.mp3",
-      ST: "/stefan.mp3",
-    },
-    // onload: () => {
-    //   console.log("buffers loaded");
-    //   setPlayer(player);
-    // },
-  });
-  // console.log(samples);
-
   const player1 = new Tone.Player().toDestination();
   const player2 = new Tone.Player().toDestination();
   const player3 = new Tone.Player().toDestination();
@@ -59,20 +44,20 @@ export default function Sequencer({ play }) {
   useEffect(() => {
     const recieveMessage = (m) => {
       toggleStep(m.x, m.z);
-    }
+    };
     const switchMessage = (m) => {
-      setPlaying(m.tog)
-    }
+      setPlaying(m.tog);
+    };
     socket.on("arm", recieveMessage);
-    socket.on("switch", switchMessage)
-  }, [])
+    socket.on("switch", switchMessage);
+  }, []);
 
   const handleToggleStep = (i, j) => {
-    socket.emit("arm", {x: i, z: j});
+    socket.emit("arm", { x: i, z: j });
   };
 
   const handleSetPlaying = (switcher) => {
-    socket.emit("switch", {tog: switcher});
+    socket.emit("switch", { tog: switcher });
   };
 
   useEffect(() => {
@@ -108,6 +93,16 @@ export default function Sequencer({ play }) {
       setSequence(sequence);
     };
 
+    const samples = new Tone.ToneAudioBuffers({
+      urls: {
+        BD: "/kick.mp3",
+        CP: "/snare.mp3",
+        OH: "/snap.mp3",
+        CH: "/hi-hat.mp3",
+        ST: "/stefan.mp3",
+      },
+    });
+
     const timer = setTimeout(() => {
       if (playing) {
         setCurrentStep((currentStep + 1) % steps);
@@ -117,7 +112,16 @@ export default function Sequencer({ play }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [currentStep, playing, sequence]);
+  }, [
+    currentStep,
+    playing,
+    sequence,
+    player1,
+    player2,
+    player3,
+    player4,
+    player5,
+  ]);
 
   return (
     <div>
@@ -125,7 +129,10 @@ export default function Sequencer({ play }) {
       <button onClick={play}>Play Sound 1</button>
       <br />
       <Bar>
-        <PlayButton playing={playing} onClick={() => handleSetPlaying(!playing)} />
+        <PlayButton
+          playing={playing}
+          onClick={() => handleSetPlaying(!playing)}
+        />
       </Bar>
       <Grid sequence={sequence} handleToggleStep={handleToggleStep} />
     </div>
