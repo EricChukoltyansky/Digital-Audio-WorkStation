@@ -25,17 +25,12 @@ export default function Sequencer({ play }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
-  const [play1, setPlay1] = useState(false);
-  const [play2, setPlay2] = useState(false);
-  const [play3, setPlay3] = useState(false);
-  const [play4, setPlay4] = useState(false);
-  const [play5, setPlay5] = useState(false);
 
-  const player1 = new Tone.Player("/kick.mp3").toDestination();
-  const player2 = new Tone.Player("/snare.mp3").toDestination();
-  const player3 = new Tone.Player("/snap.mp3").toDestination();
-  const player4 = new Tone.Player("/hi-hat.mp3").toDestination();
-  const player5 = new Tone.Player("/stefan.mp3").toDestination();
+  const player1 = new Tone.Player().toDestination();
+  const player2 = new Tone.Player().toDestination();
+  const player3 = new Tone.Player().toDestination();
+  const player4 = new Tone.Player().toDestination();
+  const player5 = new Tone.Player().toDestination();
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
@@ -72,23 +67,23 @@ export default function Sequencer({ play }) {
           sequence[i][j] = { activated, triggered: j === time };
           if (triggered && activated) {
             if (lineMap[i] === "BD") {
-              // player1.buffer = samples.get(lineMap[i]);
+              player1.buffer = samples.get(lineMap[i]);
               player1.start();
             }
             if (lineMap[i] === "CP") {
-              // player2.buffer = samples.get(lineMap[i]);
+              player2.buffer = samples.get(lineMap[i]);
               player2.start();
             }
             if (lineMap[i] === "OH") {
-              // player3.buffer = samples.get(lineMap[i]);
+              player3.buffer = samples.get(lineMap[i]);
               player3.start();
             }
             if (lineMap[i] === "CH") {
-              // player4.buffer = samples.get(lineMap[i]);
+              player4.buffer = samples.get(lineMap[i]);
               player4.start();
             }
             if (lineMap[i] === "ST") {
-              // player5.buffer = samples.get(lineMap[i]);
+              player5.buffer = samples.get(lineMap[i]);
               player5.start();
             }
           }
@@ -97,18 +92,15 @@ export default function Sequencer({ play }) {
       setSequence(sequence);
     };
 
-    // const samples = new Tone.ToneAudioBuffers({
-    //   urls: {
-    //     BD: "/kick.mp3",
-    //     CP: "/snare.mp3",
-    //     OH: "/snap.mp3",
-    //     CH: "/hi-hat.mp3",
-    //     ST: "/stefan.mp3",
-    //   },
-    //   onload: {
-
-    //   }
-    // });
+    const samples = new Tone.ToneAudioBuffers({
+      urls: {
+        BD: "/kick.mp3",
+        CP: "/snare.mp3",
+        OH: "/snap.mp3",
+        CH: "/hi-hat.mp3",
+        ST: "/stefan.mp3",
+      },
+    });
 
     const timer = setTimeout(() => {
       if (playing) {
