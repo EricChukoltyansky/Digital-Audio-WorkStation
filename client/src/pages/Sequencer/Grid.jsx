@@ -1,10 +1,9 @@
 import React from "react";
-// import styled from "styled-components";
 import Frame from "./Frame";
 import Cell from "./Cell";
 
-const Grid = ({ sequence, toggleStep }) => (
-  <Frame rows={4} columns={16}>
+const Grid = ({ sequence, handleToggleStep }) => (
+  <Frame rows={5} columns={16}>
     {sequence.map((line, i) =>
       line.map((time, j) => (
         <Cell
@@ -13,7 +12,7 @@ const Grid = ({ sequence, toggleStep }) => (
           row={i + 1}
           activated={sequence[i][j]["activated"]}
           triggered={sequence[i][j]["triggered"]}
-          onClick={() => toggleStep(i, j)}
+          onClick={() => handleToggleStep(i, j)}
         />
       ))
     )}
