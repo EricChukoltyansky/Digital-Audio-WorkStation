@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import Grid from "./Grid";
-import * as Tone from "tone";
+// import * as Tone from "tone";
 // import PlayerProvider from "./PlayerProvider";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
@@ -32,11 +32,11 @@ export default function Sequencer({ play }) {
   // const player4 = new Tone.Player().toDestination();
   // const player5 = new Tone.Player().toDestination();
 
-  const player1 = new Tone.Player("/kick.mp3").toDestination();
-  const player2 = new Tone.Player("/snare.mp3").toDestination();
-  const player3 = new Tone.Player("/snap.mp3").toDestination();
-  const player4 = new Tone.Player("/hi-hat.mp3").toDestination();
-  const player5 = new Tone.Player("/stefan.mp3").toDestination();
+  const audio1 = new Audio("/kick.mp3");
+  const audio2 = new Audio("/snare.mp3");
+  const audio3 = new Audio("/snap.mp3");
+  const audio4 = new Audio("/hi-hat.mp3");
+  const audio5 = new Audio("/stefan.mp3");
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
@@ -74,23 +74,23 @@ export default function Sequencer({ play }) {
           if (triggered && activated) {
             if (lineMap[i] === "BD") {
               // player1.buffer = samples.get(lineMap[i]);
-              player1.start();
+              audio1.play();
             }
             if (lineMap[i] === "CP") {
               // player2.buffer = samples.get(lineMap[i]);
-              player2.start();
+              audio2.play();
             }
             if (lineMap[i] === "OH") {
               // player3.buffer = samples.get(lineMap[i]);
-              player3.start();
+              audio3.play();
             }
             if (lineMap[i] === "CH") {
               // player4.buffer = samples.get(lineMap[i]);
-              player4.start();
+              audio4.play();
             }
             if (lineMap[i] === "ST") {
               // player5.buffer = samples.get(lineMap[i]);
-              player5.start();
+              audio5.play();
             }
           }
         }
