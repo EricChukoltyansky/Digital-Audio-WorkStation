@@ -53,9 +53,9 @@ io.on("connection", (socket) => {
   });
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/../dist/index.html"));
-});
+// app.use("*", (req, res) => {
+//   res.sendFile(path.resolve( `${publicPath}/index.html`));
+// });
 
 const PORT = process.env.PORT || 3001;
 
