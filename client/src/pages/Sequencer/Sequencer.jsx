@@ -100,6 +100,7 @@ export default function Sequencer({ play }) {
         CH: "/hi-hat.mp3",
         ST: "/stefan.mp3",
       },
+      onload: () => console.log("loaded"),
     });
 
     const timer = setTimeout(() => {
