@@ -39,6 +39,14 @@ export default function Sequencer({ play }) {
     console.log("toggled");
     setSequence(sequenceCopy);
   };
+  
+    const handleToggleStep = (i, j) => {
+      socket.emit("arm", {x: i, z: j});
+    };
+  
+    const handleSetPlaying = (switcher) => {
+      socket.emit("switch", {tog: switcher});
+    };
 
   useEffect(() => {
     const recieveMessage = (m) => {
@@ -50,14 +58,6 @@ export default function Sequencer({ play }) {
     socket.on("arm", recieveMessage);
     socket.on("switch", switchMessage)
   }, [])
-
-  const handleToggleStep = (i, j) => {
-    socket.emit("arm", {x: i, z: j});
-  };
-
-  const handleSetPlaying = (switcher) => {
-    socket.emit("switch", {tog: switcher});
-  };
 
   useEffect(() => {
     const nextStep = (time) => {
@@ -108,11 +108,11 @@ export default function Sequencer({ play }) {
         setCurrentStep((currentStep + 1) % steps);
         nextStep(currentStep);
       }
-    }, 100 + Math.random() * 20);
+    }, 120);
     return () => {
       clearTimeout(timer);
     };
-  }, [currentStep, playing, sequence, player1, player2, player3, player4, player5]);
+  }, [currentStep, playing]);
 
   return (
     <div>
