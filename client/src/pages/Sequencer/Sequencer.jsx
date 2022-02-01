@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import Grid from "./Grid";
-import * as Tone from "tone";
+// import * as Tone from "tone";
 // import PlayerProvider from "./PlayerProvider";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
@@ -26,11 +26,17 @@ export default function Sequencer({ play }) {
   const [playing, setPlaying] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
 
-  const player1 = new Tone.Player().toDestination();
-  const player2 = new Tone.Player().toDestination();
-  const player3 = new Tone.Player().toDestination();
-  const player4 = new Tone.Player().toDestination();
-  const player5 = new Tone.Player().toDestination();
+  // const player1 = new Tone.Player().toDestination();
+  // const player2 = new Tone.Player().toDestination();
+  // const player3 = new Tone.Player().toDestination();
+  // const player4 = new Tone.Player().toDestination();
+  // const player5 = new Tone.Player().toDestination();
+
+  const audio1 = new Audio("/kick.mp3");
+  const audio2 = new Audio("/snare.mp3");
+  const audio3 = new Audio("/snap.mp3");
+  const audio4 = new Audio("/hi-hat.mp3");
+  const audio5 = new Audio("/stefan.mp3");
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
@@ -39,6 +45,14 @@ export default function Sequencer({ play }) {
     console.log("toggled");
     setSequence(sequenceCopy);
   };
+  
+    const handleToggleStep = (i, j) => {
+      socket.emit("arm", {x: i, z: j});
+    };
+  
+    const handleSetPlaying = (switcher) => {
+      socket.emit("switch", {tog: switcher});
+    };
 
   useEffect(() => {
     const recieveMessage = (m) => {
@@ -51,14 +65,6 @@ export default function Sequencer({ play }) {
     socket.on("switch", switchMessage)
   }, [])
 
-  const handleToggleStep = (i, j) => {
-    socket.emit("arm", {x: i, z: j});
-  };
-
-  const handleSetPlaying = (switcher) => {
-    socket.emit("switch", {tog: switcher});
-  };
-
   useEffect(() => {
     const nextStep = (time) => {
       for (let i = 0; i < sequence.length; i++) {
@@ -67,24 +73,24 @@ export default function Sequencer({ play }) {
           sequence[i][j] = { activated, triggered: j === time };
           if (triggered && activated) {
             if (lineMap[i] === "BD") {
-              player1.buffer = samples.get(lineMap[i]);
-              player1.start();
+              // player1.buffer = samples.get(lineMap[i]);
+              audio1.play();
             }
             if (lineMap[i] === "CP") {
-              player2.buffer = samples.get(lineMap[i]);
-              player2.start();
+              // player2.buffer = samples.get(lineMap[i]);
+              audio2.play();
             }
             if (lineMap[i] === "OH") {
-              player3.buffer = samples.get(lineMap[i]);
-              player3.start();
+              // player3.buffer = samples.get(lineMap[i]);
+              audio3.play();
             }
             if (lineMap[i] === "CH") {
-              player4.buffer = samples.get(lineMap[i]);
-              player4.start();
+              // player4.buffer = samples.get(lineMap[i]);
+              audio4.play();
             }
             if (lineMap[i] === "ST") {
-              player5.buffer = samples.get(lineMap[i]);
-              player5.start();
+              // player5.buffer = samples.get(lineMap[i]);
+              audio5.play();
             }
           }
         }
@@ -92,27 +98,27 @@ export default function Sequencer({ play }) {
       setSequence(sequence);
     };
 
-    const samples = new Tone.ToneAudioBuffers({
-      urls: {
-        BD: "/kick.mp3",
-        CP: "/snare.mp3",
-        OH: "/snap.mp3",
-        CH: "/hi-hat.mp3",
-        ST: "/stefan.mp3",
-      },
-      onload: () => console.log("loaded"),
-    });
+    // const samples = new Tone.ToneAudioBuffers({
+    //   urls: {
+    //     BD: "/kick.mp3",
+    //     CP: "/snare.mp3",
+    //     OH: "/snap.mp3",
+    //     CH: "/hi-hat.mp3",
+    //     ST: "/stefan.mp3",
+    //   },
+    //   onload: () => console.log("loaded"),
+    // });
 
     const timer = setTimeout(() => {
       if (playing) {
         setCurrentStep((currentStep + 1) % steps);
         nextStep(currentStep);
       }
-    }, 100 + Math.random() * 20);
+    }, 120);
     return () => {
       clearTimeout(timer);
     };
-  }, [currentStep, playing, sequence, player1, player2, player3, player4, player5]);
+  }, [currentStep, playing]);
 
   return (
     <div>
