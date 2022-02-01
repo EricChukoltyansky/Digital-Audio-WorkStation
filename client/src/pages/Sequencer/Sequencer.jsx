@@ -23,24 +23,8 @@ const initialState = [
 
 export default function Sequencer({ play }) {
   const [sequence, setSequence] = useState(initialState);
-  // const [player, setPlayer] = useState(null);
   const [playing, setPlaying] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
-
-  const samples = new Tone.ToneAudioBuffers({
-    urls: {
-      BD: "/kick.mp3",
-      CP: "/snare.mp3",
-      OH: "/snap.mp3",
-      CH: "/hi-hat.mp3",
-      ST: "/stefan.mp3",
-    },
-    // onload: () => {
-    //   console.log("buffers loaded");
-    //   setPlayer(player);
-    // },
-  });
-  // console.log(samples);
 
   const player1 = new Tone.Player().toDestination();
   const player2 = new Tone.Player().toDestination();
@@ -108,6 +92,17 @@ export default function Sequencer({ play }) {
       setSequence(sequence);
     };
 
+    const samples = new Tone.ToneAudioBuffers({
+      urls: {
+        BD: "/kick.mp3",
+        CP: "/snare.mp3",
+        OH: "/snap.mp3",
+        CH: "/hi-hat.mp3",
+        ST: "/stefan.mp3",
+      },
+      onload: () => console.log("loaded"),
+    });
+
     const timer = setTimeout(() => {
       if (playing) {
         setCurrentStep((currentStep + 1) % steps);
@@ -117,7 +112,7 @@ export default function Sequencer({ play }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [currentStep, playing, sequence]);
+  }, [currentStep, playing, sequence, player1, player2, player3, player4, player5]);
 
   return (
     <div>
