@@ -10,15 +10,15 @@ const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
 );
 
-const steps = 16;
+const steps = 32;
 const initialCellState = { triggered: false, activated: false };
 const lineMap = ["BD", "CP", "CH", "OH", "ST"];
 const initialState = [
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
+  new Array(32).fill(initialCellState),
+  new Array(32).fill(initialCellState),
+  new Array(32).fill(initialCellState),
+  new Array(32).fill(initialCellState),
+  new Array(32).fill(initialCellState),
 ];
 
 export default function Sequencer({ play }) {
