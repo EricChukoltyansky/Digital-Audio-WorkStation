@@ -32,7 +32,6 @@ io.on("connection", (socket) => {
   //   socket.to(data.room).emit("receive_message", data);
   // });
 
-
   socket.on("play", (playMsg) => {
     io.emit("play", playMsg);
   });
@@ -44,7 +43,7 @@ io.on("connection", (socket) => {
   socket.on("arm", (armMsg) => {
     io.emit("arm", armMsg);
   });
-  
+
   socket.on("switch", (switchMsm) => {
     io.emit("switch", switchMsm);
   });
@@ -52,6 +51,10 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
   });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/../dist/index.html"));
 });
 
 const PORT = process.env.PORT || 3001;
