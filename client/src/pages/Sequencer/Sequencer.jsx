@@ -10,18 +10,18 @@ const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
 );
 
-const steps = 32;
+const steps = 16;
 const initialCellState = { triggered: false, activated: false };
 const lineMap = ["BD", "CP", "CH", "OH", "ST"];
 const initialState = [
-  new Array(32).fill(initialCellState),
-  new Array(32).fill(initialCellState),
-  new Array(32).fill(initialCellState),
-  new Array(32).fill(initialCellState),
-  new Array(32).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
 ];
 
-export default function Sequencer({ play }) {
+export default function Sequencer({ player }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
@@ -32,11 +32,11 @@ export default function Sequencer({ play }) {
   // const player4 = new Tone.Player().toDestination();
   // const player5 = new Tone.Player().toDestination();
 
-  const audio1 = new Audio("/kick.mp3");
-  const audio2 = new Audio("/snare.mp3");
-  const audio3 = new Audio("/snap.mp3");
-  const audio4 = new Audio("/hi-hat.mp3");
-  const audio5 = new Audio("/stefan.mp3");
+  // const audio1 = new Audio("/kick.wav");
+  // const audio2 = new Audio("/clap.wav");
+  // const audio3 = new Audio("/hh_open.wav");
+  // const audio4 = new Audio("/hh_closed.wav");
+  // const audio5 = new Audio("/stefan.mp3");
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
@@ -44,6 +44,19 @@ export default function Sequencer({ play }) {
     sequenceCopy[line][step] = { triggered, activated: !activated };
     console.log("toggled");
     setSequence(sequenceCopy);
+  };
+
+  const nextStep = time => {
+    for (let i = 0; i < sequence.length; i++) {
+      for (let j = 0; j < sequence[i].length; j++) {
+        const { triggered, activated } = sequence[i][j];
+        sequence[i][j] = { activated, triggered: j === time };
+        if (triggered && activated) {
+          player.player(lineMap[i]).start();
+        }
+      }
+    }
+    setSequence(sequence);
   };
   
     const handleToggleStep = (i, j) => {
@@ -66,37 +79,37 @@ export default function Sequencer({ play }) {
   }, [])
 
   useEffect(() => {
-    const nextStep = (time) => {
-      for (let i = 0; i < sequence.length; i++) {
-        for (let j = 0; j < sequence[i].length; j++) {
-          const { triggered, activated } = sequence[i][j];
-          sequence[i][j] = { activated, triggered: j === time };
-          if (triggered && activated) {
-            if (lineMap[i] === "BD") {
-              // player1.buffer = samples.get(lineMap[i]);
-              audio1.play();
-            }
-            if (lineMap[i] === "CP") {
-              // player2.buffer = samples.get(lineMap[i]);
-              audio2.play();
-            }
-            if (lineMap[i] === "OH") {
-              // player3.buffer = samples.get(lineMap[i]);
-              audio3.play();
-            }
-            if (lineMap[i] === "CH") {
-              // player4.buffer = samples.get(lineMap[i]);
-              audio4.play();
-            }
-            if (lineMap[i] === "ST") {
-              // player5.buffer = samples.get(lineMap[i]);
-              audio5.play();
-            }
-          }
-        }
-      }
-      setSequence(sequence);
-    };
+    // const nextStep = (time) => {
+    //   for (let i = 0; i < sequence.length; i++) {
+    //     for (let j = 0; j < sequence[i].length; j++) {
+    //       const { triggered, activated } = sequence[i][j];
+    //       sequence[i][j] = { activated, triggered: j === time };
+    //       if (triggered && activated) {
+    //         if (lineMap[i] === "BD") {
+    //           // player1.buffer = samples.get(lineMap[i]);
+    //           audio1.play();
+    //         }
+    //         if (lineMap[i] === "CP") {
+    //           // player2.buffer = samples.get(lineMap[i]);
+    //           audio2.play();
+    //         }
+    //         if (lineMap[i] === "OH") {
+    //           // player3.buffer = samples.get(lineMap[i]);
+    //           audio3.play();
+    //         }
+    //         if (lineMap[i] === "CH") {
+    //           // player4.buffer = samples.get(lineMap[i]);
+    //           audio4.play();
+    //         }
+    //         if (lineMap[i] === "ST") {
+    //           // player5.buffer = samples.get(lineMap[i]);
+    //           audio5.play();
+    //         }
+    //       }
+    //     }
+    //   }
+    //   setSequence(sequence);
+    // };
 
     // const samples = new Tone.ToneAudioBuffers({
     //   urls: {
@@ -114,7 +127,7 @@ export default function Sequencer({ play }) {
         setCurrentStep((currentStep + 1) % steps);
         nextStep(currentStep);
       }
-    }, 120);
+    }, 100 + Math.random() * 20);
     return () => {
       clearTimeout(timer);
     };
@@ -123,7 +136,7 @@ export default function Sequencer({ play }) {
   return (
     <div>
       <h1>Sequencer</h1>
-      <button onClick={play}>Play Sound 1</button>
+      {/* <button onClick={play}>Play Sound 1</button> */}
       <br />
       <Bar>
         <PlayButton playing={playing} onClick={() => handleSetPlaying(!playing)} />
