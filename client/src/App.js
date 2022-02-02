@@ -1,13 +1,13 @@
 import React from "react";
-import Chat from "./components/Chat/Chat";
+import Chat from "./pages/Chat/Chat";
 import Join from "./pages/Join/Join";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { io } from "socket.io-client";
 // import { useState, useEffect } from "react";
 // import { io } from "socket.io-client";
 // import audioFile from "./sounds/music.mp3";
 // import audioFile2 from "./sounds/funky-dan-mk2.mp3";
 // import audioFile3 from "./sounds/blues.wav";
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Navbar from "./components/Navbar/Navbar";
 // import Launchpad from "./pages/Launchpad/Launchpad";
 // import SavedProjects from "./pages/SavedProjects/SavedProjects";
@@ -16,9 +16,19 @@ import Sequencer from "./pages/Sequencer/Sequencer";
 // import Synth from "./pages/Synth/Synth";
 import PlayerProvider from "./pages/Sequencer/PlayerProvider";
 
-// const socket = io.connect(
-//   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
-// );
+const connectionOptions = {
+  "force new connection": true,
+  reconnectionAttempts: "Infinity",
+  timeout: 10000,
+  transports: ["websocket"],
+};
+
+const socket = io.connect(
+  process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001",
+  connectionOptions
+);
+
+// const socket = io.connect('https://localhost:3001',connectionOptions);
 
 // const audio1 = new Audio();
 // const audio2 = new Audio();
@@ -126,16 +136,18 @@ function App() {
           <Route path="/savedProjects" element={<SavedProjects />} />
         </Routes>
       </BrowserRouter> */}
-      <Router>
-        <Route path="/" exact component={Join} />
-        <Route path="/chat" component={Chat} />
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact component={Join} />
+          <Route path="/chat" component={Chat} socket={socket} />
+        </Routes>
+      </BrowserRouter>
       <PlayerProvider>
         {({ player }) => {
           if (!player) {
             return <p>loading....</p>;
           }
-          return <Sequencer player={player} />;
+          return <Sequencer player={player} socket={socket} />;
         }}
       </PlayerProvider>
     </div>

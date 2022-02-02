@@ -4462,6 +4462,16 @@
   "resolved" "https://registry.npmjs.org/emittery/-/emittery-0.7.2.tgz"
   "version" "0.7.2"
 
+"emoji-annotation-to-unicode@^0.3.0":
+  "integrity" "sha1-t20Ygj4dcKlaAXxDjBaO2hKQLzs="
+  "resolved" "https://registry.npmjs.org/emoji-annotation-to-unicode/-/emoji-annotation-to-unicode-0.3.0.tgz"
+  "version" "0.3.0"
+
+"emoji-emoticon-to-unicode@^0.2.2":
+  "integrity" "sha1-WuYNU4Utgyi2PzHRyimJfrt4MmA="
+  "resolved" "https://registry.npmjs.org/emoji-emoticon-to-unicode/-/emoji-emoticon-to-unicode-0.2.2.tgz"
+  "version" "0.2.2"
+
 "emoji-regex@^7.0.1":
   "integrity" "sha512-CwBLREIQ7LvYFB0WyRvwhq5N5qPhc6PMjD6bYggFlI5YyDgl+0vxq5VHbMOFqLg7hfWzmu8T5Z1QofhmTIhItA=="
   "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-7.0.3.tgz"
@@ -4632,6 +4642,11 @@
   "integrity" "sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg="
   "resolved" "https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz"
   "version" "1.0.3"
+
+"escape-string-regexp@^1.0.3":
+  "integrity" "sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ="
+  "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz"
+  "version" "1.0.5"
 
 "escape-string-regexp@^1.0.5":
   "integrity" "sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ="
@@ -5187,6 +5202,11 @@
   "version" "7.0.1"
   dependencies:
     "to-regex-range" "^5.0.1"
+
+"filter-obj@^1.1.0":
+  "integrity" "sha1-mzERErxsYSehbgFsbF1/GeCAXFs="
+  "resolved" "https://registry.npmjs.org/filter-obj/-/filter-obj-1.1.0.tgz"
+  "version" "1.1.0"
 
 "finalhandler@~1.1.2":
   "integrity" "sha512-aAWcW57uxVNrQZqFXjITpW3sIUQmHGG3qSb9mUah9MgMC4NeWhNOlNjXEYq3HjRAvL6arUviZGGJsBg6z0zsWA=="
@@ -7205,6 +7225,11 @@
   "resolved" "https://registry.npmjs.org/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz"
   "version" "3.0.0"
 
+"lodash.compact@^3.0.0":
+  "integrity" "sha1-VAzjg3dFl1gHRx4WtKK6IeclbKU="
+  "resolved" "https://registry.npmjs.org/lodash.compact/-/lodash.compact-3.0.1.tgz"
+  "version" "3.0.1"
+
 "lodash.memoize@^4.1.2":
   "integrity" "sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4="
   "resolved" "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
@@ -7812,6 +7837,11 @@
   "integrity" "sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ=="
   "resolved" "https://registry.npmjs.org/oauth-sign/-/oauth-sign-0.9.0.tgz"
   "version" "0.9.0"
+
+"object-assign@^2.0.0":
+  "integrity" "sha1-Q8NuXVaf+OSBbE76i+AtJpZ8GKo="
+  "resolved" "https://registry.npmjs.org/object-assign/-/object-assign-2.1.1.tgz"
+  "version" "2.1.1"
 
 "object-assign@^4.0.1", "object-assign@^4.1.0", "object-assign@^4.1.1":
   "integrity" "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM="
@@ -9226,6 +9256,16 @@
     "object-assign" "^4.1.0"
     "strict-uri-encode" "^1.0.0"
 
+"query-string@^7.1.0":
+  "integrity" "sha512-wnJ8covk+S9isYR5JIXPt93kFUmI2fQ4R/8130fuq+qwLiGVTurg7Klodgfw4NSz/oe7xnyi09y3lSrogUeM3g=="
+  "resolved" "https://registry.npmjs.org/query-string/-/query-string-7.1.0.tgz"
+  "version" "7.1.0"
+  dependencies:
+    "decode-uri-component" "^0.2.0"
+    "filter-obj" "^1.1.0"
+    "split-on-first" "^1.0.0"
+    "strict-uri-encode" "^2.0.0"
+
 "querystring-es3@^0.2.0":
   "integrity" "sha1-nsYfeQSYdXB9aUFFlv2Qek1xHnM="
   "resolved" "https://registry.npmjs.org/querystring-es3/-/querystring-es3-0.2.1.tgz"
@@ -9338,6 +9378,17 @@
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
     "scheduler" "^0.20.2"
+
+"react-emoji@^0.5.0":
+  "integrity" "sha1-FLkcxrPOPDJG90Dn713i7AvuZks="
+  "resolved" "https://registry.npmjs.org/react-emoji/-/react-emoji-0.5.0.tgz"
+  "version" "0.5.0"
+  dependencies:
+    "emoji-annotation-to-unicode" "^0.3.0"
+    "emoji-emoticon-to-unicode" "^0.2.2"
+    "escape-string-regexp" "^1.0.3"
+    "lodash.compact" "^3.0.0"
+    "object-assign" "^2.0.0"
 
 "react-error-overlay@^6.0.9":
   "integrity" "sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew=="
@@ -10562,6 +10613,11 @@
     "select-hose" "^2.0.0"
     "spdy-transport" "^3.0.0"
 
+"split-on-first@^1.0.0":
+  "integrity" "sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw=="
+  "resolved" "https://registry.npmjs.org/split-on-first/-/split-on-first-1.1.0.tgz"
+  "version" "1.1.0"
+
 "split-string@^3.0.1", "split-string@^3.0.2":
   "integrity" "sha512-NzNVhJDYpwceVVii8/Hu6DKfD2G+NrQHlS/V/qgv763EYudVwEcMQNxd2lh+0VrUByXN/oJkl5grOhYWvQUYiw=="
   "resolved" "https://registry.npmjs.org/split-string/-/split-string-3.1.0.tgz"
@@ -10683,6 +10739,11 @@
   "integrity" "sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM="
   "resolved" "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz"
   "version" "1.1.0"
+
+"strict-uri-encode@^2.0.0":
+  "integrity" "sha1-ucczDHBChi9rFC3CdLvMWGbONUY="
+  "resolved" "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz"
+  "version" "2.0.0"
 
 "string_decoder@^1.0.0", "string_decoder@~1.1.1":
   "integrity" "sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg=="

@@ -1,24 +1,24 @@
 import {useState, useEffect} from "react";
 import queryString from "query-string";
-import io from 'socket.io-client';
-import TextContainer from '../TextContainer/TextContainer';
-import Messages from '../Messages/Messages';
-import InfoBar from '../InfoBar/InfoBar';
-import Input from '../Input/Input';
+// import io from 'socket.io-client';
+import TextContainer from '../../components/TextContainer/TextContainer';
+import Messages from '../../components/Messages/Messages';
+import InfoBar from '../../components/InfoBar/InfoBar';
+import Input from '../../components/Input/Input';
 
 import "./Chat.css";
 
-var connectionOptions = {
-	"force new connection" : true,
-	"reconnectionAttempts": "Infinity",
-	"timeout" : 10000,				
-	"transports" : ["websocket"]
-};
+// var connectionOptions = {
+// 	"force new connection" : true,
+// 	"reconnectionAttempts": "Infinity",
+// 	"timeout" : 10000,				
+// 	"transports" : ["websocket"]
+// };
 
-var socket = io.connect('https://localhost:5000',connectionOptions);
+// const socket = io.connect('https://localhost:3000',connectionOptions);
 
 
-const Chat = ({location}) => {
+const Chat = ({location, socket}) => {
 
 	const [name, setName] = useState('');
 	const [room, setRoom] = useState("");
