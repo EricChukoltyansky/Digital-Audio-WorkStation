@@ -1,4 +1,7 @@
 import React from "react";
+import Chat from "./components/Chat/Chat";
+import Join from "./pages/Join/Join";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 // import { useState, useEffect } from "react";
 // import { io } from "socket.io-client";
 // import audioFile from "./sounds/music.mp3";
@@ -94,7 +97,6 @@ function App() {
   //   pressed(audio);
   // };
 
-
   return (
     <div className="App">
       <h1>That is DAWp!</h1>
@@ -124,14 +126,18 @@ function App() {
           <Route path="/savedProjects" element={<SavedProjects />} />
         </Routes>
       </BrowserRouter> */}
+      <Router>
+        <Route path="/" exact component={Join} />
+        <Route path="/chat" component={Chat} />
+      </Router>
       <PlayerProvider>
-      {({ player }) => {
-        if (!player) {
-          return <p>loading....</p>;
-        }
-        return <Sequencer player={player} />;
-      }}
-    </PlayerProvider>
+        {({ player }) => {
+          if (!player) {
+            return <p>loading....</p>;
+          }
+          return <Sequencer player={player} />;
+        }}
+      </PlayerProvider>
     </div>
   );
 }
