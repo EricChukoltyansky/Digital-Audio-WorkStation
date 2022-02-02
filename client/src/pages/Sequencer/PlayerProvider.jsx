@@ -3,7 +3,7 @@ import * as Tone from "tone";
 
 const PlayerProvider = ({ children }) => {
   const [player, setPlayer] = useState(null);
-  const [synth, setSynth] = useState(null);
+  // const [synth, setSynth] = useState(null);
   useEffect(() => {
     const player = new Tone.Players({
       urls: {
@@ -20,13 +20,13 @@ const PlayerProvider = ({ children }) => {
     }).toDestination();
     console.log(player);
 
-    const synth = new Tone.Synth().toDestination();
-    synth.triggerAttackRelease("C4", "8n");
-    setSynth(synth);
+    // const synth = new Tone.Synth().toDestination();
+    // setSynth(synth);
 
   }, []);
 
-  return children({ player, synth });
+  // return children({ player, synth });
+  return children({ player });
 };
 
 export default PlayerProvider;
