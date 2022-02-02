@@ -1,23 +1,15 @@
 import { useState, useEffect } from "react";
 import queryString from "query-string";
-// import io from 'socket.io-client';
+import io from "socket.io-client";
 import TextContainer from "../../components/TextContainer/TextContainer";
 import Messages from "../../components/Messages/Messages";
 import InfoBar from "../../components/InfoBar/InfoBar";
 import Input from "../../components/Input/Input";
-
 import "./Chat.css";
+import { useLocation } from "react-router-dom";
 
-// var connectionOptions = {
-// 	"force new connection" : true,
-// 	"reconnectionAttempts": "Infinity",
-// 	"timeout" : 10000,
-// 	"transports" : ["websocket"]
-// };
-
-// const socket = io.connect('https://localhost:3000',connectionOptions);
-
-const Chat = ({ location, socket }) => {
+const Chat = ({ socket }) => {
+  console.log(socket);
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [users, setUsers] = useState("");
@@ -26,13 +18,15 @@ const Chat = ({ location, socket }) => {
 
   const ENDPOINT = "localhost:3001";
 
-  useEffect(() => {
-    console.log(location);
-    const { name, room } = queryString.parse(location.search);
+  const location = useLocation();
 
+  console.log(socket);
+
+  useEffect(() => {
+    const { name, room } = queryString.parse(location.search);
+    console.log(name, room);
     setName(name);
     setRoom(room);
-
     socket.emit("join", { name, room }, (error) => {
       if (error) {
         alert(error);
@@ -42,7 +36,7 @@ const Chat = ({ location, socket }) => {
       socket.emit("disconnect");
       socket.off();
     };
-  }, [ENDPOINT, location.search]);
+  }, [ENDPOINT, location.search, socket]);
 
   useEffect(() => {
     socket.on("message", (message) => {
@@ -77,7 +71,7 @@ const Chat = ({ location, socket }) => {
       </div>
       <TextContainer users={users} />
     </div>
-  );
-};
+  )
+}
 
 export default Chat;
