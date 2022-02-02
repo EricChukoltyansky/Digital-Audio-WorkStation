@@ -8,14 +8,6 @@ import Input from "../../components/Input/Input";
 import "./Chat.css";
 import { useLocation } from "react-router-dom";
 
-// let connectionOptions = {
-//   "force new connection": true,
-//   reconnectionAttempts: "Infinity",
-//   timeout: 10000,
-//   transports: ["websocket"],
-// };
-
-// const socket = io.connect("https://localhost:3001", connectionOptions);
 
 const Chat = ({ socket }) => {
   console.log(socket);
