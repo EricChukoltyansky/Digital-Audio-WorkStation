@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import Grid from "./Grid";
-// import * as Tone from "tone";
+import * as Tone from "tone";
 // import PlayerProvider from "./PlayerProvider";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
@@ -22,11 +22,15 @@ const initialState = [
   new Array(16).fill(initialCellState),
 ];
 
-export default function Sequencer({ player, synth }) {
+const synth = new Tone. PluckSynth().toDestination();
+
+// export default function Sequencer({ player, synth }) {
+export default function Sequencer({ player }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-
+  
+  // console.log(`synth: ${synth}`);
   // const player1 = new Tone.Player().toDestination();
   // const player2 = new Tone.Player().toDestination();
   // const player3 = new Tone.Player().toDestination();
@@ -54,7 +58,7 @@ export default function Sequencer({ player, synth }) {
         sequence[i][j] = { activated, triggered: j === time };
         if (triggered && activated) {
           if (lineMap[i] === "SY") {
-            synth.triggerAttackRelease("C4", "8n");
+            synth.triggerAttackRelease("B1");
           } else {
           player.player(lineMap[i]).start();
           }
