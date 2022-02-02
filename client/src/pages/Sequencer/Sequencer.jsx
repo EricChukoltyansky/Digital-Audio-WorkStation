@@ -12,8 +12,9 @@ const socket = io.connect(
 
 const steps = 16;
 const initialCellState = { triggered: false, activated: false };
-const lineMap = ["BD", "CP", "CH", "OH", "ST"];
+const lineMap = ["BD", "CP", "CH", "OH", "ST", 'SY'];
 const initialState = [
+  new Array(16).fill(initialCellState),
   new Array(16).fill(initialCellState),
   new Array(16).fill(initialCellState),
   new Array(16).fill(initialCellState),
@@ -21,9 +22,9 @@ const initialState = [
   new Array(16).fill(initialCellState),
 ];
 
-export default function Sequencer({ player }) {
+export default function Sequencer({ player, synth }) {
   const [sequence, setSequence] = useState(initialState);
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
   // const player1 = new Tone.Player().toDestination();
@@ -52,7 +53,11 @@ export default function Sequencer({ player }) {
         const { triggered, activated } = sequence[i][j];
         sequence[i][j] = { activated, triggered: j === time };
         if (triggered && activated) {
+          if (lineMap[i] === "SY") {
+            synth.triggerAttackRelease("C4", "8n");
+          } else {
           player.player(lineMap[i]).start();
+          }
         }
       }
     }
