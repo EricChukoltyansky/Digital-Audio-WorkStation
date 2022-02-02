@@ -3,7 +3,6 @@ import * as Tone from "tone";
 
 const PlayerProvider = ({ children }) => {
   const [player, setPlayer] = useState(null);
-  // const [synth, setSynth] = useState(null);
   useEffect(() => {
     const player = new Tone.Players({
       urls: {
@@ -11,7 +10,6 @@ const PlayerProvider = ({ children }) => {
         CP: "/clap.wav",
         OH: "/hh_open.wav",
         CH: "/hh_closed.wav",
-        ST: "/stefan.mp3",
       },
       onload: () => {
         console.log("buffers loaded");
@@ -20,12 +18,8 @@ const PlayerProvider = ({ children }) => {
     }).toDestination();
     console.log(player);
 
-    // const synth = new Tone.Synth().toDestination();
-    // setSynth(synth);
-
   }, []);
 
-  // return children({ player, synth });
   return children({ player });
 };
 
