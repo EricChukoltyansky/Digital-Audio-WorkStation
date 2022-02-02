@@ -28,6 +28,8 @@ const socket = io.connect(
   connectionOptions
 );
 
+console.log(socket);
+
 // const socket = io.connect('https://localhost:3001',connectionOptions);
 
 // const audio1 = new Audio();
@@ -138,8 +140,8 @@ function App() {
       </BrowserRouter> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact component={Join} />
-          <Route path="/chat" component={Chat} socket={socket} />
+          <Route path="/" exact element={<Join />} />
+          <Route path="/chat" element={<Chat socket={socket} />} />
         </Routes>
       </BrowserRouter>
       <PlayerProvider>

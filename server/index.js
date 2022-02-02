@@ -1,15 +1,15 @@
 const express = require("express");
-const app = express();
 const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
-
 const path = require("path");
+const app = express();
 
 const publicPath = path.join(__dirname, "../client/build");
-
 app.use(cors());
 app.use(express.static(publicPath));
+
+const {addUser, removeUser, getUser, getUsersInRoom} = require('./controllers/controllers')
 
 const server = http.createServer(app);
 
