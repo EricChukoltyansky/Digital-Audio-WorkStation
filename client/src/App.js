@@ -16,16 +16,16 @@ import Sequencer from "./pages/Sequencer/Sequencer";
 // import Synth from "./pages/Synth/Synth";
 import PlayerProvider from "./pages/Sequencer/PlayerProvider";
 
-const connectionOptions = {
-  "force new connection": true,
-  reconnectionAttempts: "Infinity",
-  timeout: 10000,
-  transports: ["websocket"],
-};
+// const connectionOptions = {
+//   "force new connection": true,
+//   reconnectionAttempts: "Infinity",
+//   timeout: 10000,
+//   transports: ["websocket"],
+// };
 
 const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001",
-  connectionOptions
+  // connectionOptions
 );
 
 // const socket = io.connect('https://localhost:3001',connectionOptions);
@@ -138,8 +138,8 @@ function App() {
       </BrowserRouter> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact component={Join} />
-          <Route path="/chat" component={Chat} socket={socket} />
+          <Route path="/" exact element={<Join/>} />
+          <Route path="/chat" element={<Chat socket={socket}/>} />
         </Routes>
       </BrowserRouter>
       <PlayerProvider>
