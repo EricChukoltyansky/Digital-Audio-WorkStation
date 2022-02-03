@@ -7,7 +7,7 @@ import InfoBar from "../../components/InfoBar/InfoBar";
 import Input from "../../components/Input/Input";
 import "./Chat.css";
 import { useLocation } from "react-router-dom";
-import PlayerProvider from "../../pages/Sequencer/PlayerProvider"
+import PlayerProvider from "../../pages/Sequencer/PlayerProvider";
 import Sequencer from "../Sequencer/Sequencer";
 
 const Chat = ({ socket }) => {
@@ -26,11 +26,14 @@ const Chat = ({ socket }) => {
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
-    console.log(name, room);
     setName(name);
     setRoom(room);
     socket.emit("join", { name, room }, (error) => {
-      if (error) {
+      try {
+        if (error) {
+          alert(error);
+        }
+      } catch (err) {
         alert(error);
       }
     });
@@ -62,18 +65,18 @@ const Chat = ({ socket }) => {
 
   return (
     <div className="outerContainer">
-				<PlayerProvider>
-					{({ player }) => {
-						if (!player) {
-							return <p>loading....</p>;
-						}
-						return <Sequencer player={player} socket={socket} />;
-					}}
-				</PlayerProvider>
+      <PlayerProvider>
+        {({ player }) => {
+          if (!player) {
+            return <p>loading....</p>;
+          }
+          return <Sequencer player={player} socket={socket} />;
+        }}
+      </PlayerProvider>
       <div className="container">
-        <InfoBar room={room} />
+        <InfoBar name={name} room={room} socket={socket} />
         <Messages messages={messages} name={name} />
-				<TextContainer users={users} />
+        <TextContainer users={users} />
         {/* <Input
           message={message}
           setMessage={setMessage}
@@ -81,7 +84,7 @@ const Chat = ({ socket }) => {
         /> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Chat;

@@ -9,7 +9,12 @@ const publicPath = path.join(__dirname, "../client/build");
 app.use(cors());
 app.use(express.static(publicPath));
 
-const {addUser, removeUser, getUser, getUsersInRoom} = require('./controllers/controllers')
+const {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+} = require("./controllers/controllers");
 
 const server = http.createServer(app);
 
@@ -47,6 +52,20 @@ io.on("connection", (socket) => {
       users: getUsersInRoom(user.room),
     });
     callback();
+  });
+
+  socket.on("leave", ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room });
+    console.log(error);
+    if (error) callback(error);
+
+    socket.leave(user.room);
+
+    socket.emit("message", {
+      user: "admin",
+      text: `${user.name},
+      left the room ${user.room}.`,
+    });
   });
 
   socket.on("sendMessage", (message, callback) => {
