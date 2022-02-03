@@ -1,13 +1,8 @@
 import { useState, useEffect } from "react";
-// import { io } from "socket.io-client";
 import Grid from "./Grid";
 import * as Tone from "tone";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
-
-// const socket = io.connect(
-//   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
-// );
 
 const steps = 16;
 const initialCellState = { triggered: false, activated: false };
@@ -18,7 +13,6 @@ const initialState = [
   new Array(16).fill(initialCellState),
   new Array(16).fill(initialCellState),
   new Array(16).fill(initialCellState),
-  // new Array(16).fill(initialCellState),
 ];
 
 const synth = new Tone. PluckSynth().toDestination();
@@ -87,7 +81,6 @@ export default function Sequencer({ player, socket }) {
 
   return (
     <div>
-      <h1>Sequencer</h1>
       <br />
       <Bar>
         <PlayButton playing={playing} onClick={() => handleSetPlaying(!playing)} />

@@ -16,7 +16,6 @@ const PlayerProvider = ({ children }) => {
         setPlayer(player);
       },
     }).toDestination();
-    console.log(player);
 
   }, []);
 
