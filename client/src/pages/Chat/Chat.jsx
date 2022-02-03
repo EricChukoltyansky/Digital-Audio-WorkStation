@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import queryString from "query-string";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 import TextContainer from "../../components/TextContainer/TextContainer";
 import Messages from "../../components/Messages/Messages";
 import InfoBar from "../../components/InfoBar/InfoBar";
-import Input from "../../components/Input/Input";
+// import Input from "../../components/Input/Input";
 import "./Chat.css";
 import { useLocation } from "react-router-dom";
-import PlayerProvider from "../../pages/Sequencer/PlayerProvider";
+import PlayerProvider from "../../pages/Sequencer/PlayerProvider"
 import Sequencer from "../Sequencer/Sequencer";
 
 const Chat = ({ socket }) => {
@@ -29,16 +29,12 @@ const Chat = ({ socket }) => {
     setName(name);
     setRoom(room);
     socket.emit("join", { name, room }, (error) => {
-      try {
-        if (error) {
-          alert(error);
-        }
-      } catch (err) {
+      if (error) {
         alert(error);
       }
     });
     return () => {
-      socket.emit("disconnect");
+      socket.disconnect();
       socket.off();
     };
   }, [ENDPOINT, location.search, socket]);
@@ -51,7 +47,7 @@ const Chat = ({ socket }) => {
     socket.on("roomData", ({ users }) => {
       setUsers(users);
     });
-  }, [messages, users]);
+  }, [messages, users, socket]);
 
   //Function for Sending Message
   const sendMessage = (e) => {
@@ -65,18 +61,18 @@ const Chat = ({ socket }) => {
 
   return (
     <div className="outerContainer">
-      <PlayerProvider>
-        {({ player }) => {
-          if (!player) {
-            return <p>loading....</p>;
-          }
-          return <Sequencer player={player} socket={socket} />;
-        }}
-      </PlayerProvider>
+				<PlayerProvider>
+					{({ player }) => {
+						if (!player) {
+							return <p>loading....</p>;
+						}
+						return <Sequencer player={player} socket={socket} />;
+					}}
+				</PlayerProvider>
       <div className="container">
-        <InfoBar name={name} room={room} socket={socket} />
+        <InfoBar room={room} />
         <Messages messages={messages} name={name} />
-        <TextContainer users={users} />
+				<TextContainer users={users} />
         {/* <Input
           message={message}
           setMessage={setMessage}
@@ -84,7 +80,7 @@ const Chat = ({ socket }) => {
         /> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Chat;
