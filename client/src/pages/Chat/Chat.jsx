@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import queryString from "query-string";
-// import io from "socket.io-client";
+import io from "socket.io-client";
 import TextContainer from "../../components/TextContainer/TextContainer";
 import Messages from "../../components/Messages/Messages";
 import InfoBar from "../../components/InfoBar/InfoBar";
-// import Input from "../../components/Input/Input";
+import Input from "../../components/Input/Input";
 import "./Chat.css";
 import { useLocation } from "react-router-dom";
 import PlayerProvider from "../../pages/Sequencer/PlayerProvider"
@@ -14,7 +14,7 @@ const Chat = ({ socket }) => {
   console.log(socket);
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
-  const [users, setUsers] = useState("");
+  const [users, setUsers] = useState([]);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -45,7 +45,7 @@ const Chat = ({ socket }) => {
     });
 
     socket.on("roomData", ({ users }) => {
-      setUsers(users);
+      setUsers([...users]);
     });
   }, [messages, users, socket]);
 
@@ -57,7 +57,7 @@ const Chat = ({ socket }) => {
     }
   };
 
-  console.log(message, messages);
+  // console.log(message, messages);
 
   return (
     <div className="outerContainer">

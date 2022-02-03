@@ -79,12 +79,12 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log(socket.id);
     const user = removeUser(socket.id);
-    // console.log(user);
     if (user) {
       io.to(user.room).emit("message", {
         user: "admin",
-        text: `${user.name} had lefts`,
+        text: `${user.name} had left`,
       });
+      // socket.leave(socket.room)
     }
   });
 });
