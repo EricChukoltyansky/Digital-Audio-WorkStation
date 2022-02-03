@@ -7,6 +7,8 @@ import InfoBar from "../../components/InfoBar/InfoBar";
 import Input from "../../components/Input/Input";
 import "./Chat.css";
 import { useLocation } from "react-router-dom";
+import PlayerProvider from "../../pages/Sequencer/PlayerProvider"
+import Sequencer from "../Sequencer/Sequencer";
 
 const Chat = ({ socket }) => {
   console.log(socket);
@@ -60,6 +62,14 @@ const Chat = ({ socket }) => {
 
   return (
     <div className="outerContainer">
+				<PlayerProvider>
+					{({ player }) => {
+						if (!player) {
+							return <p>loading....</p>;
+						}
+						return <Sequencer player={player} socket={socket} />;
+					}}
+				</PlayerProvider>
       <div className="container">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />

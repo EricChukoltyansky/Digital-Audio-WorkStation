@@ -87,30 +87,6 @@ io.on("connection", (socket) => {
   });
 });
 
-// io.on("connection", (socket) => {
-//   console.log(`User Connected: ${socket.id}`);
-
-//   socket.on("play", (playMsg) => {
-//     io.emit("play", playMsg);
-//   });
-
-//   socket.on("stop", (stopMsg) => {
-//     io.emit("stop");
-//   });
-
-//   socket.on("arm", (armMsg) => {
-//     io.emit("arm", armMsg);
-//   });
-
-//   socket.on("switch", (switchMsm) => {
-//     io.emit("switch", switchMsm);
-//   });
-
-//   socket.on("disconnect", () => {
-//     console.log("User Disconnected", socket.id);
-//   });
-// });
-
 app.use("*", (req, res) => {
   res.sendFile(path.resolve(`${publicPath}/index.html`));
 });
