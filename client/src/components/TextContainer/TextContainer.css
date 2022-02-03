@@ -1,26 +1,29 @@
 .textContainer {
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	flex-direction: column;
-	margin-left: 100px;
-	color: rgb(201, 25, 25);
+	/* margin-left: 100px; */
+	color: rgb(25, 101, 201);
 	height: 60%;
-	justify-content: space-between;
 }
 
 .activeContainer {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	margin-bottom: 50%;
 }
 
 .activeItem {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 }
 
-.activeContainer img {
+/* .activeContainer img {
 	padding-left: 10px;
-}
+} */
 
 .textContainer h1 {
 	margin-bottom: 0px;

@@ -73,13 +73,13 @@ const Chat = ({ socket }) => {
       <div className="container">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
-        <Input
+				<TextContainer users={users} />
+        {/* <Input
           message={message}
           setMessage={setMessage}
           sendMessage={sendMessage}
-        />
+        /> */}
       </div>
-      <TextContainer users={users} />
     </div>
   )
 }

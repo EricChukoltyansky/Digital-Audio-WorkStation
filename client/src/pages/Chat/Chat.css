@@ -1,6 +1,6 @@
 .outerContainer {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	height: 100vh;
 	background-color: #d9d9ec;
@@ -10,6 +10,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 	background: #FFFFFF;
 	border-radius: 8px;
 	height: 100%;
