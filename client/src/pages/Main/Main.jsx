@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 import queryString from "query-string";
-import io from "socket.io-client";
-import TextContainer from "../../components/TextContainer/TextContainer";
-import Messages from "../../components/Messages/Messages";
-import InfoBar from "../../components/InfoBar/InfoBar";
-import Input from "../../components/Input/Input";
-import "./Chat.css";
+import TextContainer from "./TextContainer/TextContainer";
+import Messages from "./Messages/Messages";
+import InfoBar from "./InfoBar/InfoBar";
+import "./Main.css";
 import { useLocation } from "react-router-dom";
-import PlayerProvider from "../../pages/Sequencer/PlayerProvider"
-import Sequencer from "../Sequencer/Sequencer";
+import PlayerProvider from "../../components/Sequencer/PlayerProvider";
+import Sequencer from "../../components/Sequencer/Sequencer";
 
-const Chat = ({ socket }) => {
+const Main = ({ socket }) => {
   console.log(socket);
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
@@ -83,4 +81,4 @@ const Chat = ({ socket }) => {
   )
 }
 
-export default Chat;
+export default Main;

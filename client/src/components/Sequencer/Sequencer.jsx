@@ -1,27 +1,14 @@
 import { useState, useEffect } from "react";
 import Grid from "./Grid";
-import * as Tone from "tone";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
-
-const steps = 16;
-const initialCellState = { triggered: false, activated: false };
-const lineMap = ["BD", "CP", "CH", "OH", 'SY'];
-const initialState = [
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-];
-
-const synth = new Tone. PluckSynth().toDestination();
+import { pluckSynth1, pluckSynth2, pluckSynth3, baseDrum } from "./Instruments";
+import { steps, lineMap, initialState } from "./utils";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
@@ -31,41 +18,47 @@ export default function Sequencer({ player, socket }) {
     setSequence(sequenceCopy);
   };
 
-  const nextStep = time => {
+  const nextStep = (time) => {
     for (let i = 0; i < sequence.length; i++) {
       for (let j = 0; j < sequence[i].length; j++) {
         const { triggered, activated } = sequence[i][j];
         sequence[i][j] = { activated, triggered: j === time };
         if (triggered && activated) {
-          if (lineMap[i] === "SY") {
-            synth.triggerAttackRelease("B1");
+          if (lineMap[i] === "BD") {
+            baseDrum.triggerAttackRelease("B1", "25n");
+          } else if (lineMap[i] === "SY1") {
+            pluckSynth1.triggerAttackRelease("B1");
+          } else if (lineMap[i] === "SY2") {
+            pluckSynth2.triggerAttackRelease("C#2");
+          } else if (lineMap[i] === "SY3") {
+            pluckSynth3.triggerAttackRelease("D2");
           } else {
-          player.player(lineMap[i]).start();
+            player.player(lineMap[i]).start();
           }
         }
       }
     }
     setSequence(sequence);
   };
-  
-    const handleToggleStep = (i, j) => {
-      socket.emit("arm", {x: i, z: j});
-    };
-  
-    const handleSetPlaying = (switcher) => {
-      socket.emit("switch", {tog: switcher});
-    };
+
+  const handleToggleStep = (i, j) => {
+    socket.emit("arm", { x: i, z: j });
+  };
+
+  const handleSetPlaying = (switcher) => {
+    socket.emit("switch", { tog: switcher });
+  };
 
   useEffect(() => {
     const recieveMessage = (m) => {
       toggleStep(m.x, m.z);
-    }
+    };
     const switchMessage = (m) => {
-      setPlaying(m.tog)
-    }
+      setPlaying(m.tog);
+    };
     socket.on("arm", recieveMessage);
-    socket.on("switch", switchMessage)
-  }, [])
+    socket.on("switch", switchMessage);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -83,7 +76,10 @@ export default function Sequencer({ player, socket }) {
     <div>
       <br />
       <Bar>
-        <PlayButton playing={playing} onClick={() => handleSetPlaying(!playing)} />
+        <PlayButton
+          playing={playing}
+          onClick={() => handleSetPlaying(!playing)}
+        />
       </Bar>
       <Grid sequence={sequence} handleToggleStep={handleToggleStep} />
     </div>
