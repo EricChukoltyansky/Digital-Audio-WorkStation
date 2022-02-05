@@ -5,6 +5,7 @@ export const NAVBAR_HEIGHT = "60px";
 
 const Bar = styled.div`
   width: 100%;
+  /* padding-right: 100px; */
   text-align: center;
 `;
 

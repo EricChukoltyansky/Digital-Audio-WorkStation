@@ -68,7 +68,11 @@ io.on("connection", (socket) => {
     io.emit("switch", switchMsm);
   });
 
-    socket.on("disconnect", () => {
+  socket.on("rewind", (rewindMessage) => {
+    io.emit("rewind", rewindMessage);
+  });
+
+  socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
   });
 

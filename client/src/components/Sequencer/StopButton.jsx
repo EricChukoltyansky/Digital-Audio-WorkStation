@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { darken } from "polished";
 
-const Button = styled.button`
+const StopButton = styled.button`
   padding: 0.75em 2em;
   outline: none;
   background-color: #27ae60;
@@ -18,6 +18,6 @@ const Button = styled.button`
   }
 `;
 
-export default ({ playing, onClick }) => (
-  <Button onClick={onClick}>{playing ? "Pause" : "Play"}</Button>
+export default ({ onClick }) => (
+  <StopButton onClick={onClick}>Stop</StopButton>
 );
