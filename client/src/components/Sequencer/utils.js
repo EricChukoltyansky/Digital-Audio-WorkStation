@@ -11,4 +11,14 @@ const initialState = [
   new Array(16).fill(initialCellState),
 ];
 
-export {steps, lineMap, initialState}
+const init = [
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+  new Array(16).fill(initialCellState),
+]
+
+export {steps, lineMap, initialState, initialCellState, init}
