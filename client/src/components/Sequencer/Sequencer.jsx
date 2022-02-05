@@ -65,6 +65,7 @@ export default function Sequencer({ player, socket }) {
       if (playing) {
         setCurrentStep((currentStep + 1) % steps);
         nextStep(currentStep);
+        console.log(currentStep);
       }
     }, 100 + Math.random() * 20);
     return () => {

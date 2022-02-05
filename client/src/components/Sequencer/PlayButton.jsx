@@ -19,5 +19,5 @@ const Button = styled.button`
 `;
 
 export default ({ playing, onClick }) => (
-  <Button onClick={onClick}>{playing ? "Stop" : "Play"}</Button>
+  <Button onClick={onClick}>{playing ? "Pause" : "Play"}</Button>
 );
