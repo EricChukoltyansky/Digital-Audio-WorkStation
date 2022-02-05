@@ -9,7 +9,7 @@ const publicPath = path.join(__dirname, "../client/build");
 app.use(cors());
 app.use(express.static(publicPath));
 
-const {addUser, removeUser, getUser, getUsersInRoom} = require('./controllers/controllers')
+// const {addUser, removeUser, getUser, getUsersInRoom} = require('./controllers/controllers')
 
 const server = http.createServer(app);
 
@@ -21,52 +21,44 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("join", ({ name, room }, callback) => {
-    const { error, user } = addUser({ id: socket.id, name, room });
+  // socket.on("join", ({ name, room }, callback) => {
+  //   const { error, user } = addUser({ id: socket.id, name, room });
 
-    if (error) return callback(error);
+  //   if (error) return callback(error);
 
-    // Emit will send message to the user
-    // who had joined
-    socket.emit("message", {
-      user: "admin",
-      text: `${user.name},
-          welcome to room ${user.room}.`,
-    });
+  //   // Emit will send message to the user
+  //   // who had joined
+  //   socket.emit("message", {
+  //     user: "admin",
+  //     text: `${user.name},
+  //         welcome to room ${user.room}.`,
+  //   });
 
-    // Broadcast will send message to everyone
-    // in the room except the joined user
-    socket.broadcast
-      .to(user.room)
-      .emit("message", { user: "admin", text: `${user.name}, has joined` });
+  //   // Broadcast will send message to everyone
+  //   // in the room except the joined user
+  //   socket.broadcast
+  //     .to(user.room)
+  //     .emit("message", { user: "admin", text: `${user.name}, has joined` });
 
-    socket.join(user.room);
+  //   socket.join(user.room);
 
-    io.to(user.room).emit("roomData", {
-      room: user.room,
-      users: getUsersInRoom(user.room),
-    });
-    callback();
-  });
+  //   io.to(user.room).emit("roomData", {
+  //     room: user.room,
+  //     users: getUsersInRoom(user.room),
+  //   });
+  //   callback();
+  // });
 
-  socket.on("sendMessage", (message, callback) => {
-    const user = getUser(socket.id);
-    io.to(user.room).emit("message", { user: user.name, text: message });
+  // socket.on("sendMessage", (message, callback) => {
+  //   const user = getUser(socket.id);
+  //   io.to(user.room).emit("message", { user: user.name, text: message });
 
-    io.to(user.room).emit("roomData", {
-      room: user.room,
-      users: getUsersInRoom(user.room),
-    });
-    callback();
-  });
-
-  socket.on("play", (playMsg) => {
-    io.emit("play", playMsg);
-  });
-
-  socket.on("stop", (stopMsg) => {
-    io.emit("stop");
-  });
+  //   io.to(user.room).emit("roomData", {
+  //     room: user.room,
+  //     users: getUsersInRoom(user.room),
+  //   });
+  //   callback();
+  // });
 
   socket.on("arm", (armMsg) => {
     io.emit("arm", armMsg);
@@ -76,17 +68,21 @@ io.on("connection", (socket) => {
     io.emit("switch", switchMsm);
   });
 
-  socket.on("disconnect", () => {
-    console.log(socket.id);
-    const user = removeUser(socket.id);
-    if (user) {
-      io.to(user.room).emit("message", {
-        user: "admin",
-        text: `${user.name} had left`,
-      });
-      // socket.leave(socket.room)
-    }
+    socket.on("disconnect", () => {
+    console.log("User Disconnected", socket.id);
   });
+
+  // socket.on("disconnect", () => {
+  //   console.log(socket.id);
+  //   const user = removeUser(socket.id);
+  //   if (user) {
+  //     io.to(user.room).emit("message", {
+  //       user: "admin",
+  //       text: `${user.name} had left`,
+  //     });
+  //     // socket.leave(socket.room)
+  //   }
+  // });
 });
 
 app.use("*", (req, res) => {

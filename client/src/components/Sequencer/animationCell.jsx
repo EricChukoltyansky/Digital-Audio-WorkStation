@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { darken } from "polished";
+import styled, { keyframes } from "styled-components";
 
 const getBackground = (activated, triggered) => {
   switch (true) {
@@ -14,7 +13,7 @@ const getBackground = (activated, triggered) => {
   }
 };
 
-const Cell = styled.div.attrs(({ activated, triggered }) => ({
+const animationCell = styled.div.attrs(({ activated, triggered }) => ({
   style: {
     background: getBackground(activated, triggered),
   },
@@ -22,7 +21,8 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
   border-radius: 4px;
   grid-column: ${(props) => props.column};
   grid-row: ${(props) => props.row};
-  margin: 2px;
+  margin: 5px;
+  animation: 
 `;
 
 export default Cell;
