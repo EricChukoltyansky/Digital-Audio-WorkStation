@@ -72,6 +72,10 @@ io.on("connection", (socket) => {
     io.emit("rewind", rewindMessage);
   });
 
+  socket.on("clearAll", (clearAllMsg) => {
+    io.emit("clearAll", clearAllMsg);
+  });
+
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
   });

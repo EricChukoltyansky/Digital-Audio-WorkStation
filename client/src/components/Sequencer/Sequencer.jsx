@@ -3,19 +3,22 @@ import Grid from "./Grid";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
 import { pluckSynth1, pluckSynth2, pluckSynth3, baseDrum } from "./Instruments";
-import { steps, lineMap, initialState } from "./utils";
+import { steps, lineMap, initialState, initialCellState, init } from "./utils";
 import StopButton from "./StopButton";
+import ClearAllButton from "./ClearAllButton";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
+  console.log(initialState);
+
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
     const { triggered, activated } = sequenceCopy[line][step];
     sequenceCopy[line][step] = { triggered, activated: !activated };
-    console.log("toggled");
+    console.log(sequenceCopy);
     setSequence(sequenceCopy);
   };
 
@@ -54,6 +57,10 @@ export default function Sequencer({ player, socket }) {
     socket.emit("rewind", { num: number, tog: switcher });
   };
 
+  const handleClearAll= (state) => {
+    socket.emit("clearAll", { init: state });
+  };
+
   useEffect(() => {
     const recieveMessage = (m) => {
       toggleStep(m.x, m.z);
@@ -67,18 +74,23 @@ export default function Sequencer({ player, socket }) {
       setPlaying(false);
       setCurrentStep(0);
     };
+    const clearAllMsg = (m) => {
+      setSequence(init)
+      console.log(sequence);
+    }
     socket.on("arm", recieveMessage);
     socket.on("switch", switchMessage);
     socket.on("rewind", rewindMessage);
+    socket.on("clearAll", clearAllMsg);
   }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (playing) {
-        console.log("currentStep", currentStep);
+        // console.log("currentStep", currentStep);
         setCurrentStep((currentStep + 1) % steps);
         nextStep(currentStep);
-        console.log(currentStep);
+        // console.log(currentStep);
       }
     }, 100 + Math.random() * 20);
     return () => {
@@ -95,6 +107,9 @@ export default function Sequencer({ player, socket }) {
           onClick={() => handleSetPlaying(!playing)}
         />
         <StopButton onClick={() => handleStopPlaying()} />
+        <ClearAllButton
+          onClick={() => handleClearAll(initialState)}
+        />
       </Bar>
       <Grid
         sequence={sequence}
