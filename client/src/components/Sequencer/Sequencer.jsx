@@ -62,13 +62,10 @@ export default function Sequencer({ player, socket }) {
       setPlaying(m.tog);
     };
     const rewindMessage = (m) => {
-      if (playing) {
-        setCurrentStep(m.num);
-        setPlaying(m.tog);
-        setPlaying(false);
-      } else {
-        return;
-      }
+      setCurrentStep(m.num);
+      nextStep(currentStep);
+      setPlaying(false);
+      setCurrentStep(0);
     };
     socket.on("arm", recieveMessage);
     socket.on("switch", switchMessage);
@@ -96,9 +93,13 @@ export default function Sequencer({ player, socket }) {
           playing={playing}
           onClick={() => handleSetPlaying(!playing)}
         />
-        <StopButton onClick={() => handleStopPlaying(0, !playing)} />
+        <StopButton onClick={() => handleStopPlaying()} />
       </Bar>
-      <Grid sequence={sequence} handleToggleStep={handleToggleStep} />
+      <Grid
+        sequence={sequence}
+        handleToggleStep={handleToggleStep}
+        handleStopPlaying={handleStopPlaying}
+      />
     </div>
   );
 }
