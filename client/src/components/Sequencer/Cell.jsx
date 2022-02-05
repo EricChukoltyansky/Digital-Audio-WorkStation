@@ -15,8 +15,8 @@ const getBackground = (activated, triggered) => {
 
 const breatheAnimation = keyframes`
  0% { height: 80px; width: 80px; }
- 30% { height: 90px; width: 90px; opacity: 1; }
- 60% { height: 115px; width: 115px; opacity: 0.3; }
+ 30% { height: 85px; width: 85px; opacity: 1; }
+ 60% { height: 90px; width: 90px; opacity: 0.3; }
  100% { height: 80px; width: 80px; opacity: 0.6; }
 `;
 

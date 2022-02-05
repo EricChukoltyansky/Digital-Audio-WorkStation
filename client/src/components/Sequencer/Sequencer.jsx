@@ -4,6 +4,7 @@ import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
 import { pluckSynth1, pluckSynth2, pluckSynth3, baseDrum } from "./Instruments";
 import { steps, lineMap, initialState } from "./utils";
+import StopButton from "./StopButton";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
@@ -49,6 +50,10 @@ export default function Sequencer({ player, socket }) {
     socket.emit("switch", { tog: switcher });
   };
 
+  const handleStopPlaying = (number, switcher) => {
+    socket.emit("rewind", { num: number, tog: switcher });
+  };
+
   useEffect(() => {
     const recieveMessage = (m) => {
       toggleStep(m.x, m.z);
@@ -56,13 +61,24 @@ export default function Sequencer({ player, socket }) {
     const switchMessage = (m) => {
       setPlaying(m.tog);
     };
+    const rewindMessage = (m) => {
+      if (playing) {
+        setCurrentStep(m.num);
+        setPlaying(m.tog);
+        setPlaying(false);
+      } else {
+        return;
+      }
+    };
     socket.on("arm", recieveMessage);
     socket.on("switch", switchMessage);
+    socket.on("rewind", rewindMessage);
   }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (playing) {
+        console.log("currentStep", currentStep);
         setCurrentStep((currentStep + 1) % steps);
         nextStep(currentStep);
       }
@@ -80,6 +96,7 @@ export default function Sequencer({ player, socket }) {
           playing={playing}
           onClick={() => handleSetPlaying(!playing)}
         />
+        <StopButton onClick={() => handleStopPlaying(0, !playing)} />
       </Bar>
       <Grid sequence={sequence} handleToggleStep={handleToggleStep} />
     </div>
