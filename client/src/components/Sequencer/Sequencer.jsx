@@ -3,22 +3,18 @@ import Grid from "./Grid";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
 import { pluckSynth1, pluckSynth2, pluckSynth3, baseDrum } from "./Instruments";
-import { steps, lineMap, initialState, initialCellState, init } from "./utils";
+import { steps, lineMap, initialState } from "./utils";
 import StopButton from "./StopButton";
-import ClearAllButton from "./ClearAllButton";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
-  console.log(initialState);
-
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
     const { triggered, activated } = sequenceCopy[line][step];
     sequenceCopy[line][step] = { triggered, activated: !activated };
-    console.log(sequenceCopy);
     setSequence(sequenceCopy);
   };
 
@@ -53,12 +49,12 @@ export default function Sequencer({ player, socket }) {
     socket.emit("switch", { tog: switcher });
   };
 
-  const handleStopPlaying = (number, switcher) => {
-    socket.emit("rewind", { num: number, tog: switcher });
+  const handleStopPlaying = () => {
+    socket.emit("rewind");
   };
 
-  const handleClearAll= (state) => {
-    socket.emit("clearAll", { init: state });
+  const handleClearAll = () => {
+    socket.emit("clearAll");
   };
 
   useEffect(() => {
@@ -68,16 +64,16 @@ export default function Sequencer({ player, socket }) {
     const switchMessage = (m) => {
       setPlaying(m.tog);
     };
-    const rewindMessage = (m) => {
-      setCurrentStep(m.num);
+    const rewindMessage = () => {
+      setCurrentStep(0);
       nextStep(currentStep);
       setPlaying(false);
-      setCurrentStep(0);
     };
-    const clearAllMsg = (m) => {
-      setSequence(init)
-      console.log(sequence);
-    }
+    const clearAllMsg = () => {
+      setSequence(initialState);
+      setPlaying(false);
+    };
+
     socket.on("arm", recieveMessage);
     socket.on("switch", switchMessage);
     socket.on("rewind", rewindMessage);
@@ -87,10 +83,8 @@ export default function Sequencer({ player, socket }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (playing) {
-        // console.log("currentStep", currentStep);
         setCurrentStep((currentStep + 1) % steps);
         nextStep(currentStep);
-        // console.log(currentStep);
       }
     }, 100 + Math.random() * 20);
     return () => {
@@ -106,10 +100,8 @@ export default function Sequencer({ player, socket }) {
           playing={playing}
           onClick={() => handleSetPlaying(!playing)}
         />
-        <StopButton onClick={() => handleStopPlaying()} />
-        <ClearAllButton
-          onClick={() => handleClearAll(initialState)}
-        />
+        <StopButton onClick={handleStopPlaying} />
+        {/* <ClearAllButton onClick={handleClearAll} /> */}
       </Bar>
       <Grid
         sequence={sequence}
