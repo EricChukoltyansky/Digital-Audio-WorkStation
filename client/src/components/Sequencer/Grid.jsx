@@ -10,9 +10,11 @@ const Grid = ({ sequence, handleToggleStep }) => (
           key={i + j}
           column={j + 1}
           row={i + 1}
-          activated={sequence[i][j]["activated"]}
-          triggered={sequence[i][j]["triggered"]}
-          onClick={() => handleToggleStep(i, j)}
+          activated={sequence[i][j].activated}
+          triggered={sequence[i][j].triggered}
+          onClick={() => {
+            handleToggleStep(i, j);
+          }}
         />
       ))
     )}

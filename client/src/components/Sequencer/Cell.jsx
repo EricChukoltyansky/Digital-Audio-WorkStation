@@ -20,11 +20,6 @@ const breatheAnimation = keyframes`
  100% { height: 80px; width: 80px; opacity: 0.6; }
 `;
 
-const jumpAnimation = keyframes`
-0% { height: 50px; width: 50px; }
-100% { height: 10px; width: 10px; }
-`;
-
 const Cell = styled.div.attrs(({ activated, triggered }) => ({
   style: {
     background: getBackground(activated, triggered),
