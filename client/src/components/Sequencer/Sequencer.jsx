@@ -5,11 +5,13 @@ import PlayButton from "./PlayButton";
 import { pluckSynth1, pluckSynth2, pluckSynth3, baseDrum } from "./Instruments";
 import { steps, lineMap, initialState } from "./utils";
 import StopButton from "./StopButton";
+import Volume from "./Volume";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const [sequencerVolume,setSequencerVolume] = useState(-12)
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
@@ -25,14 +27,19 @@ export default function Sequencer({ player, socket }) {
         sequence[i][j] = { activated, triggered: j === time };
         if (triggered && activated) {
           if (lineMap[i] === "BD") {
+            baseDrum.volume.value = sequencerVolume;
             baseDrum.triggerAttackRelease("B1", "25n");
           } else if (lineMap[i] === "SY1") {
+            pluckSynth1.volume.value = sequencerVolume;
             pluckSynth1.triggerAttackRelease("B1");
           } else if (lineMap[i] === "SY2") {
+            pluckSynth2.volume.value = sequencerVolume;
             pluckSynth2.triggerAttackRelease("C#2");
           } else if (lineMap[i] === "SY3") {
+            pluckSynth3.volume.value = sequencerVolume;
             pluckSynth3.triggerAttackRelease("D2");
           } else {
+            player.volume.value = sequencerVolume;
             player.player(lineMap[i]).start();
           }
         }
@@ -52,10 +59,15 @@ export default function Sequencer({ player, socket }) {
   const handleStopPlaying = () => {
     socket.emit("rewind");
   };
-
+  
   const handleClearAll = () => {
     socket.emit("clearAll");
   };
+  
+  const handleVolume = (e) => {
+    setSequencerVolume(e.target.value);
+    console.log(sequencerVolume);
+  }
 
   useEffect(() => {
     const recieveMessage = (m) => {
@@ -101,6 +113,14 @@ export default function Sequencer({ player, socket }) {
           onClick={() => handleSetPlaying(!playing)}
         />
         <StopButton onClick={handleStopPlaying} />
+        <Volume
+          max="4"
+          min="-24"
+          step="2"
+          type="range"
+          value={sequencerVolume}
+          onChange={handleVolume}
+        />
         {/* <ClearAllButton onClick={handleClearAll} /> */}
       </Bar>
       <Grid
