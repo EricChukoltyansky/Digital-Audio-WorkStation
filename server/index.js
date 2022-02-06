@@ -76,6 +76,10 @@ io.on("connection", (socket) => {
     io.emit("clearAll", clearAllMsg);
   });
 
+  socket.on("BPM", (BPMmessage) => {
+    io.emit("BPM", BPMmessage);
+  });
+
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
   });
