@@ -72,8 +72,9 @@ export default function Sequencer({ player, socket }) {
   };
 
   const handleBPM = (e) => {
-    setBPMCount(e.target.value);
+    // setBPMCount(e.target.value);
     console.log(BPMcount);
+    socket.emit("BPM", { value: e.target.value });
   };
 
   useEffect(() => {
@@ -93,10 +94,15 @@ export default function Sequencer({ player, socket }) {
       setPlaying(false);
     };
 
+    const BPMmessage = (m) => {
+      setBPMCount(m.value);
+    };
+
     socket.on("arm", recieveMessage);
     socket.on("switch", switchMessage);
     socket.on("rewind", rewindMessage);
     socket.on("clearAll", clearAllMsg);
+    socket.on("BPM", BPMmessage);
   }, []);
 
   useEffect(() => {
@@ -138,6 +144,7 @@ export default function Sequencer({ player, socket }) {
           value={BPMcount}
           onChange={handleBPM}
         />
+        
         {/* <ClearAllButton onClick={handleClearAll} /> */}
       </Bar>
       <Grid

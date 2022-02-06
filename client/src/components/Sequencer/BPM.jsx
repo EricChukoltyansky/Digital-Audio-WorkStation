@@ -23,13 +23,13 @@ const Style = {
       height: 35px;
       width: 35px;
       border-radius: 7px;
-      background: rgb(119, 19, 233);
+      background: rgb(120, 10, 15);
       margin-top: -14px;
       transition: all 0.3s;
     }
 
     &::-webkit-slider-thumb:hover {
-      background: rgb(119, 19, 233);
+      background: rgb(120, 10, 15);
       border-radius: 20px;
       cursor: pointer;
     }
