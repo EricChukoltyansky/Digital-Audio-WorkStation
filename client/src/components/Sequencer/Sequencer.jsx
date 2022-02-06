@@ -6,12 +6,14 @@ import { pluckSynth1, pluckSynth2, pluckSynth3, baseDrum } from "./Instruments";
 import { steps, lineMap, initialState } from "./utils";
 import StopButton from "./StopButton";
 import Volume from "./Volume";
+import BPM from "./BPM";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  const [sequencerVolume,setSequencerVolume] = useState(-12)
+  const [sequencerVolume, setSequencerVolume] = useState(-12);
+  const [BPMcount, setBPMCount] = useState(100);
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
@@ -59,15 +61,20 @@ export default function Sequencer({ player, socket }) {
   const handleStopPlaying = () => {
     socket.emit("rewind");
   };
-  
+
   const handleClearAll = () => {
     socket.emit("clearAll");
   };
-  
+
   const handleVolume = (e) => {
     setSequencerVolume(e.target.value);
     console.log(sequencerVolume);
-  }
+  };
+
+  const handleBPM = (e) => {
+    setBPMCount(e.target.value);
+    console.log(BPMcount);
+  };
 
   useEffect(() => {
     const recieveMessage = (m) => {
@@ -98,11 +105,13 @@ export default function Sequencer({ player, socket }) {
         setCurrentStep((currentStep + 1) % steps);
         nextStep(currentStep);
       }
-    }, 100 + Math.random() * 20);
+    }, BPMcount);
+    console.log("setTimeOut", BPMcount);
+    console.log("timer", timer);
     return () => {
       clearTimeout(timer);
     };
-  }, [currentStep, playing]);
+  }, [currentStep, playing, BPMcount]);
 
   return (
     <div>
@@ -120,6 +129,14 @@ export default function Sequencer({ player, socket }) {
           type="range"
           value={sequencerVolume}
           onChange={handleVolume}
+        />
+        <BPM
+          max="150"
+          min="60"
+          step="10"
+          type="range"
+          value={BPMcount}
+          onChange={handleBPM}
         />
         {/* <ClearAllButton onClick={handleClearAll} /> */}
       </Bar>
