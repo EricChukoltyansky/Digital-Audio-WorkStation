@@ -7,7 +7,7 @@ const Style = {
   PlayButton: styled.button`
     padding: 0.75em 2em;
     outline: none;
-    background-color: #27ae60;
+    background-color: blue;
     border: none;
     border-radius: 5px;
     color: white;
@@ -15,7 +15,7 @@ const Style = {
     margin: 0.5em;
 
     &:hover {
-      background: ${darken(0.2, "#27ae60")};
+      background: ${darken(0.2, "blue")};
       cursor: pointer;
     }
   `,
