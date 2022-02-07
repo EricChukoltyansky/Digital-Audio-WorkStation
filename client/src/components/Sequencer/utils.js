@@ -1,19 +1,19 @@
 const steps = 16;
 const initialCellState = { triggered: false, activated: false };
 const lineMap = [
-  "BD",
-  "CP",
-  "CH",
-  "OH",
-  "SY1",
-  "SY2",
-  "SY3",
-  "SY4",
-  "SY5",
-  "SY6",
-  "SY7",
-  "SY8",
   "SY9",
+  "SY8",
+  "SY7",
+  "SY6",
+  "SY5",
+  "SY4",
+  "SY3",
+  "SY2",
+  "SY1",
+  "OH",
+  "CH",
+  "CP",
+  "BD",
 ];
 const initialState = [
   new Array(16).fill(initialCellState),
