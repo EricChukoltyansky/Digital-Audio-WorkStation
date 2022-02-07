@@ -29,6 +29,9 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
   grid-column: ${(props) => props.column};
   grid-row: ${(props) => props.row};
   margin: 5px;
+  animation: ${(props) =>
+      props.activated && props.triggered ? breatheAnimation : null}
+    0.1s linear;
 `;
 
 export default Cell;
