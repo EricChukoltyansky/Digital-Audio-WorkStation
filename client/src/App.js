@@ -1,16 +1,12 @@
-// //////////////////////////////////!!!!!original!!!!!///////////////////////////
 import { useEffect } from "react";
 import PlayerProvider from "./components/Sequencer/PlayerProvider";
 import Sequencer from "./components/Sequencer/Sequencer";
 import { io } from "socket.io-client";
 import { initialState } from "./components/Sequencer/utils";
-// //////////////////////////////////!!!!!original!!!!!///////////////////////////
 
-// //////////////////////////////////!!!!!!chat!!!!!/////////////////////////////
-// import Main from "./pages/Main/Main";
-// import Join from "./pages/Join/Join";
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
-// //////////////////////////////////!!!!!!chat!!!!!/////////////////////////////
+import Main from "./components/Sequencer/Sequencer";
+import Join from "./pages/Join/Join";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
@@ -22,21 +18,17 @@ function App() {
   };
 
   useEffect(() => {
-    initialLocalStorage()
-  },[])
+    initialLocalStorage();
+  }, []);
 
   return (
     <div>
-      {/* // //////////////////////////////////!!!!!!chat!!!!!///////////////////////////// */}
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Join />} />
-          <Route path="/DAW" element={<Main socket={socket} />} />
+          <Route path="/DAW" element={<Sequencer />} />
         </Routes>
-      </BrowserRouter> */}
-      {/* // //////////////////////////////////!!!!!!chat!!!!!///////////////////////////// */}
-
-      {/* // //////////////////////////////////!!!!!original!!!!!/////////////////////////// */}
+      </BrowserRouter>
       <PlayerProvider>
         {({ player }) => {
           if (!player) {
@@ -45,7 +37,6 @@ function App() {
           return <Sequencer player={player} socket={socket} />;
         }}
       </PlayerProvider>
-      {/* // //////////////////////////////////!!!!!original!!!!!/////////////////////////// */}
     </div>
   );
 }
