@@ -6,8 +6,8 @@ const PlayerProvider = ({ children }) => {
   useEffect(() => {
     const player = new Tone.Players({
       urls: {
-        BD: "/sounds/kick.wav",
-        CP: "/sounds/clap.wav",
+        BD: "/more-sounds/kick.wav",
+        CP: "/more-sounds/snare.wav",
         OH: "/sounds/hh_open.wav",
         CH: "/sounds/hh_closed.wav",
       },
