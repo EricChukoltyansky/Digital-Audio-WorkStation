@@ -4,7 +4,6 @@ import Sequencer from "./components/Sequencer/Sequencer";
 import { io } from "socket.io-client";
 import { initialState } from "./components/Sequencer/utils";
 
-import Main from "./components/Sequencer/Sequencer";
 import Join from "./pages/Join/Join";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -26,17 +25,21 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Join />} />
-          <Route path="/DAW" element={<Sequencer />} />
+          <Route
+            path="/DAW"
+            element={
+              <PlayerProvider>
+                {({ player }) => {
+                  if (!player) {
+                    return <p>loading....</p>;
+                  }
+                  return <Sequencer player={player} socket={socket} />;
+                }}
+              </PlayerProvider>
+            }
+          />
         </Routes>
       </BrowserRouter>
-      <PlayerProvider>
-        {({ player }) => {
-          if (!player) {
-            return <p>loading....</p>;
-          }
-          return <Sequencer player={player} socket={socket} />;
-        }}
-      </PlayerProvider>
     </div>
   );
 }

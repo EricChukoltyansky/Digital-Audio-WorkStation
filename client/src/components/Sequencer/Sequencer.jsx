@@ -17,7 +17,7 @@ import { steps, lineMap, initialState } from "./utils";
 import StopButton from "./StopButton";
 import Volume from "./Volume";
 import BPM from "./BPM";
-import ClearAllButton from "./ClearAllButton";
+
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
