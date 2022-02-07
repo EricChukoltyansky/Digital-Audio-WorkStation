@@ -7,12 +7,14 @@ const Join = () => {
   return (
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
-        <h1 className="heading">Join The Revolution</h1>
         <Link to={"/DAW"}>
-          <button className={"button mt-20"} type="submit">
-            Click <span>here</span> , it will be fun
-          </button>
+          <h1 className="heading">
+            <i class="fa fa-play fa-2x"></i>
+          </h1>
         </Link>
+        <div className={"sub mt-20"} type="submit">
+          Click <span>play</span> , it will be fun
+        </div>
       </div>
     </div>
   );
