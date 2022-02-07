@@ -137,8 +137,7 @@ export default function Sequencer({ player, socket }) {
         nextStep(currentStep);
       }
     }, BPMcount);
-    // console.log("setTimeOut", BPMcount);
-    // console.log("timer", timer);
+
     return () => {
       clearTimeout(timer);
     };
