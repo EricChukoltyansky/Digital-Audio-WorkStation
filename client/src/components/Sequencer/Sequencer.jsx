@@ -17,14 +17,16 @@ import { steps, lineMap, initialState } from "./utils";
 import StopButton from "./StopButton";
 import Volume from "./Volume";
 import BPM from "./BPM";
+import PowerOn from "./PowerOn";
 import ClearAllButton from "./ClearAllButton";
+import PowerOff from "./PowerOff";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [sequencerVolume, setSequencerVolume] = useState(-12);
-  const [power, setPower] = useState(true);
+  // const [power, setPower] = useState(true);
   const [BPMcount, setBPMCount] = useState(100);
 
   const toggleStep = (line, step) => {
@@ -101,6 +103,14 @@ export default function Sequencer({ player, socket }) {
     socket.emit("BPM", { value: e.target.value });
   };
 
+  const handlePowerOn = () => {
+    setSequencerVolume(-60)
+  }
+
+  const handlePowerOff = () => {
+    setSequencerVolume(-12)
+  }
+
   useEffect(() => {
     const recieveMessage = (m) => {
       toggleStep(m.x, m.z);
@@ -147,6 +157,7 @@ export default function Sequencer({ player, socket }) {
     <div>
       <br />
       <Bar>
+        {sequencerVolume === -60 ? <PowerOff onClick={handlePowerOff}/> : <PowerOn onClick={handlePowerOn}/> }
         <PlayButton
           playing={playing}
           onClick={() => handleSetPlaying(!playing)}
@@ -154,7 +165,7 @@ export default function Sequencer({ player, socket }) {
         <StopButton onClick={handleStopPlaying} />
         <Volume
           max="4"
-          min="-24"
+          min="-60"
           step="2"
           type="range"
           value={sequencerVolume}

@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { darken } from "polished";
-import { MdMusicOff } from "react-icons/md";
+import { ImVolumeMute2 } from "react-icons/im";
 
 const Style = {
   PowerOff: styled.button`
     padding: 0.75em 2em;
     outline: none;
-    background-color: #27ae60;
+    background-color: red;
     border: none;
     border-radius: 5px;
     color: white;
@@ -15,7 +15,7 @@ const Style = {
     margin: 0.5em;
 
     &:hover {
-      background: ${darken(0.2, "#27ae60")};
+      background: ${darken(0.2, "red")};
       cursor: pointer;
     }
   `,
@@ -23,7 +23,7 @@ const Style = {
 
 const PowerOff = ({ onClick }) => (
   <Style.PowerOff onClick={onClick}>
-    <MdMusicOff />
+    <ImVolumeMute2 />
   </Style.PowerOff>
 );
 
