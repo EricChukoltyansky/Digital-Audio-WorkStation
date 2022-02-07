@@ -2,17 +2,29 @@ import { useState, useEffect } from "react";
 import Grid from "./Grid";
 import Bar from "./Nav-Bar";
 import PlayButton from "./PlayButton";
-import { pluckSynth1, pluckSynth2, pluckSynth3, baseDrum } from "./Instruments";
+import {
+  Synth1,
+  Synth2,
+  Synth3,
+  Synth4,
+  Synth5,
+  Synth6,
+  Synth7,
+  Synth8,
+  Synth9,
+} from "./Instruments";
 import { steps, lineMap, initialState } from "./utils";
 import StopButton from "./StopButton";
 import Volume from "./Volume";
 import BPM from "./BPM";
+import ClearAllButton from "./ClearAllButton";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [sequencerVolume, setSequencerVolume] = useState(-12);
+  const [power, setPower] = useState(true);
   const [BPMcount, setBPMCount] = useState(100);
 
   const toggleStep = (line, step) => {
@@ -28,18 +40,33 @@ export default function Sequencer({ player, socket }) {
         const { triggered, activated } = sequence[i][j];
         sequence[i][j] = { activated, triggered: j === time };
         if (triggered && activated) {
-          if (lineMap[i] === "BD") {
-            baseDrum.volume.value = sequencerVolume;
-            baseDrum.triggerAttackRelease("B1", "25n");
-          } else if (lineMap[i] === "SY1") {
-            pluckSynth1.volume.value = sequencerVolume;
-            pluckSynth1.triggerAttackRelease("B1");
+          if (lineMap[i] === "SY1") {
+            Synth1.volume.value = sequencerVolume;
+            Synth1.triggerAttackRelease("D1", "20n");
           } else if (lineMap[i] === "SY2") {
-            pluckSynth2.volume.value = sequencerVolume;
-            pluckSynth2.triggerAttackRelease("C#2");
+            Synth2.volume.value = sequencerVolume;
+            Synth2.triggerAttackRelease("F1", "20n");
           } else if (lineMap[i] === "SY3") {
-            pluckSynth3.volume.value = sequencerVolume;
-            pluckSynth3.triggerAttackRelease("D2");
+            Synth3.volume.value = sequencerVolume;
+            Synth3.triggerAttackRelease("G1", "20n");
+          } else if (lineMap[i] === "SY4") {
+            Synth4.volume.value = sequencerVolume;
+            Synth4.triggerAttackRelease("A1", "20n");
+          } else if (lineMap[i] === "SY5") {
+            Synth5.volume.value = sequencerVolume;
+            Synth5.triggerAttackRelease("C2", "20n");
+          } else if (lineMap[i] === "SY6") {
+            Synth6.volume.value = sequencerVolume;
+            Synth6.triggerAttackRelease("D2", "20n");
+          } else if (lineMap[i] === "SY7") {
+            Synth7.volume.value = sequencerVolume;
+            Synth7.triggerAttackRelease(["D3","A3","D4"], "14n");
+          } else if (lineMap[i] === "SY8") {
+            Synth8.volume.value = sequencerVolume;
+            Synth8.triggerAttackRelease(["E3","B3","E4"], "14n");
+          } else if (lineMap[i] === "SY9") {
+            Synth9.volume.value = sequencerVolume;
+            Synth9.triggerAttackRelease(["F3","C4","F4"], "14n");
           } else {
             player.volume.value = sequencerVolume;
             player.player(lineMap[i]).start();
@@ -68,12 +95,9 @@ export default function Sequencer({ player, socket }) {
 
   const handleVolume = (e) => {
     setSequencerVolume(e.target.value);
-    console.log(sequencerVolume);
   };
 
   const handleBPM = (e) => {
-    // setBPMCount(e.target.value);
-    console.log(BPMcount);
     socket.emit("BPM", { value: e.target.value });
   };
 
@@ -90,7 +114,8 @@ export default function Sequencer({ player, socket }) {
       setPlaying(false);
     };
     const clearAllMsg = () => {
-      setSequence(initialState);
+      console.log(initialState);
+      // setSequence(initialState);
       setPlaying(false);
     };
 
@@ -112,8 +137,8 @@ export default function Sequencer({ player, socket }) {
         nextStep(currentStep);
       }
     }, BPMcount);
-    console.log("setTimeOut", BPMcount);
-    console.log("timer", timer);
+    // console.log("setTimeOut", BPMcount);
+    // console.log("timer", timer);
     return () => {
       clearTimeout(timer);
     };
@@ -144,7 +169,7 @@ export default function Sequencer({ player, socket }) {
           value={BPMcount}
           onChange={handleBPM}
         />
-        
+
         {/* <ClearAllButton onClick={handleClearAll} /> */}
       </Bar>
       <Grid

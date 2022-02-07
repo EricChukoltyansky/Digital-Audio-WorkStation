@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { darken } from "polished";
-import { FaPlay, FaPause } from "react-icons/fa";
+import { MdMusicOff } from "react-icons/md";
 
 const Style = {
-  PlayButton: styled.button`
+  PowerOff: styled.button`
     padding: 0.75em 2em;
     outline: none;
     background-color: #27ae60;
@@ -21,10 +21,10 @@ const Style = {
   `,
 };
 
-const PlayButton = ({ playing, onClick }) => (
-  <Style.PlayButton onClick={onClick}>
-    {playing ? <FaPause /> : <FaPlay />}
-  </Style.PlayButton>
+const PowerOff = ({ onClick }) => (
+  <Style.PowerOff onClick={onClick}>
+    <MdMusicOff />
+  </Style.PowerOff>
 );
 
-export default PlayButton;
+export default PowerOff;

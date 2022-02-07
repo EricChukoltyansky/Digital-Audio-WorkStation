@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { darken } from "polished";
-import { FaPlay, FaPause } from "react-icons/fa";
+import { MdOutlineMusicNote } from "react-icons/md";
 
 const Style = {
-  PlayButton: styled.button`
+  PowerOn: styled.button`
     padding: 0.75em 2em;
     outline: none;
     background-color: #27ae60;
@@ -21,10 +21,10 @@ const Style = {
   `,
 };
 
-const PlayButton = ({ playing, onClick }) => (
-  <Style.PlayButton onClick={onClick}>
-    {playing ? <FaPause /> : <FaPlay />}
-  </Style.PlayButton>
+const PowerOn = ({ onClick }) => (
+  <Style.PowerOn onClick={onClick}>
+    {<MdOutlineMusicNote />}
+  </Style.PowerOn>
 );
 
-export default PlayButton;
+export default PowerOn;
