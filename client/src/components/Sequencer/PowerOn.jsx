@@ -5,17 +5,18 @@ import { ImVolumeMedium } from "react-icons/im";
 
 const Style = {
   PowerOn: styled.button`
-  padding: 0.75em 2em;
+  padding: 0.75em 0.90em;
   outline: none;
-  background-color: #27ae60;
+  background-color: ${darken(0.2, "#27ae60")};
   border: none;
   border-radius: 5px;
   color: white;
   font-size: 1em;
   margin: 0.5em;
+  transition: all 0.3s;
 
   &:hover {
-    background: ${darken(0.2, "#27ae60")};
+    background: #27ae60;
     cursor: pointer;
   }
 `,

@@ -7,9 +7,9 @@ const getBackground = (activated, triggered) => {
     case activated && !triggered:
       return "#8b0000";
     case !activated && triggered:
-      return "#909090";
+      return "rgb(223, 198, 168)";
     default:
-      return "#1c1c1e";
+      return "rgb(41,40,40)";
   }
 };
 
@@ -29,9 +29,11 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
   grid-column: ${(props) => props.column};
   grid-row: ${(props) => props.row};
   margin: 5px;
-  animation: ${(props) =>
-      props.activated && props.triggered ? breatheAnimation : null}
-    0.1s linear;
+  transition: all 0.2s;
 `;
 
 export default Cell;
+
+// animation: ${(props) =>
+//   props.activated && props.triggered ? breatheAnimation : null}
+// 0.1s linear;

@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Join />} />
