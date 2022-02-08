@@ -20,6 +20,7 @@ import BPM from "./BPM";
 import PowerOn from "./PowerOn";
 import ClearAllButton from "./ClearAllButton";
 import PowerOff from "./PowerOff";
+import "./Sequencer.css"
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
@@ -154,7 +155,7 @@ export default function Sequencer({ player, socket }) {
   }, [currentStep, playing, BPMcount]);
 
   return (
-    <div>
+    <div className="Sequencer">
       <br />
       <Bar>
         {sequencerVolume === -60 ? <PowerOff onClick={handlePowerOff}/> : <PowerOn onClick={handlePowerOn}/> }
