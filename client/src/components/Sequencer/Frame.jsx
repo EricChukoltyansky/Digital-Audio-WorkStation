@@ -7,6 +7,10 @@ const Frame = styled.div`
   grid-template-rows: repeat(${(props) => props.rows}, 1fr);
   width: 75vw;
   height: calc(100vh - 300px);
+
+  @media (max-width: 768px) {
+    width: 95vw;
+  }
 `;
 
 export default Frame;
