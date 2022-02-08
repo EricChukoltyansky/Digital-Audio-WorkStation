@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { darken } from "polished";
 
 const Style = {
   Volume: styled.input`
@@ -8,6 +9,7 @@ const Style = {
     cursor: pointer;
     width: 15%;
     border-radius: 20px;
+    margin: 0.5em;
 
     &::-webkit-slider-runnable-track {
       height: 7px;
@@ -22,7 +24,7 @@ const Style = {
       height: 35px;
       width: 35px;
       border-radius: 7px;
-      background: rgb(119, 19, 233);
+      background: ${darken(0.2, "rgb(119, 19, 233)")};
       margin-top: -14px;
       transition: all 0.3s;
     }
