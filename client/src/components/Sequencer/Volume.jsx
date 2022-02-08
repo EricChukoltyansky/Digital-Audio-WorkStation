@@ -26,7 +26,7 @@ const Style = {
       border-radius: 7px;
       background: ${darken(0.2, "rgb(119, 19, 233)")};
       margin-top: -14px;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
 
     &::-webkit-slider-thumb:hover {

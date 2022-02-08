@@ -166,7 +166,7 @@ body {
 
 .sub {
   background-color: rgba(0, 0, 0, 0.555);
-  color: white;
+  color: rgb(201, 255, 246);
   text-transform: uppercase;
   font-size: large;
   text-decoration: none;
@@ -176,6 +176,7 @@ body {
   display: inline-block;
   border: 2px solid transparent;
   width: 100%;
+  color: rgb(212, 212, 212);
   /* font-weight: bold; */
   font-size: 2rem;
   font-family: "Dreamland";
