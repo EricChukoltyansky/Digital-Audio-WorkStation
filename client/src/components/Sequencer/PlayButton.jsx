@@ -13,7 +13,7 @@ const Style = {
     color: white;
     font-size: 1em;
     margin: 0.5em;
-    transition: all 0.3s;
+    transition: all 0.2s;
 
     &:hover {
       background: blue;

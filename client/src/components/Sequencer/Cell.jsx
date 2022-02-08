@@ -3,11 +3,11 @@ import styled, { keyframes } from "styled-components";
 const getBackground = (activated, triggered) => {
   switch (true) {
     case activated && triggered:
-      return "#f6f606";
+      return "radial-gradient(#f8b6b6, #922c2c)";
     case activated && !triggered:
-      return "#8b0000";
+      return "radial-gradient(#fffb00, #e7a712)";
     case !activated && triggered:
-      return "rgb(223, 198, 168)";
+      return "rgb(212, 212, 212)";
     default:
       return "rgb(41,40,40)";
   }
@@ -28,11 +28,12 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
   border-radius: 4px;
   grid-column: ${(props) => props.column};
   grid-row: ${(props) => props.row};
+  border: solid 2px rgb(212, 212, 212);
   margin: 5px;
-  transition: all 0.2s;
+  transition: all 0.1s;
 
   &:hover {
-    border: solid 3px purple;
+    border: solid 2px #e7a712;
     border-radius: 20px;
     cursor: pointer;
   }
