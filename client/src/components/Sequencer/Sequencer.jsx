@@ -158,12 +158,12 @@ export default function Sequencer({ player, socket }) {
     <div className="Sequencer">
       <br />
       <Bar>
-        {sequencerVolume === -60 ? <PowerOff onClick={handlePowerOff}/> : <PowerOn onClick={handlePowerOn}/> }
         <PlayButton
           playing={playing}
           onClick={() => handleSetPlaying(!playing)}
-        />
+          />
         <StopButton onClick={handleStopPlaying} />
+          {sequencerVolume === -60 ? <PowerOff onClick={handlePowerOff}/> : <PowerOn onClick={handlePowerOn}/> }
         <Volume
           max="4"
           min="-60"

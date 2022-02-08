@@ -30,6 +30,12 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
   grid-row: ${(props) => props.row};
   margin: 5px;
   transition: all 0.2s;
+
+  &:hover {
+    border: solid 3px purple;
+    border-radius: 20px;
+    cursor: pointer;
+  }
 `;
 
 export default Cell;

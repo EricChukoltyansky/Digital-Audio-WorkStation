@@ -17,6 +17,7 @@ const Style = {
 
     &:hover {
       background: red;
+      border-radius: 50px;
       cursor: pointer;
     }
   `,
