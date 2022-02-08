@@ -6,7 +6,7 @@ const Frame = styled.div`
   grid-template-columns: repeat(${(props) => props.columns}, 1fr);
   grid-template-rows: repeat(${(props) => props.rows}, 1fr);
   width: 75vw;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 100px);
 `;
 
 export default Frame;

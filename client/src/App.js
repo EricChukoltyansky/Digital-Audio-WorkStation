@@ -7,6 +7,8 @@ import { initialState } from "./components/Sequencer/utils";
 import Join from "./pages/Join/Join";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import "./App.css"
+
 const socket = io.connect(
   process.env.NODE_ENV === "production" ? "/" : "http://localhost:3001"
 );
