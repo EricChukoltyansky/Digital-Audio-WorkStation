@@ -5,17 +5,19 @@ import { FaPlay, FaPause } from "react-icons/fa";
 
 const Style = {
   PlayButton: styled.button`
-    padding: 0.75em 2em;
+    padding: 0.75em 0.90em;
     outline: none;
-    background-color: blue;
+    background-color: ${darken(0.2, "blue")};
     border: none;
     border-radius: 5px;
     color: white;
     font-size: 1em;
     margin: 0.5em;
+    transition: all 0.2s;
 
     &:hover {
-      background: ${darken(0.2, "blue")};
+      background: blue;
+      border-radius: 50px;
       cursor: pointer;
     }
   `,

@@ -5,17 +5,19 @@ import { FaStop } from "react-icons/fa";
 
 const Style = {
   StopButton: styled.button`
-    padding: 0.75em 2em;
+    padding: 0.75em 0.90em;
     outline: none;
-    background-color: orange;
+    background-color: ${darken(0.2, "orange")};
     border: none;
     border-radius: 5px;
     color: white;
     font-size: 1em;
     margin: 0.5em;
+    transition: all 0.2s;
 
     &:hover {
-      background: ${darken(0.2, "orange")};
+      background: orange;
+      border-radius: 50px;
       cursor: pointer;
     }
   `,
