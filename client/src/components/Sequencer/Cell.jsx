@@ -37,6 +37,10 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
     border-radius: 20px;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    margin: 1px;
+  }
 `;
 
 export default Cell;
