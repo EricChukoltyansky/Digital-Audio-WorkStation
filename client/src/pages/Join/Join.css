@@ -59,7 +59,7 @@ body {
   width: 100%;
 }
 
-.heading {
+/* .heading {
   color: #fff;
   text-align: center;
   font-family: "Spicy Rice", cursive;
@@ -102,9 +102,69 @@ body {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
+} */
+
+.heading {
+  /* text-align: center; */
+  margin-left: 30%;
+  box-sizing: border-box;
+  display: block;
+  width: 200px;
+  height: 200px;
+  padding-top: 25px;
+  padding-left: 20px;
+  line-height: 20px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  color: #f5f5f5;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 70px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    var(--angle),
+    var(--color-1) 19%,
+    transparent 19%,
+    transparent 20%,
+    var(--color-2) 20%,
+    var(--color-2) 39%,
+    transparent 39%,
+    transparent 40%,
+    var(--color-3) 40%,
+    var(--color-3) 59%,
+    transparent 59%,
+    transparent 60%,
+    var(--color-4) 60%,
+    var(--color-4) 79%,
+    transparent 79%,
+    transparent 80%,
+    var(--color-5) 80%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: 10s rotate linear infinite;
 }
 
-.button {
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.heading:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 10px rgba(255, 255, 100, 1);
+  text-shadow: 0px 0px 10px rgba(255, 255, 100, 1);
+}
+
+.sub {
   background-color: rgba(0, 0, 0, 0.555);
   color: white;
   text-transform: uppercase;
@@ -122,8 +182,8 @@ body {
   font-family: "Dreamland";
 }
 
-.button span {
-	color: rgb(241, 151, 32)
+.sub span {
+  color: rgb(241, 151, 32);
 }
 
 .mt-20 {
