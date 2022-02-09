@@ -13,6 +13,28 @@ const getBackground = (activated, triggered) => {
   }
 };
 
+const getBoxShadow = (activated, triggered) => {
+  switch (true) {
+    case activated && triggered:
+      return "0 0 100px 50px #922c2c";
+    case activated && !triggered:
+      return "0 0 20px 5px #e7a712";
+    default:
+      return "none";
+  }
+};
+
+const getBorder = (activated, triggered) => {
+  switch (true) {
+    case activated && triggered:
+      return "none";
+    case activated && !triggered:
+      return "none";
+    default:
+      return "solid 2px grey";
+  }
+};
+
 const breatheAnimation = keyframes`
  0% { height: 80px; width: 80px; }
  30% { height: 85px; width: 85px; opacity: 1; }
@@ -23,17 +45,17 @@ const breatheAnimation = keyframes`
 const Cell = styled.div.attrs(({ activated, triggered }) => ({
   style: {
     background: getBackground(activated, triggered),
+    boxShadow: getBoxShadow(activated, triggered),
+    border: getBorder(activated, triggered)
   },
 }))`
   border-radius: 4px;
   grid-column: ${(props) => props.column};
   grid-row: ${(props) => props.row};
-  border: solid 2px rgb(212, 212, 212);
   margin: 5px;
   transition: all 0.1s;
 
   &:hover {
-    border: solid 2px #e7a712;
     border-radius: 20px;
     cursor: pointer;
   }
