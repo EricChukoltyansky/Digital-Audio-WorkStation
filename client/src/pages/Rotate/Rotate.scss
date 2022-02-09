@@ -9,6 +9,7 @@
   margin-top: -10px;
 } */
 
+
 .overlay {
   display: none;
   position: absolute;
@@ -27,12 +28,14 @@
   margin-left: -100px;
   margin-top: -100px;
   & p {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    text-align: center;
-    margin: 0;
-    font-size: 20px;
+    margin-top: 30px;
+    font-size: 60px;
     opacity: 0;
+    transform: rotate(-90deg);
   }
 }
 
@@ -71,7 +74,7 @@
   }
 
   .overlay .iconContainer p {
-    animation: fadeIn 0.5s 1.3s forwards ease;
+    animation: fadeIn 0.5s 0.5s forwards ease;
   }
 }
 
