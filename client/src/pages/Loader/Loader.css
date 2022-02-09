@@ -1,9 +1,7 @@
-:root {
-  font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
-}
 .loader {
   background: hsl(223, 10%, 10%);
   font: 1em/1.5 sans-serif;
+  font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
   height: 100vh;
   display: grid;
   place-items: center;

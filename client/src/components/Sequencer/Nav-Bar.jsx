@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Bar = styled.div`
   width: 100%;
-  /* padding-right: 100px; */
+  padding-right: 100px;
   text-align: center;
 `;
 
