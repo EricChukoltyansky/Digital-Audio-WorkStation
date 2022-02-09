@@ -21,6 +21,7 @@ import PowerOn from "./PowerOn";
 import ClearAllButton from "./ClearAllButton";
 import PowerOff from "./PowerOff";
 import "./Sequencer.css"
+import styled from "styled-components";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
@@ -29,6 +30,8 @@ export default function Sequencer({ player, socket }) {
   const [sequencerVolume, setSequencerVolume] = useState(-12);
   // const [power, setPower] = useState(true);
   const [BPMcount, setBPMCount] = useState(100);
+
+  const rotate
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];

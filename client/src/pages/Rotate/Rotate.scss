@@ -1,0 +1,115 @@
+/* h1 {
+  text-align: center;
+}
+
+.pull {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -10px;
+} */
+
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+}
+
+.iconContainer {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -100px;
+  margin-top: -100px;
+  & p {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+    opacity: 0;
+  }
+}
+
+.phone {
+  position: relative;
+  left: 50%;
+  margin-left: -50px;
+  width: 0;
+  height: 0;
+  border: 0 solid #000;
+  background: #a9a9a9;
+  border-radius: 10px;
+  box-sizing: border-box;
+  & i {
+    text-align: center;
+    width: 100%;
+    line-height: 120px;
+    font-size: 50px;
+    color: #454545;
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .overlay {
+    display: block;
+  }
+
+  .overlay .phone {
+    animation: sizeIncrease 0.5s forwards ease,
+      borderIncrease 0.5s 0.5s forwards ease, rotateRight 0.7s 1s forwards ease;
+  }
+
+  .overlay .phone i {
+    animation: fadeIn 0.5s 0.8s forwards ease;
+  }
+
+  .overlay .iconContainer p {
+    animation: fadeIn 0.5s 1.3s forwards ease;
+  }
+}
+
+/* KEYFRAMES
+------------------------------------------- */
+/* Animate width + height */
+@keyframes sizeIncrease {
+  0% {
+    width: 0;
+    height: 10px;
+  }
+  50% {
+    width: 100px;
+    height: 10px;
+  }
+  100% {
+    width: 100px;
+    height: 160px;
+  }
+}
+/* Add borders */
+@keyframes borderIncrease {
+  100% {
+    border-width: 20px 10px;
+  }
+}
+
+/* fade-in  */
+@keyframes fadeIn {
+  100% {
+    color: #000;
+    opacity: 1;
+  }
+}
+
+/* Rotate device */
+@keyframes rotateRight {
+  100% {
+    transform: rotate(90deg);
+  }
+}
