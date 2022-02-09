@@ -156,7 +156,6 @@ export default function Sequencer({ player, socket }) {
 
   return (
     <div className="Sequencer">
-      <br />
       <Bar>
         <PlayButton
           playing={playing}

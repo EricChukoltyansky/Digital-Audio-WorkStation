@@ -64,7 +64,7 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
     cursor: pointer;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 860px) {
     margin: 1px;
   }
 `;

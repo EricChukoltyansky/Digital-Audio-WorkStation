@@ -1,6 +1,15 @@
+import { listen } from "express/lib/application";
 import * as Tone from "tone";
+import {ElementaryPluginRenderer as core, el} from '@elemaudio/core';
 
-const pingPong = new Tone.PingPongDelay("20n", 0.5).toDestination();
+function sineTone(t) {
+  return el.sin(el.mul(2 * Math.PI, t));
+}
+
+core.on('load', function() {
+  let tone = sineTone(el.phasor(440));
+  core.render(tone);
+});
 
 const autoPanner = new Tone.AutoPanner("4n").toDestination().start();
 
