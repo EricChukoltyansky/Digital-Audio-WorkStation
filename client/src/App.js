@@ -36,7 +36,7 @@ function App() {
                   if (!player) {
                     return <Loader/>
                   }
-                  return <Sequencer player={player} socket={socket} />;
+                  return  <Sequencer player={player} socket={socket} />;
                 }}
               </PlayerProvider>
             }
