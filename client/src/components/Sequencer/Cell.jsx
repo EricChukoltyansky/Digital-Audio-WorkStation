@@ -56,7 +56,6 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
   transition: all 0.1s;
 
   &:hover {
-    border-radius: 20px;
     cursor: pointer;
   }
 
