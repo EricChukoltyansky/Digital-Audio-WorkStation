@@ -1,5 +1,5 @@
 import React from "react";
-import "./Rotate.scss";
+import "./Rotate.css";
 import { FiRotateCw } from "react-icons/fi";
 
 const Rotate = () => {
