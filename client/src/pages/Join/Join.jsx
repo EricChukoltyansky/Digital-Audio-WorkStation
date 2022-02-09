@@ -9,7 +9,7 @@ const Join = () => {
       <div className="joinInnerContainer">
         <Link to={"/DAW"}>
           <h1 className="heading">
-            <i class="fa fa-play fa-2x"></i>
+            <i className="fa fa-play fa-2x"></i>
           </h1>
         </Link>
         <div className={"sub mt-20"} type="submit">

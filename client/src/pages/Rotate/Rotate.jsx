@@ -1,16 +1,18 @@
 import React from "react";
-import "./Rotate.css";
+import "./Rotate.scss";
+import { FiRotateCw } from "react-icons/fi";
 
-const Rotate = () => (
-  <div className="overlay">
-    <div className="iconContainer">
-      <div className="phone">
-        <div className="i.fa.fa-repeat"></div>
-        <p>Please rotate your phone!</p>
+const Rotate = () => {
+  return (
+    <div className="overlay">
+      <div className="iconContainer">
+        <div className="phone">
+          <p><FiRotateCw/></p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // .overlay
 // 	.iconContainer

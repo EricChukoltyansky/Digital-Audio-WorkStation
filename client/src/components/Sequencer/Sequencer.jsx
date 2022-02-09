@@ -28,10 +28,7 @@ export default function Sequencer({ player, socket }) {
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [sequencerVolume, setSequencerVolume] = useState(-12);
-  // const [power, setPower] = useState(true);
   const [BPMcount, setBPMCount] = useState(100);
-
-  const rotate
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
