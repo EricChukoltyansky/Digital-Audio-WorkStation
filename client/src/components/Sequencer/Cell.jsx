@@ -19,6 +19,8 @@ const getBoxShadow = (activated, triggered) => {
       return "0 0 100px 50px #922c2c";
     case activated && !triggered:
       return "0 0 20px 5px #e7a712";
+      case !activated && triggered:
+        return "0 0 3px 1px rgb(212, 212, 212)";
     default:
       return "none";
   }
@@ -29,6 +31,8 @@ const getBorder = (activated, triggered) => {
     case activated && triggered:
       return "none";
     case activated && !triggered:
+      return "none";
+    case !activated && triggered:
       return "none";
     default:
       return "solid 2px grey";
@@ -56,6 +60,7 @@ const Cell = styled.div.attrs(({ activated, triggered }) => ({
   transition: all 0.1s;
 
   &:hover {
+    border-radius: 20px;
     cursor: pointer;
   }
 
