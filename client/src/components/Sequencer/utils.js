@@ -1,15 +1,15 @@
 const steps = 16;
 const initialCellState = { triggered: false, activated: false };
 const lineMap = [
-  "SY9",
-  "SY8",
-  "SY7",
+  "CATHFS",
+  "CATEF",
+  "CATCS",
+  "CATAF",
+  "CATFS",
   "FS",
   "EF",
   "CS",
   "BF",
-  "SY2",
-  "SY1",
   "OH",
   "CH",
   "CP",
