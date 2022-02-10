@@ -14,6 +14,11 @@ const PlayerProvider = ({ children }) => {
         EF: "/sounds/bassEF.wav",
         CS: "/sounds/bassCS.wav",
         BF: "/sounds/bassBF.wav",
+        CATHFS: "/sounds/catHighFS.wav",
+        CATEF: "/sounds/catEF.wav",
+        CATCS: "/sounds/catCS.wav",
+        CATAF: "/sounds/catAF.wav",
+        CATFS: "/sounds/catFS.wav",
       },
       onload: () => {
         console.log("buffers loaded");
