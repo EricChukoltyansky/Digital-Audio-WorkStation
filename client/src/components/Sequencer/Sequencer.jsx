@@ -43,37 +43,37 @@ export default function Sequencer({ player, socket }) {
         const { triggered, activated } = sequence[i][j];
         sequence[i][j] = { activated, triggered: j === time };
         if (triggered && activated) {
-          if (lineMap[i] === "SY1") {
-            Synth1.volume.value = sequencerVolume;
-            Synth1.triggerAttackRelease("D1", "20n");
-          } else if (lineMap[i] === "SY2") {
-            Synth2.volume.value = sequencerVolume;
-            Synth2.triggerAttackRelease("F1", "20n");
-          } else if (lineMap[i] === "SY3") {
-            Synth3.volume.value = sequencerVolume;
-            Synth3.triggerAttackRelease("G1", "20n");
-          } else if (lineMap[i] === "SY4") {
-            Synth4.volume.value = sequencerVolume;
-            Synth4.triggerAttackRelease("A1", "20n");
-          } else if (lineMap[i] === "SY5") {
-            Synth5.volume.value = sequencerVolume;
-            Synth5.triggerAttackRelease("C2", "20n");
-          } else if (lineMap[i] === "SY6") {
-            Synth6.volume.value = sequencerVolume;
-            Synth6.triggerAttackRelease("D2", "20n");
-          } else if (lineMap[i] === "SY7") {
-            Synth7.volume.value = sequencerVolume;
-            Synth7.triggerAttackRelease(["D3","A3","D4"], "14n");
-          } else if (lineMap[i] === "SY8") {
-            Synth8.volume.value = sequencerVolume;
-            Synth8.triggerAttackRelease(["E3","B3","E4"], "14n");
-          } else if (lineMap[i] === "SY9") {
-            Synth9.volume.value = sequencerVolume;
-            Synth9.triggerAttackRelease(["F3","C4","F4"], "14n");
-          } else {
+          // if (lineMap[i] === "SY1") {
+          //   Synth1.volume.value = sequencerVolume;
+          //   Synth1.triggerAttackRelease("D1", "20n");
+          // } else if (lineMap[i] === "SY2") {
+          //   Synth2.volume.value = sequencerVolume;
+          //   Synth2.triggerAttackRelease("F1", "20n");
+          // } else if (lineMap[i] === "SY3") {
+          //   Synth3.volume.value = sequencerVolume;
+          //   Synth3.triggerAttackRelease("G1", "20n");
+          // } else if (lineMap[i] === "SY4") {
+          //   Synth4.volume.value = sequencerVolume;
+          //   Synth4.triggerAttackRelease("A1", "20n");
+          // } else if (lineMap[i] === "SY5") {
+          //   Synth5.volume.value = sequencerVolume;
+          //   Synth5.triggerAttackRelease("C2", "20n");
+          // } else if (lineMap[i] === "SY6") {
+          //   Synth6.volume.value = sequencerVolume;
+          //   Synth6.triggerAttackRelease("D2", "20n");
+          // } else if (lineMap[i] === "SY7") {
+          //   Synth7.volume.value = sequencerVolume;
+          //   Synth7.triggerAttackRelease(["D3","A3","D4"], "14n");
+          // } else if (lineMap[i] === "SY8") {
+          //   Synth8.volume.value = sequencerVolume;
+          //   Synth8.triggerAttackRelease(["E3","B3","E4"], "14n");
+          // } else if (lineMap[i] === "SY9") {
+          //   Synth9.volume.value = sequencerVolume;
+          //   Synth9.triggerAttackRelease(["F3","C4","F4"], "14n");
+          // } else {
             player.volume.value = sequencerVolume;
             player.player(lineMap[i]).start();
-          }
+          // }
         }
       }
     }
