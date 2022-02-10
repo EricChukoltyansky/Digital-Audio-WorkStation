@@ -6,10 +6,14 @@ const PlayerProvider = ({ children }) => {
   useEffect(() => {
     const player = new Tone.Players({
       urls: {
-        BD: "/more-sounds/kick.wav",
+        BD: "/sounds/the-kick.wav",
         CP: "/more-sounds/snare.wav",
-        OH: "/sounds/hh_open.wav",
-        CH: "/sounds/hh_closed.wav",
+        OH: "/more-sounds/hh_open.wav",
+        CH: "/more-sounds/hh_closed.wav",
+        FS: "/sounds/bassFS.wav",
+        EF: "/sounds/bassEF.wav",
+        CS: "/sounds/bassCS.wav",
+        BF: "/sounds/bassBF.wav",
       },
       onload: () => {
         console.log("buffers loaded");
