@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Join.css";
 import "../../assets/fonts/JMH Psychedelic CAPS.otf";
+// import Modal from "../Modal/Modal";
+import ModalPage from "../Modal/ModalPage";
 
 const Join = () => {
   return (
@@ -15,6 +17,9 @@ const Join = () => {
           </Link>
           <div className={"sub mt-20"} type="submit">
             Click <span>play</span> , it will be fun
+          </div>
+          <div>
+            <ModalPage/>
           </div>
         </div>
         <div className="footer">

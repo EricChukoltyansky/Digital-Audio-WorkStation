@@ -60,7 +60,7 @@ body {
   text-align: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 150px;
+  padding-top: 100px;
 }
 
 .heading {
@@ -70,7 +70,7 @@ body {
   width: 200px;
   height: 200px;
   padding-top: 25px;
-  /* padding-left: 10px; */
+  padding-left: 20px;
   line-height: 20px;
   border: 6px solid #fff;
   border-radius: 50%;
