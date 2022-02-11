@@ -28,14 +28,16 @@
 
 .modal {
   z-index: 100;
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   position: relative;
   margin: 1.75rem auto;
-  border-radius: 3px;
+  border-radius: 5px;
   max-width: 500px;
   padding: 2rem;
   font-family: "Spicy Rice", cursive;
   margin-top: 160px;
+  letter-spacing: 2px;
+  backdrop-filter: blur(2px);
 }
 
 .modal-header {
@@ -53,6 +55,11 @@
   border: none;
 }
 
+.modal-close-button span {
+  color: #000;
+  background-color: transparent;
+}
+
 button {
   font-size: 0.9rem;
   font-weight: 700;
@@ -64,7 +71,8 @@ button {
 
 .button-default {
   background: #247ba0;
-  color: #000;
+  color: rgb(201, 255, 246);
   font-family: "Spicy Rice", cursive;
   cursor: pointer;
+  letter-spacing: 3px;
 }

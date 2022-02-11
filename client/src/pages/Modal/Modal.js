@@ -28,7 +28,7 @@ const Modal = ({ isShowing, hide }) =>
               <p>
                 Hi, just wanted to let you know, that even though it's fun to
                 play solo, the best time spent is with your friends. So send the
-                app to your friend, make sure you are on the Sequencer page and
+                app to your friends, make sure you are on the Sequencer page and
                 start pushing buttons! Both of you should hear live what the
                 other one is pushing!
               </p>
