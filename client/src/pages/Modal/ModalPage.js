@@ -7,7 +7,7 @@ import "./styles.css";
 const ModalPage = () => {
   const { isShowing, toggle } = useModal();
   return (
-    <div className="App">
+    <div className="page">
       <button className="button-default" onClick={toggle}>
         Instructions
       </button>

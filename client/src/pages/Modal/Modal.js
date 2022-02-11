@@ -22,7 +22,7 @@ const Modal = ({ isShowing, hide }) =>
                   aria-label="Close"
                   onClick={hide}
                 >
-                  <span aria-hidden="true">Close;</span>
+                  <span aria-hidden="true">Close window</span>
                 </button>
               </div>
               <p>
