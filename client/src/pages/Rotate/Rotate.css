@@ -62,8 +62,7 @@
     animation: fadeIn 0.5s 0.5s forwards ease;
   }
 }
-/* KEYFRAMES ------------------------------------------- */
-/* Animate width + height */
+
 @keyframes sizeIncrease {
   0% {
     width: 0;
@@ -78,20 +77,20 @@
     height: 160px;
   }
 }
-/* Add borders */
+
 @keyframes borderIncrease {
   100% {
     border-width: 20px 10px;
   }
 }
-/* fade-in */
+
 @keyframes fadeIn {
   100% {
     color: #000;
     opacity: 1;
   }
 }
-/* Rotate device */
+
 @keyframes rotateRight {
   100% {
     transform: rotate(90deg);

@@ -14,12 +14,4 @@ const Rotate = () => {
   );
 };
 
-// .overlay
-// 	.iconContainer
-// 		.phone
-// 			i.fa.fa-repeat
-// 		p Rotate your device!
-// h1 Resize the screen!
-// span.pull &#x2190; Pull left
-
 export default Rotate;
