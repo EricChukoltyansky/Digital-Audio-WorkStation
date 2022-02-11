@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Join.css";
 import "../../assets/fonts/JMH Psychedelic CAPS.otf";
-// import Modal from "../Modal/Modal";
 import ModalPage from "../Modal/ModalPage";
 
 const Join = () => {

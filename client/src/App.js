@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import PlayerProvider from "./components/Sequencer/PlayerProvider";
-import Sequencer from "./components/Sequencer/Sequencer";
-import { io } from "socket.io-client";
-import { initialState } from "./components/Sequencer/utils";
-
-import Join from "./pages/Join/Join";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { io } from "socket.io-client";
+import PlayerProvider from "./components/context/PlayerProvider";
+import Sequencer from "./components/Sequencer/Sequencer";
+import Join from "./pages/Join/Join";
 import Loader from "./pages/Loader/Loader";
 import Rotate from "./pages/Rotate/Rotate";
 
@@ -17,8 +15,6 @@ const socket = io.connect(
 
 function App() {
   const [orientation, setOrientation] = useState(window.screen.orientation.type);
-
-  console.log(orientation);
 
   useEffect(() => {
     const handleOrientationChange = () =>

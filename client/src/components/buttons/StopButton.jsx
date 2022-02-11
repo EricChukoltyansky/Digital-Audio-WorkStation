@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { darken } from "polished";
 import { FaStop } from "react-icons/fa";
 
 const Style = {
   StopButton: styled.button`
     padding: 0.75em 0.90em;
     outline: none;
-    background-color: ${darken(0.2, "orange")};
+    background: radial-gradient(#e5b1f5, #66069e);
     border: none;
     border-radius: 5px;
     color: white;
@@ -16,7 +15,6 @@ const Style = {
     transition: all 0.2s;
 
     &:hover {
-      background: orange;
       border-radius: 50px;
       cursor: pointer;
     }
