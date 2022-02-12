@@ -7,11 +7,16 @@ const Rotate = () => {
     <div className="overlay">
       <div className="iconContainer">
         <div className="phone">
-          <p><FiRotateCw/></p>
+          <p>
+            <FiRotateCw />
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
+
 export default Rotate;
+
+
