@@ -57,16 +57,20 @@ body {
 .joinOuterContainer {
   display: flex;
   justify-content: center;
-  text-align: center;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   padding-top: 100px;
 }
 
+.heading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .heading {
-  margin-left: 30%;
   box-sizing: border-box;
-  display: block;
   width: 200px;
   height: 200px;
   padding-top: 25px;
@@ -155,7 +159,6 @@ body {
     height: 150px;
     font-size: 50px;
     padding-top: 18px;
-    padding-right: 4px;
   }
 
   .sub {
@@ -165,4 +168,26 @@ body {
 
 button:focus {
   outline: 0;
+}
+
+@media (max-height: 796px) {
+  .footer {
+    padding-top: 0;
+  }
+
+  .joinOuterContainer {
+    padding-top: 0;
+  }
+
+  .mt-20 {
+    margin-top: 0;
+    font-size: 25px;
+  }
+
+  .heading {
+    width: 150px;
+    height: 150px;
+    font-size: 50px;
+    padding-top: 18px;
+  }
 }
