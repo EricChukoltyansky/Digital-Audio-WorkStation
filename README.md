@@ -79,7 +79,7 @@ Yes! new and cool features are currently in the work, we are looking forward pre
 
 ## Feedback
 
-If you have any feedback, please reach out to us at erik.chukoltyansky@gmail.com
+If you have any feedback, please reach out to us at erik.chukoltyansky@gmail.com or idan.93lev@gmail.com
 
 
 ## Lessons Learned
@@ -94,7 +94,7 @@ If you have any feedback, please reach out to us at erik.chukoltyansky@gmail.com
 
 ## Tech Stack
 
-**Client:** React, Styled-Components, CSS
+**Client:** React, Styled-Components, Vanilla JS, CSS, HTML, responsive design
 
 **Server:** Node, Socket.io
 
