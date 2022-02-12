@@ -1,27 +1,15 @@
-import { useState, useEffect, useCallback } from "react";
-import Grid from "./Grid";
-import Bar from "./Nav-Bar";
-import PlayButton from "./PlayButton";
-import {
-  Synth1,
-  Synth2,
-  Synth3,
-  Synth4,
-  Synth5,
-  Synth6,
-  Synth7,
-  Synth8,
-  Synth9,
-} from "./Instruments";
-import { steps, lineMap, initialState } from "./utils";
-import StopButton from "./StopButton";
-import Volume from "./Volume";
-import BPM from "./BPM";
-import PowerOn from "./PowerOn";
-import ClearAllButton from "./ClearAllButton";
-import PowerOff from "./PowerOff";
+import { useState, useEffect } from "react";
+import { steps, lineMap, initialState } from "./initial";
+import Grid from "../styled-components/Grid";
+import Bar from "../styled-components/Nav-Bar";
+import PlayButton from "../buttons/PlayButton";
+import StopButton from "../buttons/StopButton";
+import Volume from "../sliders/Volume";
+import BPM from "../sliders/BPM"
+import PowerOn from "../buttons/PowerOn";
+import ClearAllButton from "../buttons/ClearAllButton";
+import PowerOff from "../buttons/PowerOff";
 import "./Sequencer.css";
-import styled from "styled-components";
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
@@ -29,7 +17,6 @@ export default function Sequencer({ player, socket }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [sequencerVolume, setSequencerVolume] = useState(-12);
   const [BPMcount, setBPMCount] = useState(100);
-  const [, updateState] = useState();
 
   function refreshPage() {
     window.location.reload(false);

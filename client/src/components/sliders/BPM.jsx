@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { darken } from "polished";
 
 const Style = {
-  Volume: styled.input`
+  BPM: styled.input`
     -webkit-appearance: none;
     margin-bottom: 15px;
     cursor: pointer;
     width: 15%;
     border-radius: 20px;
+    direction: rtl;
     margin: 0.5em;
 
     &::-webkit-slider-runnable-track {
@@ -24,13 +24,12 @@ const Style = {
       height: 35px;
       width: 35px;
       border-radius: 7px;
-      background: ${darken(0.2, "rgb(119, 19, 233)")};
+      background: radial-gradient(rgb(213, 245, 237), rgb(1, 66, 66));
       margin-top: -14px;
       transition: all 0.2s;
     }
 
     &::-webkit-slider-thumb:hover {
-      background: rgb(119, 19, 233);
       border-radius: 20px;
       cursor: pointer;
     }
@@ -41,8 +40,8 @@ const Style = {
   `,
 };
 
-const Volume = ({ max, min, step, type, value, onChange }) => (
-  <Style.Volume
+const BPM = ({ max, min, step, type, value, onChange }) => (
+  <Style.BPM
     max={max}
     min={min}
     step={step}
@@ -52,4 +51,4 @@ const Volume = ({ max, min, step, type, value, onChange }) => (
   />
 );
 
-export default Volume;
+export default BPM;

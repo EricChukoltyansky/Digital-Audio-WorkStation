@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { darken } from "polished";
 import { FaPlay, FaPause } from "react-icons/fa";
 
 const Style = {
   PlayButton: styled.button`
     padding: 0.75em 0.90em;
     outline: none;
-    background-color: ${darken(0.2, "blue")};
+    background: radial-gradient(#acd4fa, #2559c2);
     border: none;
     border-radius: 5px;
     color: white;
@@ -16,7 +15,6 @@ const Style = {
     transition: all 0.2s;
 
     &:hover {
-      background: blue;
       border-radius: 50px;
       cursor: pointer;
     }

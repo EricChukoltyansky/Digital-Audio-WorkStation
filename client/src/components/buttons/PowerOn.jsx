@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { darken } from "polished";
 import { ImVolumeMedium } from "react-icons/im";
 
 const Style = {
   PowerOn: styled.button`
   padding: 0.75em 0.90em;
   outline: none;
-  background-color: ${darken(0.2, "#27ae60")};
+  background: radial-gradient(#b1f5d8, #0b996a);
   border: none;
   border-radius: 5px;
   color: white;
@@ -16,7 +15,6 @@ const Style = {
   transition: all 0.2s;
 
   &:hover {
-    background: #27ae60;
     border-radius: 50px;
     cursor: pointer;
   }
