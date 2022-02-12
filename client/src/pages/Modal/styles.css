@@ -55,9 +55,10 @@
   border: none;
 }
 
-.modal-close-button span {
+button.modal-close-button {
   color: #000;
-  background-color: transparent;
+  background-color: white;
+  /* z-index: 3000; */
 }
 
 button {
