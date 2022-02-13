@@ -1,5 +1,5 @@
 
-# Collaborative Digitial Sequencer
+# Collaborative Web Sequencer
 
 Our app offers an opportunity for users to play together at the same time on one platform.
 Send it to your friends and you can play together and create melodies with a click of a button.
