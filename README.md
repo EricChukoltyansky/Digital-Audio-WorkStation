@@ -1,5 +1,5 @@
 
-# Collaborative Digitial Sequencer
+# Collaborative Web Sequencer
 
 Our app offers an opportunity for users to play together at the same time on one platform.
 Send it to your friends and you can play together and create melodies with a click of a button.
@@ -10,7 +10,7 @@ Send it to your friends and you can play together and create melodies with a cli
 ## Demo
 Working live demo
 
-https://daw-of-web.herokuapp.com/
+https://collab-web-seq.herokuapp.com/
 
 
 ## Authors
@@ -79,7 +79,7 @@ Yes! new and cool features are currently in the work, we are looking forward pre
 
 ## Feedback
 
-If you have any feedback, please reach out to us at erik.chukoltyansky@gmail.com
+If you have any feedback, please reach out to us at erik.chukoltyansky@gmail.com or idan.93lev@gmail.com
 
 
 ## Lessons Learned
@@ -94,7 +94,7 @@ If you have any feedback, please reach out to us at erik.chukoltyansky@gmail.com
 
 ## Tech Stack
 
-**Client:** React, Styled-Components, CSS
+**Client:** React, Styled-Components, Vanilla JS, CSS, HTML, responsive design
 
 **Server:** Node, Socket.io
 

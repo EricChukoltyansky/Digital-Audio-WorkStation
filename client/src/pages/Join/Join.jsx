@@ -10,9 +10,11 @@ const Join = () => {
       <div className="joinOuterContainer">
         <div className="joinInnerContainer">
           <Link to={"/DAW"}>
+            <div className="heading-container">
             <h1 className="heading">
               <i className="fa fa-play fa-2x"></i>
             </h1>
+            </div>
           </Link>
           <div className={"sub mt-20"} type="submit">
             Click <span>play</span> , it will be fun
