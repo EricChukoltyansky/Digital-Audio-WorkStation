@@ -21,7 +21,11 @@ const Style = {
   `,
 };
 
-const StopButton = ({ onClick }) => (
+type StopButtonProps = {
+  onClick: () => void;
+};
+
+const StopButton = ({ onClick }: StopButtonProps) => (
   <Style.StopButton onClick={onClick}>
     <FaStop />
   </Style.StopButton>
