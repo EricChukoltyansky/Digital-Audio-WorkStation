@@ -26,9 +26,17 @@ const PlayerProvider = ({ children }) => {
       },
     }).toDestination();
 
+    const oragnPlayer = new Tone.Players({
+      urls: {
+        BD: "/sounds/the-kick.wav",
+        CP: "/sounds/snare.wav",
+        OH: "/sounds/hh_open.wav",
+      }
+    }).toDestination()  
+
   }, []);
 
-  return children({ player });
+  return children({ player, oragnPlayer });
 };
 
 export default PlayerProvider;
