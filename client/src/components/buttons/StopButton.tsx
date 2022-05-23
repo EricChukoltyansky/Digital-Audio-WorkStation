@@ -23,6 +23,7 @@ const Style = {
 
 type StopButtonProps = {
   onClick: () => void;
+  
 };
 
 const StopButton = ({ onClick }: StopButtonProps) => (

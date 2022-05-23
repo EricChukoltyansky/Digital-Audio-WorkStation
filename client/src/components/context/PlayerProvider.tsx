@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import * as Tone from "tone";
 
-const PlayerProvider = ({ children }) => {
-  const [player, setPlayer] = useState(null);
+type Props = {
+  children: (props: { player: any }) => React.ReactNode;
+};
+
+type PlayerContextType = {
+  player: any;
+};
+
+const PlayerProvider = ({ children }: Props) => {
+  const [player, setPlayer] = useState<PlayerContextType | null>(null);
   useEffect(() => {
     const player = new Tone.Players({
       urls: {
@@ -26,6 +34,7 @@ const PlayerProvider = ({ children }) => {
       },
     }).toDestination();
 
+    
   }, []);
 
   return children({ player });
