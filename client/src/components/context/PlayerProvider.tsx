@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import * as Tone from "tone";
 
 type Props = {
-  children: (props: { player: any }) => React.ReactNode;
+  children: (props: { player: any }) => JSX.Element;
 };
 
 type PlayerContextType = {

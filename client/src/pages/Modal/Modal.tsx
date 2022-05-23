@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-type ModalProps = {
-  isShowing: Boolean;
-  hide: any;
-};
+type ModalType = {
+  isShowing: boolean;
+  hide: () => void;
+}
 
-const Modal = ({ isShowing, hide }: ModalProps) =>
+const Modal = ({ isShowing, hide }: ModalType) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -45,3 +45,4 @@ const Modal = ({ isShowing, hide }: ModalProps) =>
     : null;
 
 export default Modal;
+

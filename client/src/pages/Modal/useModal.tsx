@@ -1,3 +1,4 @@
+
 import { useState, FunctionComponent } from "react";
 
 const useModal:FunctionComponent<{ initial?: Boolean }> = ({ initial = false }) => {

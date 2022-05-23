@@ -1,3 +1,4 @@
+
 import React from "react";
 import Modal from "./Modal";
 import useModal from "./useModal";
@@ -17,3 +18,4 @@ const ModalPage = () => {
 };
 
 export default ModalPage;
+
