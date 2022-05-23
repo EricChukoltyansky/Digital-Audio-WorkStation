@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { FaTrashAlt } from "react-icons/fa";
+import { ImVolumeMute2 } from "react-icons/im";
+
 const Style = {
-  ClearAllButton: styled.button`
-    padding: 0.75em 0.9em;
+  PowerOff: styled.button`
+    padding: 0.75em 0.90em;
     outline: none;
     background: radial-gradient(#f8b6b6, #922c2c);
     border: none;
@@ -20,10 +21,14 @@ const Style = {
   `,
 };
 
-const ClearAllButton = ({ onClick }) => (
-  <Style.ClearAllButton onClick={onClick}>
-    <FaTrashAlt />
-  </Style.ClearAllButton>
+type PowerOffProps = {
+  onClick: () => void;
+};
+
+const PowerOff = ({ onClick }: PowerOffProps) => (
+  <Style.PowerOff onClick={onClick}>
+    <ImVolumeMute2 />
+  </Style.PowerOff>
 );
 
-export default ClearAllButton;
+export default PowerOff;
