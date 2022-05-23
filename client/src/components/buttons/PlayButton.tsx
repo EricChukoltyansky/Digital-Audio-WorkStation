@@ -1,9 +1,10 @@
+import React from "react";
 import styled from "styled-components";
 import { FaPlay, FaPause } from "react-icons/fa";
 
 const Style = {
   PlayButton: styled.button`
-    padding: 0.75em 0.90em;
+    padding: 0.75em 0.9em;
     outline: none;
     background: radial-gradient(#acd4fa, #2559c2);
     border: none;
@@ -21,8 +22,9 @@ const Style = {
 };
 
 type PlayButtonProps = {
-  playing: Boolean;
+  playing: boolean;
   onClick: () => void;
+  button: string;
 };
 
 const PlayButton = ({ playing, onClick }: PlayButtonProps) => (

@@ -30,6 +30,7 @@ export default function Sequencer({ player, socket }) {
   };
 
   const nextStep = (time) => {
+    console.log(time)
     for (let i = 0; i < sequence.length; i++) {
       for (let j = 0; j < sequence[i].length; j++) {
         const { triggered, activated } = sequence[i][j];
@@ -80,6 +81,7 @@ export default function Sequencer({ player, socket }) {
       toggleStep(m.x, m.z);
     };
     const switchMessage = (m) => {
+      console.log(m.tog)
       setPlaying(m.tog);
     };
     const rewindMessage = () => {
