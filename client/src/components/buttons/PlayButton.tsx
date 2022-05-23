@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { FaPlay, FaPause } from "react-icons/fa";
 
@@ -21,7 +20,12 @@ const Style = {
   `,
 };
 
-const PlayButton = ({ playing, onClick }) => (
+type PlayButtonProps = {
+  playing: Boolean;
+  onClick: () => void;
+};
+
+const PlayButton = ({ playing, onClick }: PlayButtonProps) => (
   <Style.PlayButton onClick={onClick}>
     {playing ? <FaPause /> : <FaPlay />}
   </Style.PlayButton>
