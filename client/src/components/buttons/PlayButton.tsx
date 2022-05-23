@@ -24,6 +24,7 @@ const Style = {
 type PlayButtonProps = {
   playing: boolean;
   onClick: () => void;
+  button: string;
 };
 
 const PlayButton = ({ playing, onClick }: PlayButtonProps) => (

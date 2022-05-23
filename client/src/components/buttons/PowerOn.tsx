@@ -21,7 +21,11 @@ const Style = {
 `,
 };
 
-const PowerOn = ({ onClick }) => (
+type Props = {
+  onClick: () => void;
+}
+
+const PowerOn = ({ onClick }: Props) => (
   <Style.PowerOn onClick={onClick}>
     {<ImVolumeMedium />}
   </Style.PowerOn>

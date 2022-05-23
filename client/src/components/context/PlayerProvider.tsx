@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import * as Tone from "tone";
 
-const PlayerProvider = ({ children }) => {
-  const [player, setPlayer] = useState(null);
+type Props = {
+  children: (props: { player: any }) => React.ReactNode;
+};
+
+type PlayerContextType = {
+  player: any;
+};
+
+const PlayerProvider = ({ children }: Props) => {
+  const [player, setPlayer] = useState<PlayerContextType | null>(null);
   useEffect(() => {
     const player = new Tone.Players({
       urls: {
@@ -26,17 +34,10 @@ const PlayerProvider = ({ children }) => {
       },
     }).toDestination();
 
-    const oragnPlayer = new Tone.Players({
-      urls: {
-        BD: "/sounds/the-kick.wav",
-        CP: "/sounds/snare.wav",
-        OH: "/sounds/hh_open.wav",
-      }
-    }).toDestination()  
-
+    
   }, []);
 
-  return children({ player, oragnPlayer });
+  return children({ player });
 };
 
 export default PlayerProvider;
