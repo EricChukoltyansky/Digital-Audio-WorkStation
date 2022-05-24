@@ -1,11 +1,8 @@
-import { useState } from "react";
 
-type Props = {
-  children: (props: { toggle: () => void }) => JSX.Element;
-}
+import { useState, FunctionComponent } from "react";
 
-const useModal = () => {
-  const [isShowing, setIsShowing] = useState(false);
+const useModal:FunctionComponent<{ initial?: Boolean }> = ({ initial = false }) => {
+  const [isShowing, setIsShowing] = useState(initial);
 
   function toggle() {
     setIsShowing(!isShowing);

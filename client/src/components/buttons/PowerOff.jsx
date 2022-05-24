@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { FaStop } from "react-icons/fa";
+import { ImVolumeMute2 } from "react-icons/im";
 
 const Style = {
-  StopButton: styled.button`
+  PowerOff: styled.button`
     padding: 0.75em 0.90em;
     outline: none;
-    background: radial-gradient(#e5b1f5, #66069e);
+    background: radial-gradient(#f8b6b6, #922c2c);
     border: none;
     border-radius: 5px;
     color: white;
@@ -21,15 +21,10 @@ const Style = {
   `,
 };
 
-type StopButtonProps = {
-  onClick: () => void;
-  
-};
-
-const StopButton = ({ onClick }: StopButtonProps) => (
-  <Style.StopButton onClick={onClick}>
-    <FaStop />
-  </Style.StopButton>
+const PowerOff = ({ onClick }) => (
+  <Style.PowerOff onClick={onClick}>
+    <ImVolumeMute2 />
+  </Style.PowerOff>
 );
 
-export default StopButton
+export default PowerOff;
