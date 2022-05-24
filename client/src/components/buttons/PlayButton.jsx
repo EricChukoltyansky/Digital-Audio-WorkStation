@@ -21,13 +21,7 @@ const Style = {
   `,
 };
 
-type PlayButtonProps = {
-  playing: boolean;
-  onClick: () => void;
-  button: string;
-};
-
-const PlayButton = ({ playing, onClick }: PlayButtonProps) => (
+const PlayButton = ({ playing, onClick }) => (
   <Style.PlayButton onClick={onClick}>
     {playing ? <FaPause /> : <FaPlay />}
   </Style.PlayButton>
