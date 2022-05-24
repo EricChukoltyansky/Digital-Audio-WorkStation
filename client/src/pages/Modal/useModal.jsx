@@ -1,9 +1,5 @@
 import { useState } from "react";
 
-type Props = {
-  children: (props: { toggle: () => void }) => JSX.Element;
-}
-
 const useModal = () => {
   const [isShowing, setIsShowing] = useState(false);
 
