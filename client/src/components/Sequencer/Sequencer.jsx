@@ -5,11 +5,13 @@ import Bar from "../styled-components/Nav-Bar";
 import PlayButton from "../buttons/PlayButton";
 import StopButton from "../buttons/StopButton";
 import Volume from "../sliders/Volume";
-import BPM from "../sliders/BPM"
+import BPM from "../sliders/BPM";
 import PowerOn from "../buttons/PowerOn";
 import ClearAllButton from "../buttons/ClearAllButton";
 import PowerOff from "../buttons/PowerOff";
 import "./Sequencer.css";
+
+const deepCopyInitialState = JSON.parse(JSON.stringify(initialState));
 
 export default function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
@@ -17,10 +19,30 @@ export default function Sequencer({ player, socket }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [sequencerVolume, setSequencerVolume] = useState(-12);
   const [BPMcount, setBPMCount] = useState(100);
+  const [stopped, setStopped] = useState(false);
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
+  // alert("alert start!");
+  // console.log("after state declaration");
+  // console.log(initialState);
+
+  // function resetSequence() {
+  //   setSequence(deepCopyInitialState);
+  //   console.log(sequence);
+  //   setCurrentStep(0);
+  //   // setReset(true);  
+  // }
+
+  const resetSequence = () => {
+    for (let i = 0; i < sequence.length; i++) {
+      for (let j = 0; j < sequence[i].length; j++) {
+        const { triggered, activated } = sequence[i][j];
+        if (triggered || activated) {
+        sequence[i][j] = { activated: false, triggered: false };
+        }
+      }
+    }
+    setSequence(sequence);
+  };
 
   const toggleStep = (line, step) => {
     const sequenceCopy = [...sequence];
@@ -30,7 +52,7 @@ export default function Sequencer({ player, socket }) {
   };
 
   const nextStep = (time) => {
-    console.log(time)
+    // console.log(time);
     for (let i = 0; i < sequence.length; i++) {
       for (let j = 0; j < sequence[i].length; j++) {
         const { triggered, activated } = sequence[i][j];
@@ -52,11 +74,11 @@ export default function Sequencer({ player, socket }) {
     socket.emit("switch", { tog: switcher });
   };
 
-  const handleStopPlaying = () => {
-    socket.emit("rewind");
+  const handleStopPlaying = (switcher) => {
+    socket.emit("rewind", { tog: switcher });
   };
 
-  const handleClearAll = () => {
+  const handleReset = () => {
     socket.emit("clearAll");
   };
 
@@ -77,30 +99,44 @@ export default function Sequencer({ player, socket }) {
   };
 
   useEffect(() => {
-    const recieveMessage = (m) => {
+    const toggleMessage = (m) => {
       toggleStep(m.x, m.z);
     };
-    const switchMessage = (m) => {
-      console.log(m.tog)
+    const playPauseMessage = (m) => {
       setPlaying(m.tog);
-    };
-    const rewindMessage = () => {
+      // console.log(m);
+      if(stopped) {
       setCurrentStep(0);
-      nextStep(currentStep);
-      setPlaying(false);
+      nextStep(currentStep)
+      }
+      setStopped(false)
+      // console.log("stopmsg");
+      // console.log(stopped);
+      console.log(playing);
     };
-    const clearAllMsg = () => {
-      refreshPage();
+    const stopMessage = (m) => {
+      setPlaying(false);
+      setStopped(m.tog);
+      // nextStep(currentStep);
+      // setSequence(sequenceCopy);
+      // console.log(m);
+      // console.log("stopmsg");
+      // console.log(stopped);
+    };
+    const resetMessage = () => {
+      resetSequence();
+      setCurrentStep(0);
+      setPlaying(false);
     };
 
     const BPMmessage = (m) => {
       setBPMCount(m.value);
     };
 
-    socket.on("arm", recieveMessage);
-    socket.on("switch", switchMessage);
-    socket.on("rewind", rewindMessage);
-    socket.on("clearAll", clearAllMsg);
+    socket.on("arm", toggleMessage);
+    socket.on("switch", playPauseMessage);
+    socket.on("rewind", stopMessage);
+    socket.on("clearAll", resetMessage);
     socket.on("BPM", BPMmessage);
   }, []);
 
@@ -115,7 +151,7 @@ export default function Sequencer({ player, socket }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [currentStep, playing, BPMcount]);
+  }, [currentStep, playing, BPMcount, sequence, stopped]);
 
   return (
     <div className="Sequencer">
@@ -125,7 +161,7 @@ export default function Sequencer({ player, socket }) {
           onClick={() => handleSetPlaying(!playing)}
         />
 
-        <StopButton onClick={handleStopPlaying} />
+        <StopButton onClick={() => handleStopPlaying(true)} />
 
         <Volume
           max="4"
@@ -151,7 +187,7 @@ export default function Sequencer({ player, socket }) {
           <PowerOn onClick={handlePowerOn} />
         )}
 
-        <ClearAllButton onClick={handleClearAll} />
+        <ClearAllButton onClick={handleReset} />
       </Bar>
       <Grid
         sequence={sequence}
