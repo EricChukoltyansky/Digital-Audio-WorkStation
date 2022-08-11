@@ -10,7 +10,7 @@ Send it to your friends and you can play together and create melodies with a cli
 ## Demo
 Working live demo
 
-https://collab-web-seq.herokuapp.com/
+https://collab-web-seq.herokuapp.com
 
 
 ## Authors
