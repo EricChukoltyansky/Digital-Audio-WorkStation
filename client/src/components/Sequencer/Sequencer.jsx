@@ -21,17 +21,6 @@ export default function Sequencer({ player, socket }) {
   const [BPMcount, setBPMCount] = useState(100);
   const [stopped, setStopped] = useState(false);
 
-  // alert("alert start!");
-  // console.log("after state declaration");
-  // console.log(initialState);
-
-  // function resetSequence() {
-  //   setSequence(deepCopyInitialState);
-  //   console.log(sequence);
-  //   setCurrentStep(0);
-  //   // setReset(true);  
-  // }
-
   const resetSequence = () => {
     for (let i = 0; i < sequence.length; i++) {
       for (let j = 0; j < sequence[i].length; j++) {
@@ -52,7 +41,6 @@ export default function Sequencer({ player, socket }) {
   };
 
   const nextStep = (time) => {
-    // console.log(time);
     for (let i = 0; i < sequence.length; i++) {
       for (let j = 0; j < sequence[i].length; j++) {
         const { triggered, activated } = sequence[i][j];
@@ -104,24 +92,16 @@ export default function Sequencer({ player, socket }) {
     };
     const playPauseMessage = (m) => {
       setPlaying(m.tog);
-      // console.log(m);
       if(stopped) {
       setCurrentStep(0);
       nextStep(currentStep)
       }
       setStopped(false)
-      // console.log("stopmsg");
-      // console.log(stopped);
       console.log(playing);
     };
     const stopMessage = (m) => {
       setPlaying(false);
       setStopped(m.tog);
-      // nextStep(currentStep);
-      // setSequence(sequenceCopy);
-      // console.log(m);
-      // console.log("stopmsg");
-      // console.log(stopped);
     };
     const resetMessage = () => {
       resetSequence();
