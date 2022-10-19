@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { io } from "socket.io-client";
 import PlayerProvider from "./components/context/PlayerProvider";
 import Sequencer from "./components/Sequencer/Sequencer";
-import Join from "./pages/Join/Join";
 import Loader from "./pages/Loader/Loader";
 import Rotate from "./pages/Rotate/Rotate";
 
@@ -28,9 +27,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Join />} />
           <Route
-            path="/DAW"
+            path="/"
             element={
               <PlayerProvider>
                 {({ player }) => {
