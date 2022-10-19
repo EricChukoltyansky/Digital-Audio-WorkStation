@@ -15,20 +15,9 @@ const lineMap = [
   "CP",
   "BD",
 ];
-const initialState = [
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-  new Array(16).fill(initialCellState),
-];
+
+const initialState = lineMap.map(() => {
+  return new Array(steps).fill(initialCellState);
+});
 
 export { steps, lineMap, initialState };
