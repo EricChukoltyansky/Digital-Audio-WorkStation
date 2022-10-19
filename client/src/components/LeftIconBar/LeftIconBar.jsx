@@ -1,15 +1,34 @@
-import React from 'react';
+import React from "react";
+import styled from "styled-components";
 import { GiDrumKit, GiGuitarBassHead } from "react-icons/gi";
 import { CgPiano } from "react-icons/cg";
-import "./LeftIconBar.css";
 
+const Bar = styled.div`
+    height: calc(100vh - 75px);
+    right: calc(100vw - 50px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+`;
+
+const Head = styled.h1`
+  color: white;
+`;
 
 export default function LeftIconBar() {
   return (
-    <div className='LeftIconBar'>
-      <h1 className='icon piano'><CgPiano/></h1>
-      <h1 className='icon guitar'><GiGuitarBassHead/></h1>
-      <h1 className='icon drums'><GiDrumKit/></h1>
-    </div>
-  )
+    <Bar>
+      <Head>
+        <CgPiano />
+      </Head>
+      <Head>
+        <GiGuitarBassHead />
+      </Head>
+      <Head>
+        <GiDrumKit />
+      </Head>
+    </Bar>
+  );
 }
