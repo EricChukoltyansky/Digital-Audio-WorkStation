@@ -3,3 +3,12 @@
   width: 100vw;
   background: #1c1c1e;
 }
+
+.seqContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  /* border: 2px solid white; */
+}

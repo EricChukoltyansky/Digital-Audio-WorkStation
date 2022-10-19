@@ -10,6 +10,7 @@ import PowerOn from "../buttons/PowerOn";
 import ClearAllButton from "../buttons/ClearAllButton";
 import PowerOff from "../buttons/PowerOff";
 import "./Sequencer.css";
+import LeftIconBar from "../LeftIconBar/LeftIconBar";
 
 const deepCopyInitialState = JSON.parse(JSON.stringify(initialState));
 
@@ -26,7 +27,7 @@ export default function Sequencer({ player, socket }) {
       for (let j = 0; j < sequence[i].length; j++) {
         const { triggered, activated } = sequence[i][j];
         if (triggered || activated) {
-        sequence[i][j] = { activated: false, triggered: false };
+          sequence[i][j] = { activated: false, triggered: false };
         }
       }
     }
@@ -92,11 +93,11 @@ export default function Sequencer({ player, socket }) {
     };
     const playPauseMessage = (m) => {
       setPlaying(m.tog);
-      if(stopped) {
-      setCurrentStep(0);
-      nextStep(currentStep)
+      if (stopped) {
+        setCurrentStep(0);
+        nextStep(currentStep);
       }
-      setStopped(false)
+      setStopped(false);
       console.log(playing);
     };
     const stopMessage = (m) => {
@@ -169,6 +170,7 @@ export default function Sequencer({ player, socket }) {
 
         <ClearAllButton onClick={handleReset} />
       </Bar>
+      <LeftIconBar />
       <Grid
         sequence={sequence}
         handleToggleStep={handleToggleStep}
