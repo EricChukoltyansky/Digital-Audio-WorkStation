@@ -12,6 +12,7 @@ import PowerOff from "../buttons/PowerOff";
 import "./Sequencer.css";
 import LeftIconBar from "../LeftIconBar/LeftIconBar";
 import RightBar from "../RightBar/RightBar";
+import Instructions from "../buttons/Instructions";
 
 const deepCopyInitialState = JSON.parse(JSON.stringify(initialState));
 
@@ -170,6 +171,7 @@ export default function Sequencer({ player, socket }) {
         )}
 
         <ClearAllButton onClick={handleReset} />
+        <Instructions onClick={handleInstructions}/>
       </Bar>
       <RightBar />
       <LeftIconBar />
