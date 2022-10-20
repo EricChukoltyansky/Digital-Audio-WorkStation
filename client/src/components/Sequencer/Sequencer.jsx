@@ -11,7 +11,7 @@ import ClearAllButton from "../buttons/ClearAllButton";
 import PowerOff from "../buttons/PowerOff";
 import "./Sequencer.css";
 import LeftIconBar from "../LeftIconBar/LeftIconBar";
-import CurlyBrace from "../CurlyBrace/CurlyBrace";
+import RightBar from "../RightBar/RightBar";
 
 const deepCopyInitialState = JSON.parse(JSON.stringify(initialState));
 
@@ -171,6 +171,7 @@ export default function Sequencer({ player, socket }) {
 
         <ClearAllButton onClick={handleReset} />
       </Bar>
+      <RightBar />
       <LeftIconBar />
       <Grid
         sequence={sequence}
