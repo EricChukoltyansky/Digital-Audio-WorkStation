@@ -24,6 +24,7 @@
   border: 2px solid white;
   backdrop-filter: blur(2px);
   background-color: rgba(255, 255, 255, 0.2);
+  transition: 0.5s ease-in-out;
 }
 
 .instructions h1 {
