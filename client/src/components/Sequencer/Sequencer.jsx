@@ -23,6 +23,7 @@ export default function Sequencer({ player, socket }) {
   const [sequencerVolume, setSequencerVolume] = useState(-12);
   const [BPMcount, setBPMCount] = useState(100);
   const [stopped, setStopped] = useState(false);
+  const [isShown, setIsShown] = useState(true);
 
   const resetSequence = () => {
     for (let i = 0; i < sequence.length; i++) {
@@ -88,10 +89,6 @@ export default function Sequencer({ player, socket }) {
   const handlePowerOff = () => {
     setSequencerVolume(-12);
   };
-
-  const handleInstructions = () => {
-    console.log("Instructions");
-  }
 
   useEffect(() => {
     const toggleMessage = (m) => {
@@ -175,7 +172,10 @@ export default function Sequencer({ player, socket }) {
         )}
 
         <ClearAllButton onClick={handleReset} />
-        <Instructions onClick={handleInstructions}/>
+        <Instructions
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+        />
       </Bar>
       <RightBar />
       <LeftIconBar />
@@ -184,6 +184,15 @@ export default function Sequencer({ player, socket }) {
         handleToggleStep={handleToggleStep}
         handleStopPlaying={handleStopPlaying}
       />
+      {isShown && (
+        <div className="instructions">
+          <h1>Instructions</h1>
+          <p>
+            Left Side: First 5 rows are keyboards. Middle 4 rows are basses.
+            Last 4 rows are drums.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

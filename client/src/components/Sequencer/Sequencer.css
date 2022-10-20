@@ -10,5 +10,34 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  /* border: 2px solid white; */
+}
+
+.instructions {
+  height: 60vh;
+  width: 60vw;
+  background: #1c1c1e;
+  margin: 0 auto;
+  z-index: 999;
+  position: absolute;
+  top: 20vh;
+  left: 20vw;
+  border: 2px solid white;
+  backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.instructions h1 {
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.instructions p {
+  color: black;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
 }
