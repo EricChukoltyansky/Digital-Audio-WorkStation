@@ -88,6 +88,10 @@ export default function Sequencer({ player, socket }) {
     setSequencerVolume(-12);
   };
 
+  const handleInstructions = () => {
+    console.log("Instructions");
+  }
+
   useEffect(() => {
     const toggleMessage = (m) => {
       toggleStep(m.x, m.z);
