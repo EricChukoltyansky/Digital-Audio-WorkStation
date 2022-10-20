@@ -6,7 +6,6 @@ import { CgPiano } from "react-icons/cg";
 const Bar = styled.div`
     height: calc(100vh - 75px);
     right: calc(100vw - 50px);
-    /* top: 8vh; */
     display: flex;
     justify-content: space-around;
     align-items: center;
