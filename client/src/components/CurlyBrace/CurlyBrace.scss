@@ -1,0 +1,138 @@
+$radius: 1em;
+$thickness: 0.25em;
+$height: 0.5em;
+
+.brace-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.brace
+{
+  border-bottom: $thickness solid;
+  margin: 0 10%;
+  width: 30%;
+  height: $height;  
+}
+
+.brace:before,
+.brace:after
+{
+  content: "";
+  width: 10%;
+  height: (2*$height);
+  position: absolute;
+}
+
+
+.brace-container.side {
+  width: 3*$height;
+  flex-direction: column;
+}
+
+.side .brace
+{
+  border-right: $thickness solid;
+  border-bottom: 0;
+  margin: 10% 0;
+  height: 30%;
+  width: $height;  
+}
+
+.side .brace:before,
+.side .brace:after
+{
+  content: "";
+  height: 10%;
+  width: (2*$height);
+  position: absolute;
+}
+
+.r.t:before
+{  
+  border-left: $thickness solid;  
+  border-top-left-radius: $radius;
+  margin-top: -10%;
+  margin-left: $height;
+}
+
+.r.t:after
+{
+  border-right: $thickness solid;
+  border-bottom-right-radius: $radius;
+  margin-top: 30%;
+  margin-left: -$height;    
+}
+
+.r.b:before
+{
+  border-right: $thickness solid;
+  border-top-right-radius: $radius;
+  margin-top: -10%;
+  margin-left: -$height;
+}
+
+.r.b:after
+{
+  border-left: $thickness solid;
+  border-bottom-left-radius: $radius;
+  margin-left: $height;
+  margin-top:  30%;
+}
+
+// 
+// chrome fix
+// 
+.brace-container.side {
+  width: 1.5em;
+  flex-direction: column;
+}
+
+.side .brace {
+  border-right: 0.25em solid;
+  border-bottom: 0;
+  margin: 1em 0;
+  height: 60%;
+  width: 0.5em;
+}
+
+.side .brace:before,
+.side .brace:after {
+  content: "";
+  height: 10%;
+  width: 1em;
+  position: absolute;
+}
+
+.r.t:before
+{  
+  border-left: $thickness solid;  
+  border-top-left-radius: $radius;
+  margin-top: -1em;
+  margin-left: $height;
+}
+
+.r.t:after
+{
+  border-right: $thickness solid;
+  border-bottom-right-radius: $radius;
+  margin-top: 3em;
+  margin-left: -$height;    
+}
+
+.r.b:before
+{
+  border-right: $thickness solid;
+  border-top-right-radius: $radius;
+  margin-top: -1em;
+  margin-left: -$height;
+}
+
+.r.b:after
+{
+  border-left: $thickness solid;
+  border-bottom-left-radius: $radius;
+  margin-left: $height;
+  margin-top:  3em;
+}
