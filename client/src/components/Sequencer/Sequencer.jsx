@@ -172,7 +172,6 @@ export default function Sequencer({ player, socket }) {
         <ClearAllButton onClick={handleReset} />
       </Bar>
       <LeftIconBar />
-      <CurlyBrace />
       <Grid
         sequence={sequence}
         handleToggleStep={handleToggleStep}
