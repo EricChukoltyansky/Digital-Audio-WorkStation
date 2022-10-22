@@ -1,24 +1,36 @@
 import styled from "styled-components";
 
-const getBackground = (activated, triggered) => {
+const getBackground = (activated, triggered, row) => {
   switch (true) {
     case activated && triggered:
       return "radial-gradient(#f8b6b6, #922c2c)";
     case activated && !triggered:
-      return "radial-gradient(#fffb00, #e7a712)";
+      if(row <= 5) {
+        return "radial-gradient(#f3e775, #dbaf0e)";
+      } else if( row > 5 && row <= 9 ) {
+        return "radial-gradient(#5fed9f, #0abb07)";
+      } else {
+        return "radial-gradient(#2dcaed, #1d12e7)";
+      }
     case !activated && triggered:
-      return "rgb(212, 212, 212)";
+      return "rgb(158, 156, 156)";
     default:
       return "rgb(41,40,40)";
   }
 };
 
-const getBoxShadow = (activated, triggered) => {
+const getBoxShadow = (activated, triggered, row) => {
   switch (true) {
     case activated && triggered:
       return "0 0 100px 50px #922c2c";
     case activated && !triggered:
-      return "0 0 20px 5px #e7a712";
+      if(row <= 5) {
+        return "0 0 20px 5px #dbaf0e";
+      } else if( row > 5 && row <= 9 ) {
+        return "0 0 20px 5px #0abb07";
+      } else {
+        return "0 0 20px 5px #1d12e7";
+      }
       case !activated && triggered:
         return "0 0 3px 1px rgb(212, 212, 212)";
     default:
@@ -39,10 +51,10 @@ const getBorder = (activated, triggered) => {
   }
 };
 
-const Cell = styled.div.attrs(({ activated, triggered }) => ({
+const Cell = styled.div.attrs(({ activated, triggered, row }) => ({
   style: {
-    background: getBackground(activated, triggered),
-    boxShadow: getBoxShadow(activated, triggered),
+    background: getBackground(activated, triggered, row),
+    boxShadow: getBoxShadow(activated, triggered, row),
     border: getBorder(activated, triggered)
   },
 }))`
