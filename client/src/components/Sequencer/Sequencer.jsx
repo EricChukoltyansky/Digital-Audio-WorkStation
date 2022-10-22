@@ -24,6 +24,20 @@ function Sequencer({ player, socket }) {
   const [BPMcount, setBPMCount] = useState(100);
   const [stopped, setStopped] = useState(false);
   const [isShown, setIsShown] = useState(false);
+  const [pianoActive, setPianoActive] = useState(false);
+  const [bassActive, setBassActive] = useState(true);
+  const [drumsActive, setDrumsActive] = useState(true);
+
+  const leftBarLights = (line) => {
+    for (let j = 0; j < sequence[line].length; j++) {
+      const { activated } = sequence[line][j];
+      if (line <= 5 && activated) {
+        setPianoActive(true);
+      // } else {
+      //   setPianoActive(false);
+      }
+    }
+  };
 
   const resetSequence = () => {
     for (let i = 0; i < sequence.length; i++) {
@@ -42,6 +56,7 @@ function Sequencer({ player, socket }) {
     const { triggered, activated } = sequenceCopy[line][step];
     sequenceCopy[line][step] = { triggered, activated: !activated };
     setSequence(sequenceCopy);
+    leftBarLights(line);
   };
 
   const nextStep = (time) => {
@@ -178,7 +193,11 @@ function Sequencer({ player, socket }) {
         />
       </Bar>
       <RightBar />
-      <LeftIconBar />
+      <LeftIconBar
+        pianoActive={pianoActive}
+        bassActive={bassActive}
+        drumsActive={drumsActive}
+      />
       <Grid
         sequence={sequence}
         handleToggleStep={handleToggleStep}
