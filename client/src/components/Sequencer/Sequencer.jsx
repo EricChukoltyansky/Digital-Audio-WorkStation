@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { steps, lineMap, initialState } from "./initial";
 import Grid from "../styled-components/Grid";
 import Bar from "../styled-components/Nav-Bar";
@@ -16,7 +16,7 @@ import Instructions from "../buttons/Instructions";
 
 const deepCopyInitialState = JSON.parse(JSON.stringify(initialState));
 
-export default function Sequencer({ player, socket }) {
+function Sequencer({ player, socket }) {
   const [sequence, setSequence] = useState(initialState);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
@@ -196,3 +196,5 @@ export default function Sequencer({ player, socket }) {
     </div>
   );
 }
+
+export default React.memo(Sequencer);
