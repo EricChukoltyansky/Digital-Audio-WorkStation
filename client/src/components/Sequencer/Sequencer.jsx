@@ -23,7 +23,7 @@ export default function Sequencer({ player, socket }) {
   const [sequencerVolume, setSequencerVolume] = useState(-12);
   const [BPMcount, setBPMCount] = useState(100);
   const [stopped, setStopped] = useState(false);
-  const [isShown, setIsShown] = useState(true);
+  const [isShown, setIsShown] = useState(false);
 
   const resetSequence = () => {
     for (let i = 0; i < sequence.length; i++) {

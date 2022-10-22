@@ -14,7 +14,7 @@ export default function RightBar() {
 
   const Inst = styled.div`
     color: white;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Fuzzy Bubbles", cursive;
     font-size: calc(5vh - 2vh);
   `
   return (

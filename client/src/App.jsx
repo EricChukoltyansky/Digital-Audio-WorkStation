@@ -5,7 +5,6 @@ import PlayerProvider from "./components/context/PlayerProvider";
 import Sequencer from "./components/Sequencer/Sequencer";
 import Loader from "./pages/Loader/Loader";
 import Rotate from "./pages/Rotate/Rotate";
-import { createGlobalStyle } from "styled-components";
 import "./App.css";
 
 const socket = io.connect(
@@ -23,15 +22,8 @@ function App() {
       window.removeEventListener("orientationchange", handleOrientationChange);
   }, []);
 
-  const GlobalStyle = createGlobalStyle`
-    body {
-      font-family: 'Nunito', sans-serif;
-    }
-  `
-
   return (
     <div className="App">
-      <GlobalStyle />
       <BrowserRouter>
         <Routes>
           <Route
