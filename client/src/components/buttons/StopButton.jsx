@@ -1,29 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import { FaStop } from "react-icons/fa";
+import { CiStop1 } from "react-icons/ci";
 
 const Style = {
   StopButton: styled.button`
-    padding: 0.75em 0.90em;
-    outline: none;
-    background: radial-gradient(#e5b1f5, #66069e);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 1em;
-    margin: 0.5em;
-    transition: all 0.2s;
+  color: #9407bb;
+  border: none;
+  background-color: transparent;
+  font-size: 2em;
+  transition: all 0.2s;
+  filter: drop-shadow(0px 0px 1px #9407bb);
 
-    &:hover {
-      border-radius: 50px;
-      cursor: pointer;
-    }
+  &:hover {
+    filter: drop-shadow(0px 0px 2px #9407bb);
+    cursor: pointer;
+  }
   `,
 };
 
 const StopButton = ({ onClick }) => (
   <Style.StopButton onClick={onClick}>
-    <FaStop />
+    <CiStop1 />
   </Style.StopButton>
 );
 
