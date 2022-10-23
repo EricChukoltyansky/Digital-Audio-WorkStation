@@ -64,7 +64,7 @@ function Sequencer({ player, socket }) {
     const { triggered, activated } = sequenceCopy[line][step];
     sequenceCopy[line][step] = { triggered, activated: !activated };
     setSequence(sequenceCopy);
-    leftBarLights(line);
+    leftBarLights(line, step);
   };
 
   const nextStep = (time) => {
