@@ -28,13 +28,21 @@ function Sequencer({ player, socket }) {
   const [bassActive, setBassActive] = useState(true);
   const [drumsActive, setDrumsActive] = useState(true);
 
-  const leftBarLights = (line) => {
-    for (let j = 0; j < sequence[line].length; j++) {
-      const { activated } = sequence[line][j];
-      if (line <= 5 && activated) {
+  const leftBarLights = (line, step) => {
+    const sequenceCopy = [...sequence];
+    const { activated } = sequenceCopy[line][step];
+    console.log("activated", activated);
+    console.log("line", line);
+    console.log("step", step);
+    for (let i = 0; i < sequenceCopy[line].length; i++) {
+      if (activated && line < 5) {
         setPianoActive(true);
-      // } else {
-      //   setPianoActive(false);
+      } else if (activated && line >= 5 && line < 10) {
+        setBassActive(true);
+      } else if (activated && line >= 10) {
+        setDrumsActive(true);
+      } else {
+        setPianoActive(false);
       }
     }
   };
