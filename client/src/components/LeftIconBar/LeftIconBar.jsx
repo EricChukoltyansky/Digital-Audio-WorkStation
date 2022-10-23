@@ -15,7 +15,7 @@ const Bar = styled.div`
 
 const Piano = styled.h1.attrs(({pianoActive}) => ({
   style: {
-    color: pianoActive ? "#dbaf0e" : "white"
+    textShadow: pianoActive ? "#dbaf0e" : "white"
   }
 }))`
   &::after {
@@ -33,7 +33,11 @@ const Piano = styled.h1.attrs(({pianoActive}) => ({
   }
 `;
 
-const Bass = styled.h1`
+const Bass = styled.h1.attrs(({bassActive}) => ({
+  style: {
+    color: bassActive ? "#0abb07" : "white"
+  }
+}))`
   color: white;
   &::after {
     content: '';
@@ -50,7 +54,11 @@ const Bass = styled.h1`
   }
 `;
 
-const Drums = styled.h1`
+const Drums = styled.h1.attrs(({drumsActive}) => ({
+  style: {
+    color: drumsActive ? "#1d12e7" : "white"
+  }
+}))`
   color: white;
   &::after {
     content: '';
