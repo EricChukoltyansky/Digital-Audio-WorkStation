@@ -13,7 +13,7 @@ const Style = {
   filter: drop-shadow(0px 0px 1px #9407bb);
 
   &:hover {
-    filter: drop-shadow(0px 0px 2px #9407bb);
+    filter: drop-shadow(0px 0px 5px #9407bb);
     cursor: pointer;
   }
   `,
