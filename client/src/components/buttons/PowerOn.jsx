@@ -1,21 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { ImVolumeMedium } from "react-icons/im";
+import { HiOutlineSpeakerWave } from "react-icons/hi2";
 
 const Style = {
   PowerOn: styled.button`
-  padding: 0.75em 0.90em;
-  outline: none;
-  background: radial-gradient(#b1f5d8, #0b996a);
+  color: #0b996a;
   border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 1em;
-  margin: 0.5em;
+  background-color: transparent;
+  font-size: 2em;
   transition: all 0.2s;
+  filter: drop-shadow(0px 0px 1px #0b996a);
 
   &:hover {
-    border-radius: 50px;
+    filter: drop-shadow(0px 0px 4px #0b996a);
     cursor: pointer;
   }
 `,
@@ -23,7 +20,7 @@ const Style = {
 
 const PowerOn = ({ onClick }) => (
   <Style.PowerOn onClick={onClick}>
-    {<ImVolumeMedium />}
+    {<HiOutlineSpeakerWave />}
   </Style.PowerOn>
 );
 

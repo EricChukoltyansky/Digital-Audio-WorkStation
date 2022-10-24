@@ -170,15 +170,6 @@ function Sequencer({ player, socket }) {
 
         <StopButton onClick={() => handleStopPlaying(true)} />
 
-        <Volume
-          max="4"
-          min="-60"
-          step="2"
-          type="range"
-          value={sequencerVolume}
-          onChange={handleVolume}
-        />
-
         <BPM
           max="150"
           min="60"
@@ -186,6 +177,15 @@ function Sequencer({ player, socket }) {
           type="range"
           value={BPMcount}
           onChange={handleBPM}
+        />
+
+        <Volume
+          max="4"
+          min="-60"
+          step="2"
+          type="range"
+          value={sequencerVolume}
+          onChange={handleVolume}
         />
 
         {sequencerVolume === -60 ? (
