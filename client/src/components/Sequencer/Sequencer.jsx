@@ -216,7 +216,9 @@ function Sequencer({ player, socket }) {
           <h1>Instructions</h1>
           <ul>
             <li>
-              First thing! Share it with friends and play music simultaneously
+              First thing! This app was deviced to be played simoultaneously
+              with your friends, <br />
+              so make sure to invite them to the party!
             </li>
             <li>*Click on a cell to trigger a sound</li>
             <li>*Click the play button to start the sequencer</li>
