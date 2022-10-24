@@ -12,24 +12,26 @@ const Style = {
     margin: 0.5em;
 
     &::-webkit-slider-runnable-track {
-      height: 7px;
-      background: #ddd;
+      height: 2px;
+      background: #646464;
       border: none;
-      border-radius: 5px;
+      border-radius: 22%;
     }
 
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       border: none;
-      height: 35px;
-      width: 35px;
+      height: 25px;
+      width: 25px;
       border-radius: 7px;
-      background: radial-gradient(rgb(213, 245, 237), rgb(1, 66, 66));
-      margin-top: -14px;
+      background: radial-gradient(rgb(121, 231, 238), rgb(3, 154, 168));
+      box-shadow: 0px 0px 3px rgb(3, 154, 168);
+      margin-top: -11.5px;
       transition: all 0.2s;
     }
 
     &::-webkit-slider-thumb:hover {
+      box-shadow: 0px 0px 10px rgb(3, 154, 168);
       border-radius: 20px;
       cursor: pointer;
     }

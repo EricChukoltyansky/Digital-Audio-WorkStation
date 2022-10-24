@@ -4,15 +4,15 @@ import { IoTrashOutline } from "react-icons/io5";
 
 const Style = {
   ClearAllButton: styled.button`
-color: #922c2c;
+color: #b64900;
 border: none;
 background-color: transparent;
 font-size: 2em;
 transition: all 0.2s;
-filter: drop-shadow(0px 0px 1px #922c2c);
+filter: drop-shadow(0px 0px 1px #b64900);
 
 &:hover {
-  filter: drop-shadow(0px 0px 4px #922c2c);
+  filter: drop-shadow(0px 0px 4px #b64900);
   cursor: pointer;
 }
   `,
