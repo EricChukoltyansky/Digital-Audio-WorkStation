@@ -28,6 +28,7 @@
 }
 
 .instructions h1 {
+  font-family: "Fuzzy Bubbles", cursive;
   color: black;
   font-size: 2rem;
   text-align: center;
@@ -35,10 +36,13 @@
   padding: 0;
 }
 
-.instructions p {
+.instructions ul {
+  font-family: "Fuzzy Bubbles", cursive;
   color: black;
   font-size: 1.5rem;
   text-align: center;
   margin: 0 auto;
   padding: 0;
+  /* list-style-type: circle; */
+  line-height: 2em;
 }
