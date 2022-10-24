@@ -11,25 +11,27 @@ const Style = {
     margin: 0.5em;
 
     &::-webkit-slider-runnable-track {
-      height: 7px;
-      background: #ddd;
+      height: 2px;
+      background: #646464;
       border: none;
-      border-radius: 5px;
+      border-radius: 22%;
     }
 
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       border: none;
-      height: 35px;
-      width: 35px;
+      height: 25px;
+      width: 25px;
       border-radius: 7px;
-      background: radial-gradient(rgb(217, 189, 250), rgb(172, 6, 97));
-      margin-top: -14px;
+      background: radial-gradient(#bbe9d9, #0b996a);
+      box-shadow: 0px 0px 3px #0b996a;
+      margin-top: -11.5px;
       transition: all 0.2s;
     }
 
     &::-webkit-slider-thumb:hover {
       border-radius: 20px;
+      box-shadow: 0px 0px 10px #0b996a;
       cursor: pointer;
     }
 
