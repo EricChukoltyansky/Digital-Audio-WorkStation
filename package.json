@@ -9,7 +9,7 @@
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "npm run build --prefix client",
-    "install": "npm install --force --prefix client"
+    "install": "npm install --legacy-peer-deps --prefix client"
   },
   "author": "",
   "license": "ISC",
