@@ -12,27 +12,43 @@ export default function RightBar() {
     position: absolute;
   `;
 
-  const Inst = styled.div`
-    color: white;
+  const Piano = styled.div`
+    color: #dbaf0e;
     font-family: "Fuzzy Bubbles", cursive;
     font-size: calc(5vh - 2vh);
+    filter: drop-shadow(0px 0px 1px #dbaf0e);
   `
+
+  const Bass = styled.div`
+    color: #0abb07;
+    font-family: "Fuzzy Bubbles", cursive;
+    font-size: calc(5vh - 2vh);
+    filter: drop-shadow(0px 0px 1px #0abb07);
+  `
+
+  const Drums = styled.div`
+    color: #1272e7;
+    font-family: "Fuzzy Bubbles", cursive;
+    font-size: calc(5vh - 2vh);
+    filter: drop-shadow(0px 0px 1px #1272e7);
+  `
+
   return (
   <div>
     <Bar>
-      <Inst>F#</Inst>
-      <Inst>E</Inst>
-      <Inst>C#</Inst>
-      <Inst>A</Inst>
-      <Inst>F#</Inst>
-      <Inst>F#</Inst>
-      <Inst>E</Inst>
-      <Inst>C#</Inst>
-      <Inst>B</Inst>
-      <Inst>OP-HAT</Inst>
-      <Inst>HI-HAT</Inst>
-      <Inst>SNARE</Inst>
-      <Inst>KICK</Inst>
+      <Piano>F#</Piano>
+      <Piano>E</Piano>
+      <Piano>C#</Piano>
+      <Piano>A</Piano>
+      <Piano>F#</Piano>
+      <Bass>F#</Bass>
+      <Bass>E</Bass>
+      <Bass>C#</Bass>
+      <Bass>B</Bass>
+      <Drums>OP-HAT</Drums>
+      <Drums>HI-HAT</Drums>
+      <Drums>SNARE</Drums>
+      <Drums>KICK</Drums>
     </Bar>
   </div>
   );

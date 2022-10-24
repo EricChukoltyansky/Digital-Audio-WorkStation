@@ -168,16 +168,15 @@ function Sequencer({ player, socket }) {
           onClick={() => handleSetPlaying(!playing)}
         />
 
-        <StopButton onClick={() => handleStopPlaying(true)} />
+        {/* <StopButton onClick={() => handleStopPlaying(true)} /> */}
 
-        <BPM
-          max="150"
-          min="60"
-          step="10"
-          type="range"
-          value={BPMcount}
-          onChange={handleBPM}
-        />
+        {sequencerVolume === -60 ? (
+          <PowerOff onClick={handlePowerOff} />
+        ) : (
+          <PowerOn onClick={handlePowerOn} />
+        )}
+
+        <ClearAllButton onClick={handleReset} />
 
         <Volume
           max="4"
@@ -188,13 +187,15 @@ function Sequencer({ player, socket }) {
           onChange={handleVolume}
         />
 
-        {sequencerVolume === -60 ? (
-          <PowerOff onClick={handlePowerOff} />
-        ) : (
-          <PowerOn onClick={handlePowerOn} />
-        )}
+        <BPM
+          max="150"
+          min="60"
+          step="10"
+          type="range"
+          value={BPMcount}
+          onChange={handleBPM}
+        />
 
-        <ClearAllButton onClick={handleReset} />
         <Instructions
           onMouseEnter={() => setIsShown(true)}
           onMouseLeave={() => setIsShown(false)}
