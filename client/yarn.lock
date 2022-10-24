@@ -10353,6 +10353,19 @@
     "parseurl" "~1.3.3"
     "send" "0.17.1"
 
+"server@file:..":
+  "resolved" "file:.."
+  "version" "1.0.0"
+  dependencies:
+    "concurrently" "^7.0.0"
+    "cors" "^2.8.5"
+    "express" "^4.17.1"
+    "http" "*"
+    "nodemon" "^2.0.12"
+    "normalize.css" "^8.0.1"
+    "path" "^0.12.7"
+    "socket.io" "^4.1.3"
+
 "set-blocking@^2.0.0":
   "integrity" "sha1-BF+XgtARrppoA93TgrJDkrPYkPc= sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw=="
   "resolved" "https://registry.npmjs.org/set-blocking/-/set-blocking-2.0.0.tgz"
