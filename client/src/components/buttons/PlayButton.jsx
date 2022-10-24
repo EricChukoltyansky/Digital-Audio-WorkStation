@@ -11,7 +11,7 @@ const Play = styled.button`
   filter: drop-shadow(0px 0px 1px #0abb07);
 
   &:hover {
-    filter: drop-shadow(0px 0px 2px #0abb07);
+    filter: drop-shadow(0px 0px 4px #0abb07);
     cursor: pointer;
   }
 `;
@@ -25,7 +25,7 @@ const Pause = styled.button`
   filter: drop-shadow(0px 0px 1px #922c2c);
 
   &:hover {
-    filter: drop-shadow(0px 0px 2px #922c2c);
+    filter: drop-shadow(0px 0px 4px #922c2c);
     cursor: pointer;
   }
 `;
