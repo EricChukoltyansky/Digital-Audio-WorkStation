@@ -1,28 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import { FaTrashAlt } from "react-icons/fa";
+import { IoTrashOutline } from "react-icons/io5";
+
 const Style = {
   ClearAllButton: styled.button`
-    padding: 0.75em 0.9em;
-    outline: none;
-    background: radial-gradient(#f8b6b6, #922c2c);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 1em;
-    margin: 0.5em;
-    transition: all 0.2s;
+color: #922c2c;
+border: none;
+background-color: transparent;
+font-size: 2em;
+transition: all 0.2s;
+filter: drop-shadow(0px 0px 1px #922c2c);
 
-    &:hover {
-      border-radius: 50px;
-      cursor: pointer;
-    }
+&:hover {
+  filter: drop-shadow(0px 0px 4px #922c2c);
+  cursor: pointer;
+}
   `,
 };
 
 const ClearAllButton = ({ onClick }) => (
   <Style.ClearAllButton onClick={onClick}>
-    <FaTrashAlt />
+    <IoTrashOutline />
   </Style.ClearAllButton>
 );
 
