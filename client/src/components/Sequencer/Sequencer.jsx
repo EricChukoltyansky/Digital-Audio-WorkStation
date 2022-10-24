@@ -218,14 +218,14 @@ function Sequencer({ player, socket }) {
             <li>
               First thing! Share it with friends and play music simultaneously
             </li>
-            <li>Click on a cell to trigger a sound</li>
-            <li>Click the play button to start the sequencer</li>
-            <li>Click the stop button to stop the sequencer</li>
-            <li>Click the clear all button to clear the sequencer</li>
-            <li>Use the volume slider to adjust the volume</li>
-            <li>Use the BPM slider to adjust the tempo</li>
-            <li>Left side shows the instruments being played</li>
-            <li>Right side shows the notes being played</li>
+            <li>*Click on a cell to trigger a sound</li>
+            <li>*Click the play button to start the sequencer</li>
+            <li>*Click the stop button to stop the sequencer</li>
+            <li>*Click the clear all button to clear the sequencer</li>
+            <li>*Use the volume slider to adjust the volume</li>
+            <li>*Use the BPM slider to adjust the tempo</li>
+            <li>*Left side shows the instruments being played</li>
+            <li>*Right side shows the notes being played</li>
           </ul>
         </div>
       )}

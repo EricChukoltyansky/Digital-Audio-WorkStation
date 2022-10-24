@@ -25,6 +25,7 @@
   backdrop-filter: blur(2px);
   background-color: rgba(255, 255, 255, 0.2);
   transition: 0.5s ease-in-out;
+  box-shadow: 10px 10px 10px 10px rgba(0.5, 0.5, 0.5, 0.5);
 }
 
 .instructions h1 {
@@ -34,6 +35,7 @@
   text-align: center;
   margin: 0 auto;
   padding: 0;
+  text-decoration: underline;
 }
 
 .instructions ul {
@@ -43,6 +45,6 @@
   text-align: center;
   margin: 0 auto;
   padding: 0;
-  /* list-style-type: circle; */
+  list-style-type: none;
   line-height: 2em;
 }
