@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { HiOutlineSpeakerWave } from "react-icons/hi2";
+// import { HiOutlineSpeakerWave } from "react-icons/hi2";
+import { IoVolumeHighOutline } from "react-icons/io5";
+
 
 const Style = {
   PowerOn: styled.button`
@@ -20,7 +22,8 @@ const Style = {
 
 const PowerOn = ({ onClick }) => (
   <Style.PowerOn onClick={onClick}>
-    {<HiOutlineSpeakerWave />}
+    {/* <HiOutlineSpeakerWave /> */}
+    <IoVolumeHighOutline />
   </Style.PowerOn>
 );
 
