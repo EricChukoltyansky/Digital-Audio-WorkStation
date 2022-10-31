@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { HiOutlineSpeakerXMark } from "react-icons/hi2";
+// import { HiOutlineSpeakerXMark } from "react-icons/hi2";
+import { IoVolumeMuteOutline } from "react-icons/io5";
+
 
 const Style = {
   PowerOff: styled.button`
@@ -20,7 +22,8 @@ filter: drop-shadow(0px 0px 1px #922c2c);
 
 const PowerOff = ({ onClick }) => (
   <Style.PowerOff onClick={onClick}>
-    <HiOutlineSpeakerXMark />
+    {/* <HiOutlineSpeakerXMark /> */}
+    <IoVolumeMuteOutline />
   </Style.PowerOff>
 );
 

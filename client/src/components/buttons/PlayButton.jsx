@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { CiPlay1, CiPause1 } from "react-icons/ci";
+// import { CiPlay1, CiPause1 } from "react-icons/ci";
+import { IoPlayOutline, IoPauseOutline } from "react-icons/io5";
+
 
 const Play = styled.button`
   color: #0abb07;
@@ -35,11 +37,13 @@ export default function PlayButton({ playing, onClick }) {
     <>
       {playing ? (
         <Pause onClick={onClick}>
-          <CiPause1 />
+          {/* <CiPause1 /> */}
+          <IoPauseOutline />
         </Pause>
       ) : (
         <Play onClick={onClick}>
-          <CiPlay1 />
+          {/* <CiPlay1 /> */}
+          <IoPlayOutline />
         </Play>
       )}
     </>
