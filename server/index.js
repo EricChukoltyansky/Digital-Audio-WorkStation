@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const { Server } = require("socket.io");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+// require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 app.use(cors());
 app.use(express.json());
