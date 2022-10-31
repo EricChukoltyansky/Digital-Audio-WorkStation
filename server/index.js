@@ -4,9 +4,13 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const { Server } = require("socket.io");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const publicPath = path.join(__dirname, "../client/build");
-app.use(cors());
 app.use(express.static(publicPath));
 
 const server = http.createServer(app);
@@ -44,8 +48,8 @@ io.on("connection", (socket) => {
   });
 });
 
-app.use("*", (req, res) => {
-  res.sendFile(path.resolve(`${publicPath}/index.html`));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(publicPath, "index.html"));
 });
 
 const PORT = process.env.PORT || 3001;
