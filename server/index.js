@@ -8,7 +8,7 @@ const { Server } = require("socket.io");
 
 app.use(cors());
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 const publicPath = path.join(__dirname, "../client/build");
 app.use(express.static(publicPath));
