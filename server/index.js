@@ -14,7 +14,6 @@ const publicPath = path.join(__dirname, "../client/build");
 app.use(express.static(publicPath));
 
 const server = http.createServer(app);
-console.log(server)
 
 const io = new Server(server, {
   cors: {
@@ -49,7 +48,7 @@ io.on("connection", (socket) => {
   });
 });
 
-app.get("*", (req, res) => {
+app.use("*", (req, res) => {
   res.sendFile(path.resolve(publicPath, "index.html"));
 });
 
@@ -60,5 +59,5 @@ const PORT = process.env.PORT || 3001;
 console.log("Server is running on port", PORT);
 
 server.listen(PORT, () => {
-  console.log(`SERVER RUNNING ON PORT ${PORT}`);
+  console.log("SERVER RUNNING ON PORT 3001");
 });
