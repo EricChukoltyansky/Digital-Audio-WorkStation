@@ -48,10 +48,6 @@ io.on("connection", (socket) => {
   });
 });
 
-app.use("*", (req, res) => {
-  res.sendFile(path.resolve(publicPath, "index.html"));
-});
-
 console.log(PORT)
 
 const PORT = process.env.PORT || 3001;
